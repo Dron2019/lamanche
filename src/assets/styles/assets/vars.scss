@@ -1,6 +1,6 @@
-$default-font: "gilroy",
+$default-font: "HelveticaNeueCyr",
 sans-serif;
-$default-font2: "montser",
+$default-font2: "TT Norms",
 sans-serif;
 
 $mc2: #FF554C;
@@ -20,15 +20,19 @@ $gold: #CFA46E;
 :root {
   --in: cubic-bezier(0.13, 0.81, 0.23, 0.96);
   --header-h: 120px;
-  --logo-w: 160px;
-  --sliceFigure: 239px;
-  --sliceFigure-big: 541px;
+  --logo-w: 142px;
+  --color-gold: rgba(239, 196, 127, 1);
+  --color-grey: rgba(56, 62, 65, 1);
+  --color-light-grey: rgba(246, 246, 246, 1);
+  --color-white: rgba(255,255,255,1);    
+  --text-gray :rgba(110, 122, 129, 1);  
+  --border-radius: 100px;              
 }
 
 @media screen and (max-width: 1440px){
   :root {
     --header-h: 90px;
-    --logo-w: 120px;
+    --logo-w: 142px;
     --sliceFigure-big: 362px;
   }
 }
