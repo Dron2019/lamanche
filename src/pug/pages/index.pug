@@ -17,6 +17,18 @@ block variable
       ['background-image: url(./assets/images/home/home-advantage-02.jpg)', 'Закрита територія', 'Максимум приватності для створення свого ідеального простору з цілодобовою охороною.',],
       ['background-image: url(./assets/images/home/home-advantage-03.jpg)', 'Власний підземний паркінг', 'Станція підзарядки електромобілів та ліфт до усіх поверхів клубного будинку.',],
       ['background-image: url(./assets/images/home/home-advantage-04.jpg)', 'Просторне лобі', 'Преміальный конс\'єрж-сервис, який вирішить всі ваші запитання',],
+    ];
+    var block4Points = [
+      ['Контрактова площа', '900 м',],
+      ['Андріївський узвіз', '1 600 м',],
+      ['Набережна Дніпра', '600 м',],
+    ];
+    var flatBlocksData = [
+      ['home-flat-photo-01.jpg',],
+      ['home-flat-photo-02.jpg',],
+      ['home-flat-photo-03.jpg',],
+      ['home-flat-photo-04.jpg',],
+      ['home-flat-photo-05.jpg',],
     ]
 
 block meta
@@ -73,6 +85,21 @@ block content
           .card-with-text-on-bg
             .subtitle-with-decor.white.small  #{val[1]}
             p #{val[2]}
+  section.home-section-4(style="background-image:url(./assets/images/home/screen-4-bg.jpg)")
+    .subtitle-with-decor.white.home-section-4__title Преміальна локація в історичному центрі міста
+    .digit-block-wrap
+      each val in block4Points
+        .digit-block 
+          .digit-block__value #{val[1]}
+          .digit-block__text #{val[0]}
+  section.home-section-5
+    .subtitle-with-decor Квартири LA MANCHE
+    each val in flatBlocksData
+      .home-flat-card
+        .home-flat-card__outer 
+          +svg('ajax-logo')
+        .home-flat-card__inner(style="background-image: url(./assets/images/home/"+val[0]+");")
+
 
 
 
