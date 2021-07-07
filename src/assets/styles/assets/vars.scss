@@ -19,8 +19,9 @@ $dark: #1A2941;
 $gold: #CFA46E;
 :root {
   --in: cubic-bezier(0.13, 0.81, 0.23, 0.96);
-  --header-h: 120px;
+  --header-h: 80px;
   --logo-w: 142px;
+  --logo-h: calc(var(--logo-w) / 142 * 32);
   --color-gold: rgba(239, 196, 127, 1);
   --color-grey: rgba(56, 62, 65, 1);
   --color-light-grey: rgba(246, 246, 246, 1);
@@ -31,21 +32,21 @@ $gold: #CFA46E;
 
 @media screen and (max-width: 1440px){
   :root {
-    --header-h: 90px;
+    --header-h: 80px;
     --logo-w: 142px;
     --sliceFigure-big: 362px;
   }
 }
 @media screen and (max-width: 992px){
   :root {
-    --header-h: 110px;
+    --header-h: 80px;
     --logo-w: 90px;
     --sliceFigure-big: 44px;
   }
 }
 @media screen and (max-width: 576px){
   :root {
-    --header-h: 70px;
+    --header-h: 80px;
     --sliceFigure: 100px;
     --sliceFigure-big: 100px;
   }

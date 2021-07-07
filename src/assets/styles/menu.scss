@@ -1,3 +1,105 @@
+.menu-wrap {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+    &.opened {
+        opacity: 1;
+    }
+}
 .menu {
-  
+  display: flex;
+  width: 100%;
+  height: 100%;
+  --right-offset: 127px;
+  &>* {
+      width: 50%;
+      position: relative;
+  }
+  &__left-bg {
+    //   position: absolute;
+    //   left: 0;
+    //   top: 0;
+    //   width: 100%;
+    //   height: 100%;
+  }
+  &__left-bg>* {
+    //   position: absolute;
+    //   left: 50%;
+    //   top: 50%;
+    //   width: 100%;
+    //   height: 100%;
+    //   transform: translate(-50%,-50%);
+  }
+
+  .building-transparent {
+    object-fit: contain;
+    object-position: bottom;
+  }
+  .menu-bg{
+      object-fit: cover;
+  }
+  &__big-links {
+      width: calc(50% - (var(--right-offset) / 2));
+  }
+  &__big-links a {
+      text-decoration: none;
+      color: var(--color-grey);
+      font-size: 22px;
+        line-height: 100%;
+  }
+  &__big-links li~li {
+      margin-top: 35px;
+  }
+  &__right {
+      padding-left: calc(100% / 12);
+      padding-right: calc(100% / 12);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      padding-top: calc(var(--header-h) + 100px);
+  }
+  &__small-links {
+        width: calc(50% - (var(--right-offset) / 2));
+  }
+  &__small-links a {
+    font-size: 16px;
+    line-height: 100%;
+    color: var(--text-gray);
+    text-decoration: none;
+  }
+  &__small-links li~li {
+    margin-top: 33px;
+    }
+    &__right-bottom {
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+    &__social-block  {
+        display: flex;
+        align-items: center;
+        &>*:nth-child(n+2) {
+            margin-left: 40px;
+        }
+        a {
+            font-size: 10px;
+            line-height: 100%;
+            /* identical to box height, or 10px */
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-grey);
+        }
+    }
+    .perfect-logo {
+        width: 101px;
+        height: 48px;
+        margin-right: auto;
+    }
 }
