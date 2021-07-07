@@ -21,8 +21,8 @@ mixin link-blank(href)
 mixin img(src)
 	img(src='./assets/images/'+src+'' title="foto" alt="foto")&attributes(attributes)
 
-mixin btn(text)
-	img(type="button" class="button button-reset--default-styles")&attributes(attributes)
+mixin btn(text, color)
+	button(type="button" class="button-std "+color)&attributes(attributes) #{text}
 
 mixin SelectBox(name, id, options)
 	.u-select-box
