@@ -22,7 +22,9 @@ mixin img(src)
 	img(src='./assets/images/'+src+'' title="foto" alt="foto")&attributes(attributes)
 
 mixin btn(text, color)
-	button(type="button" class="button-std "+color)&attributes(attributes) #{text}
+	button(type="button" class="hvr-bounce-to-top button-std "+color)&attributes(attributes) #{text}
+mixin a(text, color, href)
+	a(href=href class="hvr-bounce-to-top button-std "+color)&attributes(attributes) #{text}
 
 mixin SelectBox(name, id, options)
 	.u-select-box

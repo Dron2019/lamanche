@@ -7,3 +7,5 @@ callMenu.addEventListener('click', () => {
   callMenu.querySelector('svg').dispatchEvent(new Event('click'));
   htmlEl.classList.toggle('menu-open');
 });
+
+// locoScroll.scrollTo(document.querySelector('.home-section-6'));

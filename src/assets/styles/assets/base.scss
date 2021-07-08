@@ -190,6 +190,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .button-std {
 	--v-padding:16px;
+	
 	border-radius: var(--border-radius);
 	font-weight: 550;
 	font-size: 14px;	
@@ -203,13 +204,19 @@ input[type=number]::-webkit-outer-spin-button {
 	align-items: center;
 	justify-content: center;
 	border: none;
+	text-decoration: none;
+	overflow: hidden;
 	&.gold {
 		background-color: var(--color-gold);
 		color: var(--color-grey);
+		--hover-color: var(--color-grey);
+		--hover-text-color: var(--color-white);
 	}	
 	&.grey {
 		background-color:  var(--color-grey);
 		color: var(--color-white);
+		--hover-color: var(--color-gold);
+		--hover-text-color: var(--color-grey);
 	}	
 }
 .subtitle-with-decor {
@@ -231,9 +238,13 @@ input[type=number]::-webkit-outer-spin-button {
 	&.small {
 		font-size: 18px;
 	}
+	@include from(1680px){
+		font-size: 42px;
+	}
 }
 
-.icon--ajax-logo {
-	width: 62px;
-	height: 32px;
+
+
+.color-white {
+	color: var(--color-white);
 }

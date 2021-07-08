@@ -24,11 +24,17 @@ block variable
       ['Набережна Дніпра', '600 м',],
     ];
     var flatBlocksData = [
-      ['home-flat-photo-01.jpg',],
-      ['home-flat-photo-02.jpg',],
-      ['home-flat-photo-03.jpg',],
-      ['home-flat-photo-04.jpg',],
-      ['home-flat-photo-05.jpg',],
+      ['home-flat-photo-01.jpg','1-кімнатні','20','55.5', '20000'],
+      ['home-flat-photo-02.jpg','2-кімнатні','30','46.7', '30000'],
+      ['home-flat-photo-03.jpg','3-кімнатні','40','127.5', '40000'],
+      ['home-flat-photo-04.jpg','4-кімнатні','50','202.4', '50000'],
+      ['home-flat-photo-05.jpg','5-кімнатні','60','99.4', '60000'],
+    ];
+    var characteristics = [
+      ['1','Будинок'],
+      ['9','Поверхів'],
+      ['4','Квартир на поверсі'],
+      ['200','Квартир'],
     ]
 
 block meta
@@ -98,7 +104,41 @@ block content
       .home-flat-card
         .home-flat-card__outer 
           +svg('ajax-logo')
+          .home-flat-card__title #{val[1]}
+          .home-flat-card__data
+            .home-flat-card__data-item
+              span Квартир:
+              span #{val[2]}
+            .home-flat-card__data-item
+              span Площа:
+              span від #{val[3]} м<sub>2</sub>
         .home-flat-card__inner(style="background-image: url(./assets/images/home/"+val[0]+");")
+          .home-flat-card__inner-data
+            span від
+            span.bold #{val[4]} 
+            span /м м<sub>2</sub>
+    .home-flat-card.home-section-5__link
+      +svg('key-with-decor')
+      p Обирай квартиру на будь-який смак у клубному будинку La Manche 
+      +a('Обрати квартиру', 'gold', 'choose-appartment.html')
+  section.home-section-6
+    .home-section-6__text
+      .subtitle-with-decor.white Характеристики
+      p.color-white Дізнайся більше про особливості та характеристики клубного будинку La Manche
+      .characteristics-wrap
+        each val in characteristics 
+          .single-characteristic
+            .single-characteristic__value #{val[0]}
+            .single-characteristic__text #{val[1]}
+      +a('Перейти до розділу', 'gold', 'characteristics.html')
+    .home-section-6__img
+      <svg width="490" height="590" viewBox="0 0 490 590" fill="none" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <path d="M164.598 588.324C214.02 553.125 277.79 553.125 327.212 588.324L328.807 590L363.88 533.012L362.286 531.335C327.212 506.193 287.356 494.46 245.905 494.46C206.049 494.46 166.192 506.193 129.524 531.335L127.93 533.012L163.004 590L164.598 588.324Z" fill="#6E7A81"/>
+        <path d="M217.211 0L0.392578 581.617H84.8879C102.425 534.686 245.908 132.414 245.908 132.414L406.928 581.617H489.829L273.01 0H217.211Z" fill="#6E7A81"/>
+        </svg>
+      +img('home/characteristic-img.jpg')
+    
+
 
 
 
