@@ -12,6 +12,16 @@
 	}
 }
 
+
+
+
+@mixin customOffsetWidth($value, $offset) {
+	width: calc(#{$value}% - #{$offset});
+	margin-left: calc(#{$offset} / 2);
+	margin-right: calc(#{$offset} / 2);
+}
+
+
 // Function for converting a px based font-size to rem.
 @function rem($size) {
 	$remSize: $size / 14px;
