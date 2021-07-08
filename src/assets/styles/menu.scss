@@ -105,4 +105,11 @@
         height: 48px;
         margin-right: auto;
     }
+    @include to(1240px){
+        --right-offset: 60px;
+        &__right {
+            padding-left: calc(100% / 24);
+            padding-right: calc(100% / 24);
+        }
+    }   
 }

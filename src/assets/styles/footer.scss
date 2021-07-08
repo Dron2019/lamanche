@@ -5,7 +5,7 @@
   position: relative;
   margin: -1px 0 0;
   @include shift-padding(1);
-  width: 100%;
+  // width: 100%;
   padding:  100px 160px 0 160px;
   display: flex;
   align-items: flex-start;
@@ -16,6 +16,22 @@
   --offset:60px;
   margin-left: calc((var(--offset) / 2) * -1);
     margin-right: calc((var(--offset) / 2) * -1);
+  @include to(1240px){
+    padding-left: var(--page-side-fields); 
+    padding-right: var(--page-side-fields); 
+  }
+  @include to(950px){
+    --offset:30px;
+  }
+  @include to(575px){
+    padding-top: 50px;
+
+    --offset: 15px;
+  }
+  @include from(1680px){
+    padding-left: calc((100vw - 1360px) / 2);
+    padding-right: calc((100vw - 1360px) / 2);
+  }
   &__subtitle {
     font-size: 18px;
   line-height: 140%;
@@ -48,18 +64,92 @@
     background-color: rgba(110, 122, 129, 0.1);
     margin-top: 50px;
     margin-bottom: 30px;
+    @include customOffsetWidth(100, var(--offset));
+    order: 4;
   }
   &__links-wrap {
-    @include customOffsetWidth(35, var(--offset));
+    @include customOffsetWidth(33, var(--offset));
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    @include to(768px){
+      @include customOffsetWidth(66, var(--offset));
+    }
+    @include to(575px){ 
+      @include customOffsetWidth(100, var(--offset));
+    }
   }
   &__form-wrap {
-    @include customOffsetWidth(35, var(--offset))
+    @include customOffsetWidth(42, var(--offset));
+    @include to(768px){
+      order: 2;
+      @include customOffsetWidth(75, var(--offset));
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 30px;
+    }
+    @include to(575px){ 
+      @include customOffsetWidth(100, var(--offset));
+      padding: 20px;
+    }
   }
   &__contacts-wrap {
-    @include customOffsetWidth(30, var(--offset))
+    @include customOffsetWidth(25, var(--offset));
+    @include to(768px){
+      order: 1;
+      @include customOffsetWidth(33, var(--offset));
+    }
+    @include to(575px){ 
+      @include customOffsetWidth(100, var(--offset));
+    }
+  }
+  &__links-group {
+    @include to(768px){
+      width: 50%;
+    }
   }
   &__links-group &__subtitle {
     margin-bottom: 25px;
+  }
+  &__link {
+    margin-bottom: 15px;
+    display: block;
+  }
+  &__bottom {
+    @include customOffsetWidth(100, var(--offset));
+    display: flex;
+    align-items: center;
+    padding-bottom: 30px;
+    order: 5;
+    .text {
+      font-size: 10px;
+      line-height: 160%;
+      /* identical to box height, or 16px */
+
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-right: auto;
+      margin-left: 25px;
+    }
+  }
+  .perfect-logo {
+    width: 75px;
+    height: 35px;
+  }
+  .smarto {
+    width: 70px;
+    height: 28px;
+  }
+  @include to(575px){
+    &__bottom .text {
+      font-size: 8px;
+      margin-left: 10px;
+    }
+    .perfect-logo {
+      width: 60px;
+      height: 28px;
+    }
   }
 }
 

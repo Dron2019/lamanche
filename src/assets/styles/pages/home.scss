@@ -488,6 +488,11 @@
         right: 0;
         bottom: 0;
         z-index: 5;
+        background: linear-gradient(
+            140deg
+            , rgba(0, 0, 0, 0) 29%, #000000 100%);
+        padding-top: 90px;
+        padding-left: 80px;
     }
     .slider-nav {
         z-index: 6;
@@ -501,6 +506,12 @@
         padding-left: var(--page-side-fields);
         padding-right: var(--page-side-fields);
         cursor: pointer;
+        svg {
+            border-radius: 50%;
+        }
+        svg:hover {
+            animation: pulse 1s infinite ease-in-out;
+        }
     }
 }
 

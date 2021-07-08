@@ -4,7 +4,7 @@
   left: 0;
   height: var(--header-h);
   width: 100%;
-  padding: 0 80px;
+  padding: 0 var(--page-side-fields);
   display: flex;
   align-content: center;
   align-items: center;
@@ -15,10 +15,7 @@
   background: rgba(56, 62, 65, 1);
   z-index: 100;
   @include to(1440px) {
-    padding: 0 50px;
-  }
-  @include to(992px) {
-    padding: 0;
+    padding: 0 var(--page-side-fields);
   }
   &__logo {
     width: var(--logo-w);
@@ -83,7 +80,7 @@
     align-items: center;
     font-size: 10px;
     line-height: 1em;
-    width: 141px;
+    // width: 141px;
     &-icon {
       border: 1px solid var(--color-gold);
       width: 46px;

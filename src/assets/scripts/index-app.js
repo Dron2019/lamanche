@@ -34,7 +34,7 @@ const forms = [
   '[data-home-contact]',
 ];
 const formsWithRedirect = [
-  '[data-popup-form]',
+  '[data-footer-form]',
 ];
 
 formsWithRedirect.forEach((form) => {

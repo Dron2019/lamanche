@@ -30,7 +30,21 @@ footer.footer
                     a.footer__link Умови придбання
                 li 
                     a.footer__link Контакти
-    form.footer__form-wrap.form-std
+    form(data-footer-form autocomplete="off").home-contact--width.footer__form-wrap.form-std
+        legend.uppercased Якщо у вас виникли запитання, залиште свої дані і ми передзвонимо вам:
+        .form-field-message Введіть ваше ім’я 
+        .form-field.form-field-input(data-field-input data-field-name data-status="field--inactive")
+            input(type='text' name="name" placeholder="Ім’я:").form-field__input
+            .input-message(data-input-message)
+            .requaired-block-ico.requaired-block-ico--position
+                +svg('requaired')
+        .form-field-message Введіть ваш телефон
+        .form-field.disabled.form-field-input(data-field-input data-field-phone data-status="field--inactive")
+            input(type='text' name="phone" placeholder="Телефон:").form-field__input
+            .input-message(data-input-message)
+            .mask-absolute.js-mask-absolute
+        .form-btn-wrap.df.jcsb.aic
+            +btn('Замовити дзвінок','gold')(type="submit" data-btn-submit).home-contact-btn--size
     .footer__contacts-wrap.footer-contact-block
         .subtitle Відділ продажу:
         a(target='_blank' href="https://goo.gl/maps/sgHxqVUGaunDDJPU6").medium-margin.footer-contact-block__group
@@ -45,11 +59,15 @@ footer.footer
         .subtitle.large-margin Адреса об’єкту:
         a(href="https://goo.gl/maps/VjrTXj3KXCQ5UWVu6" target='_blank').medium-margin.footer-contact-block__group
             .footer-contact-block__group-text
-                span м. Київ,
-                span вул. Набережно-Хрещатицька, 49А
+                span м. Київ, вул. Набережно-Хрещатицька, 49А
         .subtitle.large-margin Соціальні мережі:
         .footer__social-wrap.medium-margin
             a(href="#" target='_blank').footer__social Telegram
             a(href="#" target='_blank').footer__social Viber
             a(href="#" target='_blank').footer__social Facebook
     .footer__delimiter
+    .footer__bottom
+        +img('perfect-logo.svg').perfect-logo
+        .text © 2021 La Manche. усі права захищено
+        a(href="https://smarto.agency" target='_blank')
+            +img('smarto.svg').smarto
