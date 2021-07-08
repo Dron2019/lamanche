@@ -104,6 +104,28 @@
       content: attr(data-open);
     }
   }
+  @include to(575px){
+    &__links {
+      display: none;
+    }
+    &__logo {
+      margin-left: 15px;
+    }
+    &__menu-call-icon {
+      width: 28px;
+      height: 28px;
+      svg {
+        width: 8px;
+        height: 8px;
+      }
+    }
+    &__tel {
+      margin-left: auto;
+    }
+    &__tel-text {
+      display: none;
+    }
+  }
 }
 .menu-open .header__menu-call-text:after {
   transition-delay: .5s;
