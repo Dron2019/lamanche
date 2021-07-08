@@ -9,4 +9,4 @@ callMenu.addEventListener('click', () => {
   htmlEl.classList.toggle('menu-open');
 });
 
-locoScroll.scrollTo(document.querySelector('.home-section-7'));
+// locoScroll.scrollTo(document.querySelector('.home-section-8'));

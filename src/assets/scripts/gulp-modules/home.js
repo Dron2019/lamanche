@@ -7,8 +7,8 @@ function slider(container) {
   const prevArrow = nav.querySelector('svg:first-child');
   const nextArrow = nav.querySelector('svg:last-child');
   const $slides = container.querySelectorAll('img');
-  const transitionEasing = new BezierEasing(0, 0.84, 0.43, 1);
-  const transitionSpeed = 2;
+  const transitionEasing = new BezierEasing(0.26, 0.81, 0.43, 1);
+  const transitionSpeed = 1.75;
   let currentIndex = 0;
   let nextIndex = 0;
   allNum.textContent = $slides.length;
