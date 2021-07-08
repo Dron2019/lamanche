@@ -65,6 +65,7 @@
       align-items: baseline;
       justify-content: space-between;
       padding-top: calc(var(--header-h) + 100px);
+      background-color: var(--color-white);
   }
   &__small-links {
         width: calc(50% - (var(--right-offset) / 2));

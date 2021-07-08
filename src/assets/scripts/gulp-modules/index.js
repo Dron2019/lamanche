@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const menu = document.querySelector('[data-menu]');
 const callMenu = document.querySelector('[data-menu-call]');
 const classNameForVisibility = 'opened';
@@ -8,4 +9,4 @@ callMenu.addEventListener('click', () => {
   htmlEl.classList.toggle('menu-open');
 });
 
-// locoScroll.scrollTo(document.querySelector('.home-section-6'));
+locoScroll.scrollTo(document.querySelector('.home-section-7'));
