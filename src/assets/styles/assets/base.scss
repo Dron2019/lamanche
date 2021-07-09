@@ -290,10 +290,17 @@ p~p {
 	display: flex;
 	align-items: flex-end;
 	position: relative;
+	flex-wrap: wrap;
 	.underlined-link-wrap {
 		// padding-bottom: 30px;
 		position: absolute;
 		right: 0;
 		bottom: 30px;
+	}
+	@include to(575px){
+		.underlined-link-wrap {
+			bottom: 14px;
+		}
+		
 	}
 }

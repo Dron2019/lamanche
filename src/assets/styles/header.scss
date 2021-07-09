@@ -104,6 +104,21 @@
       content: attr(data-open);
     }
   }
+  @include to(1150px){
+    &__links a:last-child {
+      display: none;
+    }
+  }
+  @include to(1024px){
+    &__links a:nth-last-child(2) {
+      display: none;
+    }
+  }
+  @include to(950px){
+    &__links a:nth-last-child(3) {
+      display: none;
+    }
+  }
   @include to(575px){
     &__links {
       display: none;

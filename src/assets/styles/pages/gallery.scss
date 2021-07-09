@@ -1,0 +1,111 @@
+.gal-slider {
+    margin-top: 50px;
+    @include shift-left(2);
+    margin-right: calc(var(--page-side-fields) * -1);
+    position: relative;
+    user-select: none;
+    margin-bottom: 100px;
+    .swiper-container {
+        overflow: visible;
+    }
+    .swiper-button-prev {
+        transform: rotate(180deg);
+    }
+    .slider-nav {
+        position: absolute;
+        width: 66%;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 100px;
+        z-index: 10;
+        svg {
+            height: 100%;
+            width: auto;
+            border-radius: 50%;
+        }
+        svg:hover {
+            animation: pulse 1s infinite ease-in-out;
+        }
+    }
+    .slider-numbers {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        z-index: 5;
+        background: linear-gradient(140deg, rgba(0, 0, 0, 0) 45%, #000000 106%);
+        padding-top: 90px;
+        padding-left: 80px;
+    }
+    @include to(768px){
+        margin-left: 0;width: 100%;
+        .slider-nav {
+            height: 65px;
+            width: 100%;
+        }
+        .swiper-slide {
+            height: 75vh;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover
+            }
+        }
+    }
+    @include to(575px){
+        @include shift(0);
+        .slider-nav {
+            width: 100%;
+            height: 37.5px;
+        }
+    }
+}
+
+
+.gallery-switcher {
+    display: flex;
+    border-radius: 15px;
+    // border: 1px solid red;
+    width: max-content;
+    color: var(--color-grey);
+    font-size: 12px;
+    line-height: 100%;
+    /* identical to box height, or 12px */
+
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    &__item {
+        border: 1px solid #EFEFEF;
+        padding: 9px 27px;
+        text-decoration: underline;
+        cursor: pointer;
+        transition: all .3s ease-in-out;
+    }
+    &__item.active {
+        background-color: var(--color-gold);
+        border-color: var(--color-gold);
+        text-decoration: none;
+        pointer-events: none;
+    }
+    &__item:first-child {
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+    }
+    &__item:last-child {
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+}
+
+.title-wrap {
+    .gallery-switcher {
+        position: absolute;
+        right: 0px;
+        bottom: 30px;
+    }
+    @include to(768px){
+        .gallery-switcher {
+            position: static;
+            margin-left: auto;
+        }   
+    }
+}

@@ -1,0 +1,60 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'Галерея'
+    var id_page = 'id-page-gallery'
+    var class_page = 'class-page-gallery'
+    var breadcrumbsSubitem = [
+    ]
+    var items = [
+      ['build-card-01.jpg'],
+      ['build-card-02.jpg'],
+      ['build-card-03.jpg'],
+      ['build-card-04.jpg'],
+      ['build-card-05.jpg'],
+    ];
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/index.bundle.js')
+  script(defer src='./assets/scripts/libs.js')
+  script(defer src='./assets/scripts/index.js')
+  script(defer src='./assets/scripts/header.js')
+  script(defer src='./assets/scripts/gallery.js')
+block content
+  .container
+    include ../includes/breadcrumbs.pug
+    .title-wrap
+      h1.page-title Галерея
+      .gallery-switcher
+        div(data-content-type="photo").gallery-switcher__item.active ФОТО
+        div(data-content-type="video").gallery-switcher__item ВІДЕО
+    .gal-slider
+      .slider-nav
+        <svg class="swiper-button-next" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="50" fill="#383E41"/>
+          <path d="M35 50L65 50M65 50L53 62M65 50L53 38" stroke="#EFEFEF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"/>
+          </svg>
+        <svg class="swiper-button-prev" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="50" fill="#383E41"/>
+          <path  d="M35 50L65 50M65 50L53 62M65 50L53 38" stroke="#EFEFEF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"/>
+          </svg>
+      .swiper-container.mySwiper
+        .swiper-wrapper
+          each val,index in items
+            .swiper-slide
+              .slider-numbers
+                .current 0#{index+1}
+                .all 08
+              img(src="./assets/images/build-progress/"+val)
+
+block footer
+  include ../includes/footer.pug
+
+block header
+  include ../includes/header.pug
