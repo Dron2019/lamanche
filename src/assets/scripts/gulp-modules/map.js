@@ -137,8 +137,9 @@ function initMap() {
 
   });
   const filterMarkers = function (category, categoriesArray) {
-    console.log(categoriesArray.size);
+    console.log(categoriesArray);
     gmarkers1.forEach((el) => {
+      console.log(el.category, categoriesArray.has(el.category), 'FILTER');
       if (categoriesArray.has(el.category) || categoriesArray.size <= 1) {
         el.setMap(map);
         el.setAnimation(google.maps.Animation.DROP);
@@ -148,6 +149,7 @@ function initMap() {
     });
   };
   filterItems.forEach((item) => {
+    console.log(item);
     item.addEventListener('click', () => {
       item.classList.toggle('active');
       if (item.classList.contains('active')) {
@@ -255,6 +257,7 @@ function initMap() {
       position: new google.maps.LatLng(marker.position.lat, marker.position.lng),
     });
 
+
     google.maps.event.addListener(mapMarker, 'click', function () {
       infowindow.setContent(marker.content);
       infowindow.open(map, mapMarker);
@@ -267,22 +270,22 @@ function initMap() {
 
 window.addEventListener('load', () => {
   /** Выдвижная панель маркеров на мобильной версии */
-//   const legend = document.querySelector('[data-mob-accordeon]');
-//   const legendTitle = legend.querySelector('.map__legend-title');
-//   legendTitle.addEventListener('click', () => {
-//     legend.classList.toggle('opened');
-//     // добавить плавность появление блока с маркерами
-//     if (legend.classList.contains('opened')) {
-//       gsap.fromTo('.map__legend-markers-wrap', { height: 0 },
-//         { height: '50vh' });
-//     } else {
-//       gsap.fromTo('.map__legend-markers-wrap', { height: '50vh' }, { height: 0 });
-//     }
-//   });
-//   legend.addEventListener('mouseenter', () => {
-//     if (locoScroll !== undefined) locoScroll.stop();
-//   });
-//   legend.addEventListener('mouseleave', () => {
-//     if (locoScroll !== undefined) locoScroll.start();
-//   });
+  const legend = document.querySelector('[data-mob-accordeon]');
+  const legendTitle = legend.querySelector('.map-wrap__legend-title');
+  legendTitle.addEventListener('click', () => {
+    legend.classList.toggle('opened');
+    // добавить плавность появление блока с маркерами
+    if (legend.classList.contains('opened')) {
+      gsap.fromTo('.map-wrap__legend-markers-wrap', { height: 0 },
+        { height: '50vh' });
+    } else {
+      gsap.fromTo('.map-wrap__legend-markers-wrap', { height: '50vh' }, { height: 0 });
+    }
+  });
+  legend.addEventListener('mouseenter', () => {
+    if (locoScroll !== undefined) locoScroll.stop();
+  });
+  legend.addEventListener('mouseleave', () => {
+    if (locoScroll !== undefined) locoScroll.start();
+  });
 });
