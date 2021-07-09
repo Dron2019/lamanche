@@ -115,6 +115,8 @@
   &__link {
     margin-bottom: 15px;
     display: block;
+    text-decoration: none;
+    color: inherit
   }
   &__bottom {
     @include customOffsetWidth(100, var(--offset));

@@ -248,6 +248,9 @@
     @include to(575px){
         padding-left: 30px;
     padding-right: 30px;
+        p {
+            text-align: left;
+        }
     }
 }
 
