@@ -15,9 +15,22 @@
         @include customOffsetWidth(100, var(--offset));
         margin-top: 100px;
         margin-bottom: 50px;
+        @include to(950px){
+            margin-top: 50px;
+        }
+        @include to(575px){
+            height: 30vh;
+    object-fit: cover;
+        }
     }
     .about-top-text-block-small {
-        @include customOffsetWidth(33, var(--offset))
+        @include customOffsetWidth(33, var(--offset));
+        @include to(950px){
+            @include customOffsetWidth(50, var(--offset));
+        }
+        @include to(575px){
+            @include customOffsetWidth(100, var(--offset));
+        }
     }
     .about-top-block-big {
         @include customOffsetWidth(80, var(--offset));
@@ -29,7 +42,10 @@
         align-items: center;
         text-transform: uppercase;
         color: var(--color-grey);
-        
+        @include to(575px){
+            font-size: 18px;
+            @include customOffsetWidth(100, var(--offset));
+        }
     }
     .about-mini-subtitle {
         @include customOffsetWidth(100, var(--offset));
@@ -45,7 +61,15 @@
         color: #C8C8C9;
     }
     .aboute-top-block-mini-img {
-        @include customOffsetWidth(33, var(--offset))
+        @include customOffsetWidth(33, var(--offset));
+        object-fit: cover;
+        @include to(950px){
+            @include customOffsetWidth(50, var(--offset));
+        }
+        @include to(575px){
+            @include customOffsetWidth(100, var(--offset));
+            margin-bottom: 20px;
+        }
     }
     .small-text {
         font-size: 15px;
@@ -67,11 +91,20 @@
         display: flex;
         flex-direction: column;
         align-self: center;
-        
+        @include to(950px){
+            @include customOffsetWidth(50, var(--offset));
+        }
+        @include to(575px){
+            @include customOffsetWidth(100, var(--offset));
+        }
         .small-text {
             margin-top: 40px;
             width: 50%;
             margin-right: auto;
+            @include to(950px){
+                width: 100%;
+
+            }
         }
     }
     .about-block-with-bg {
@@ -99,6 +132,10 @@
             position: relative;
             z-index: 2;
         }
+        @include to(575px){
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
 
     }
     .about-bg-block-uppercased {
@@ -107,9 +144,22 @@
         line-height: 160%;
         text-transform: uppercase;
         color: #FFFFFF;
+        @include to(950px){
+            @include customOffsetWidth(50, var(--offset));
+        }
+        @include to(575px){
+            @include customOffsetWidth(100, var(--offset));
+            margin-bottom: 15px;
+        }
     }
     .about-bg-block-small  {
         @include customOffsetWidth(33, var(--offset));
+        @include to(950px){
+            @include customOffsetWidth(50, var(--offset));
+        }
+        @include to(575px){
+            @include customOffsetWidth(100, var(--offset));
+        }
     }
     .about-block-map-wrap {
         height: 50vw;
@@ -122,6 +172,16 @@
         display: flex;
         justify-content: flex-end;
         align-items: center;
+        @include to(950px){
+            padding-top: 40px;
+            padding-bottom: 40px;
+            padding-right: 40px;
+        }
+        @include to(575px){
+            width: calc(100% + 30px);
+            margin-left: -15px;
+            margin-right: -15px;
+        }   
     }
     #map {
         position: absolute;
@@ -146,6 +206,9 @@
         /* or 35px */
         text-transform: uppercase;
         color: var(--color-grey);
+        @include to(950px){
+            font-size: 18px;
+        }
     }
     .about-block-last-uppercased.light {
         color: var(--color-white);
@@ -155,15 +218,26 @@
         display: flex;
         flex-direction: column;
         margin-bottom: var(--offset);
+        @include to(575px){
+            @include customOffsetWidth(100, var(--offset));
+        }
         &>div {
             margin-bottom: 20px;
         }
         &.reverse>div {
             margin-bottom: 0;
             margin-top: 20px;
+            @include to(575px){
+                margin-bottom: 20px;
+                margin-top: 0;
+
+            }
         }
         &.reverse {
             flex-direction: column-reverse;
+            @include to(575px){
+                flex-direction: column;
+            }
         }
     }
     .about-block-last-wide-part {
@@ -171,6 +245,20 @@
         padding-bottom: 30%;
         position: relative;
         margin-bottom: var(--offset);
+        @include to(950px){
+            padding-bottom: 50%;
+        }
+        @include to(575px){
+            &::after {
+                position: absolute;
+                content: '';
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(255,255,255,0.25);
+            }
+        }       
         img {
             position: absolute;
             left: 0;
@@ -188,9 +276,20 @@
             // height: 100%;
             transform: translateY(-50%);
             z-index: 1;
+            @include to(950px){
+                left: var(--page-side-fields);
+            }
+            @include to(575px){
+                width: 90%;
+            }
         }
     }
-
+    @include to(1240px){
+        @include shift-padding(0);
+    }
+    @include to(1024px){
+        --offset: 30px;
+    }
 }
 
 
@@ -346,7 +445,7 @@
           position: absolute;
           bottom: 0;
           left: 0;
-          width: 230px;
+          width: 270px;
         }
         &__legend-marker {
           padding-top: 8px;
@@ -367,7 +466,7 @@
     
             width: 13px;
             height: 8px;
-            background-image: url("data:image/svg+xml,%3Csvg width='13' height='8' viewBox='0 0 13 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.8 1.18921L6.39999 6.00012L0.99999 1.18921' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E%0A");
+            background-image: url("data:image/svg+xml,%3Csvg width='13' height='8' viewBox='0 0 13 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.8 1.18921L6.39999 6.00012L0.99999 1.18921' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E%0A");
             position: absolute;
             right: 20px;
             top: 50%;
@@ -378,7 +477,7 @@
             display: inline-block;
             width: 13px;
             height: 8px;
-            background-image: url("data:image/svg+xml,%3Csvg width='13' height='8' viewBox='0 0 13 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.8 1.18921L6.39999 6.00012L0.99999 1.18921' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E%0A");
+            background-image: url("data:image/svg+xml,%3Csvg width='13' height='8' viewBox='0 0 13 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.8 1.18921L6.39999 6.00012L0.99999 1.18921' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E%0A");
             margin-left: auto;
             position: absolute;
             right: 20px;
@@ -388,6 +487,7 @@
         &__legend-title {
           padding-top: 14px;
           padding-bottom: 14px;
+          font-size: 14px;
         }
       }
 }

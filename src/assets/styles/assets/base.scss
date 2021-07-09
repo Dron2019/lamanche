@@ -254,6 +254,9 @@ input[type=number]::-webkit-outer-spin-button {
 	width: 100%;
 	text-align: center;
 	padding-bottom: 30px;
+	@include to(575px){
+		font-size: 36px;
+	}
 }
 
 
