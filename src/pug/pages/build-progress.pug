@@ -56,13 +56,13 @@ block content
           .custom-options
             each val, index in years
               if index === 0
-                span.custom-option.selected(data-value=val) #{val}
+                span.custom-option.selected(data-value=val) #{val[0]}
               else
                 span.custom-option(data-value=val) #{val}
       .custom-select-wrapper
         .custom-select
           .custom-select__trigger
-            span #{monthtes[0]}
+            span #{monthtes[0][0]}
             .arrow
           .custom-options
             each val, index in monthtes

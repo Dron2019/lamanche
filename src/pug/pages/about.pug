@@ -1,0 +1,42 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'Про комплекс'
+    var id_page = 'id-page-about'
+    var class_page = 'class-page-about'
+    var breadcrumbsSubitem = [
+    ]
+  
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/index.bundle.js')
+  script(defer src='./assets/scripts/libs.js')
+  script(defer src='./assets/scripts/index.js')
+  script(defer src='./assets/scripts/header.js')
+  script(defer src='./assets/scripts/about.js')
+block content
+  .container.about-container(style="background-image: url(./assets/images/about/bg.svg)")
+    include ../includes/breadcrumbs.pug
+    h1.page-title #{title_page}
+    .about-content-wrap
+
+      .about-mini-subtitle Архітектура
+      p.uppercased.about-top-block-big Архітектори клубного будинку LA MANCHE органічно поєднали традиційні елементи італійської, англійської та французької архітектури. 
+      p.about-top-text-block-small Перші поверхи будинку прикрашені гранітом, а великі вікна виконані у «палладіанському» стилі початку XVIII століття. 
+      p.about-top-text-block-small Основні поверхи декоровані фібробетоном та штучним каменем, а покритий черепицею дах імітує дах-падугу історичних будівель.
+      +img('about/wide-img.jpg').wide-img
+      +img('about/block-1.jpg').aboute-top-block-mini-img
+      .about-top-block-big.about-top-block-big2 Дизайнери прибудинкового ландшафту відтворили атмосферу паризьких бульварів, а також розмістити дитячий майданчик, зону вигулу домашніх тварин, майданчики для гри у міні-гольф та крокет. 
+        p.small-text Для обробки використовували класичні матеріали: мармур, дерево, керамограніт та оцинкований метал.
+
+block footer
+  include ../includes/footer.pug
+
+block header
+  include ../includes/header.pug
