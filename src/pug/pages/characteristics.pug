@@ -1,0 +1,54 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'Характеристики'
+    var id_page = 'id-page-characteristics'
+    var class_page = 'class-page-characteristics'
+    var breadcrumbsSubitem = [
+    ]
+    var characters = [
+      ['Кількість будинків','1 будинок, 7 секцій','./assets/images/characteristics/characters01.svg'],
+      ['Кількість поверхів','9 поверхів','./assets/images/characteristics/characters02.svg'],
+      ['Стіни','Стіни з червоної цегли','./assets/images/characteristics/characters03.svg'],
+      ['Конструкція','Монолітно-каркасна технологія будівництва','./assets/images/characteristics/characters04.svg'],
+     [ 'Ліфти','Ліфти кращих європейських виробників','./assets/images/characteristics/characters05.svg'],
+      ['Фасад','Навісний фасад, утеплення мінеральною ватою','./assets/images/characteristics/characters06.svg'],
+      ['Внутрішній простір','Закрита територія з ландшафтним дизайном','./assets/images/characteristics/characters07.svg'],
+      ['Оздоблення','Оздоблення квартир під ремонт','./assets/images/characteristics/characters08.svg'],
+      ['Вікна','Алюмінієві вікна','./assets/images/characteristics/characters09.svg'],
+      ['Опалення','Автономне опалення у будинку','./assets/images/characteristics/characters10.svg'],
+      ['Сервіс для автовласників','Підземний та наземний паркінги','./assets/images/characteristics/characters11.svg'],
+
+
+
+    ]
+  
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/index.bundle.js')
+  script(defer src='./assets/scripts/libs.js')
+  script(defer src='./assets/scripts/index.js')
+  script(defer src='./assets/scripts/header.js')
+  script(defer src='./assets/scripts/characteristics.js')
+block content
+  .container
+    include ../includes/breadcrumbs.pug
+    h1.page-title Характеристики
+    .characters-wrap
+      each val in characters
+        .character-item
+          img(src=val[2]).character-item__img 
+          .character-item__text-wrap
+            .character-item__title #{val[0]}
+            .character-item__text #{val[1]}
+block footer
+  include ../includes/footer.pug
+
+block header
+  include ../includes/header.pug
