@@ -285,3 +285,15 @@ p~p {
 .swiper-button-prev.swiper-button-disabled, .swiper-button-next.swiper-button-disabled {
 	opacity: 0;
 }
+
+.title-wrap {
+	display: flex;
+	align-items: flex-end;
+	position: relative;
+	.underlined-link-wrap {
+		// padding-bottom: 30px;
+		position: absolute;
+		right: 0;
+		bottom: 30px;
+	}
+}
