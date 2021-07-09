@@ -16,6 +16,10 @@
 
 .container {
 	@include wrapper();
+	padding-top: calc(var(--header-h) + var(--container-top-padding));
+	padding-left: var(--page-side-fields);
+	padding-right: var(--page-side-fields);
+
 }
 
 
@@ -242,7 +246,15 @@ input[type=number]::-webkit-outer-spin-button {
 		font-size: 42px;
 	}
 }
-
+.page-title {
+	font-weight: 550;
+	font-size: 45px;
+	line-height: 130%;
+	color: var(--color-grey);
+	width: 100%;
+	text-align: center;
+	padding-bottom: 30px;
+}
 
 
 .color-white {

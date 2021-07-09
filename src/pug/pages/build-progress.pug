@@ -1,0 +1,92 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'Хід будівництва'
+    var id_page = 'id-page-build-progress'
+    var class_page = 'class-page-build-progress'
+    var breadcrumbsSubitem = [
+    ]
+    var years = [2020,2021,2022,2023];
+    var monthtes = [
+      ['Січень','01'],
+      ['Лютий','02'],
+      ['Лютий','03'],
+      ['Лютий','04'],
+      ['Лютий','05'],
+      ['Лютий','06'],
+      ['Лютий','07'],
+      ['Лютий','08'],
+      ['Лютий','09'],
+      ['Лютий','010'],
+      ['Лютий','011'],
+      ];
+    var flatBlocksData = [
+      ['build-card-01.jpg','Червень','20','55.5', '20000', '02.06.2021'],
+      ['build-card-02.jpg','Червень','30','46.7', '30000', '03.06.2021'],
+      ['build-card-03.jpg','Червень','40','127.5', '40000', '04.06.2021'],
+      ['build-card-04.jpg','Червень','50','202.4', '50000', '05.06.2021'],
+      ['build-card-05.jpg','Червень','60','99.4', '60000', '06.06.2021'],
+    ];
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/index.bundle.js')
+  script(defer src='./assets/scripts/libs.js')
+  script(defer src='./assets/scripts/index.js')
+  script(defer src='./assets/scripts/header.js')
+  script(defer src='./assets/scripts/build-progress.js')
+block content
+  .container
+    include ../includes/breadcrumbs.pug
+    h1.page-title Хід будівництва
+    .progress-head
+      .progress-checkbox-wrapper
+        .text-grey Контент з відео
+        <input class="apple-switch" type="checkbox">
+      .custom-select-wrapper
+        .custom-select
+          .custom-select__trigger
+            span #{years[0]}
+            .arrow
+          .custom-options
+            each val, index in years
+              if index === 0
+                span.custom-option.selected(data-value=val) #{val}
+              else
+                span.custom-option(data-value=val) #{val}
+      .custom-select-wrapper
+        .custom-select
+          .custom-select__trigger
+            span #{monthtes[0]}
+            .arrow
+          .custom-options
+            each val, index in monthtes
+              if index === 0
+                span.custom-option.selected(data-value=val[1]) #{val[0]}
+              else
+                span.custom-option(data-value=val[1]) #{val[0]}
+      a(href="web-camera").underlined-link-wrap
+        .underlined-link Веб-камера
+        +svg('camera')
+    .build-cards-wrap
+      each val in flatBlocksData
+        a(href="single-build-progress.html").build-progress-card
+          .build-progress-card__outer 
+            .build-progress-card__subtitle #{val[5]}
+            .build-progress-card__title #{val[1]}
+            .build-progress-card__data
+              .build-progress-card__link 
+                span Переглянути звіт
+                +svg('build-arrow')
+          .build-progress-card__inner(style="background-image: url(./assets/images/build-progress/"+val[0]+");")
+                
+block footer
+  include ../includes/footer.pug
+
+block header
+  include ../includes/header.pug

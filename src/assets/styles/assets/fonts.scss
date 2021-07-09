@@ -4,12 +4,12 @@
     src: local('HelveticaNeueCyr'), url('../fonts/Helvetica/HelveticaNeueCyr-Roman.otf');
     font-style: normal;
 }
-// @font-face {
-//     font-family: 'HelveticaNeueCyr';
-//     src: url('../fonts/Helvetica/HelveticaNeueCyr-Medium.otf');
-//     font-weight: 550;
-//     font-style: normal;
-// }
+@font-face {
+    font-family: 'HelveticaNeueCyr';
+    src: url('../fonts/Helvetica/HelveticaNeueCyr-Light.otf');
+    font-weight: 300;
+    font-style: normal;
+}
 @font-face {
     font-family: 'HelveticaNeueCyr';
     font-style: normal;
