@@ -1,0 +1,63 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'Червень 2021'
+    var id_page = 'id-page-single-build-progress'
+    var class_page = 'class-page-single-build-progress'
+    var breadcrumbsSubitem = [
+      {
+        label: 'Хід будівництва',
+        link: 'build-progress.html'
+      }
+    ];
+    var flatBlocksData = [
+      ['build-card-01.jpg'],
+      ['build-card-02.jpg'],
+      ['build-card-03.jpg'],
+      ['build-card-04.jpg'],
+      ['build-card-05.jpg'],
+    ];
+  
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/index.bundle.js')
+  script(defer src='./assets/scripts/libs.js')
+  script(defer src='./assets/scripts/index.js')
+  script(defer src='./assets/scripts/header.js')
+  script(defer src='./assets/scripts/single-build-progress.js')
+block content
+  .container
+    include ../includes/breadcrumbs.pug
+    h1.page-title Червень
+    .single-progress-wrap
+      .single-progress-wrap__side
+        .text.single-progress-date 02.06.2021
+      .single-progress-wrap__content
+        p На даний момент активно ведуться роботи по підземній частині, отримана вся дозвільна документація і необхідні узгодження. Завершено 50% робіт нульового циклу. 
+        p Повністю завершено найбільш важливий і відповідальний етап облаштування підземної частини будівлі - «стіна в ґрунті» і свайне поле. На місяць раніше запланованого розпочаті роботи по цементації грунтів під дном котловану. Будинок буде готовий в 4-му кварталі 2022 року
+        +btn('Переглянути відео', 'gold')
+      .slider-wrap
+        .slider-nav
+          <svg class="swiper-button-next" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="50" fill="#383E41"/>
+            <path d="M35 50L65 50M65 50L53 62M65 50L53 38" stroke="#EFEFEF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"/>
+            </svg>
+          <svg class="swiper-button-prev" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="50" fill="#383E41"/>
+            <path  d="M35 50L65 50M65 50L53 62M65 50L53 38" stroke="#EFEFEF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"/>
+            </svg>
+        .swiper-container.mySwiper
+          .swiper-wrapper
+            each val in flatBlocksData
+              img(src="./assets/images/build-progress/"+val).swiper-slide      
+block footer
+  include ../includes/footer.pug
+
+block header
+  include ../includes/header.pug

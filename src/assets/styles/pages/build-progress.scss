@@ -3,6 +3,9 @@
 }
 .build-cards-wrap {
     --offset:60px;
+    @include to(1240px){
+        --offset:30px;
+    }
     padding-top: 50px;
     margin-left: calc((var(--offset) / 2) * -1);
     margin-right: calc((var(--offset) / 2) * -1);
@@ -12,6 +15,23 @@
     .build-progress-card {
         @include customOffsetWidth(50, var(--offset));
         margin-bottom: var(--offset);
+    }
+    @include to(1140px){
+        padding-left: 0;
+        padding-right: 0;
+    }
+    @include to(950px){
+        .build-progress-card {
+            @include customOffsetWidth(75, var(--offset));
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+    }
+    @include to(575px){
+        .build-progress-card {
+            @include customOffsetWidth(100, var(--offset));
+        }
     }
 }
 .progress-head {
@@ -31,6 +51,32 @@
     }
     .progress-checkbox-wrapper {
         margin-right: auto;
+    }
+    @include to(1140px){
+        padding-left: 0;
+        padding-right: 0;
+    }
+    @include to(768px){
+        .custom-select-wrapper~.custom-select-wrapper {
+            margin-left: 20px;
+        }
+        .underlined-link-wrap {
+            margin-left: auto;
+            text-align: right;
+            justify-content: flex-end;
+        }
+        .progress-checkbox-wrapper {
+            margin-right: auto;
+        }
+        .progress-checkbox-wrapper,
+        .underlined-link-wrap,
+        .custom-select-wrapper {
+            width: calc(50% - 10px);
+        } 
+        .custom-select-wrapper {
+            margin-top: 25px;
+            order: 2;
+        }
     }
 }
 .progress-checkbox-wrapper {

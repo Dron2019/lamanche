@@ -1,0 +1,102 @@
+.single-progress-wrap {
+    @include row-flex();
+    @include shift-padding-left(1);
+    margin-bottom: 100px;
+    &__side {
+        @include shift(0);
+        @include size(2);
+    }
+    &__content {
+        @include shift(0);
+        @include size(10);
+        @include shift-padding-right(2);
+        font-size: 15px;
+        line-height: 160%;
+        color: var(--text-gray);
+        
+    }
+    .button-std {
+        margin-top: 30px;
+    }
+    .swiper-button-prev {
+        transform: rotate(180deg);
+    }
+    @include to(768px){
+        @include shift-padding-left(0);
+        &__content {
+            @include shift-padding-right(1);
+        }
+    }
+    @include to(575px){
+        padding-left: 0;
+        &__side {
+            @include size(12);
+            justify-content: flex-start;
+        }
+        &__content {
+            @include size(12);
+            padding-right: 0;
+        }
+    }
+}
+.single-progress-date {
+    font-weight: 300;
+font-size: 12px;
+line-height: 100%;
+/* identical to box height, or 12px */
+
+letter-spacing: 0.05em;
+text-transform: uppercase;
+color: var(--color-grey);
+display: flex;
+justify-content: center;align-items: center;
+&:after {
+    display: inline-block;
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: var(--color-gold);
+    margin-left: 10px;
+}
+@include to(575px){
+ justify-content: flex-start;   
+ padding-bottom: 20px;
+}
+}
+
+.slider-wrap {
+    margin-top: 50px;
+    @include shift-left(2);
+    margin-right: calc(var(--page-side-fields) * -1);
+    position: relative;
+    user-select: none;
+    .slider-nav {
+        position: absolute;
+        width: 66%;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 100px;
+        z-index: 10;
+        svg {
+            height: 100%;
+            width: auto;
+            border-radius: 50%;
+        }
+        svg:hover {
+            animation: pulse 1s infinite ease-in-out;
+        }
+    }
+    @include to(768px){
+        .slider-nav {
+            height: 50px;
+        }
+    }
+    @include to(575px){
+        @include shift(0);
+        .slider-nav {
+            width: 100%;
+            height: 37.5px;
+        }
+    }
+}
