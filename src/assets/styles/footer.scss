@@ -82,6 +82,7 @@
   }
   &__form-wrap {
     @include customOffsetWidth(42, var(--offset));
+    max-width: 400px;
     @include to(768px){
       order: 2;
       @include customOffsetWidth(75, var(--offset));

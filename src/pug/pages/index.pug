@@ -64,19 +64,19 @@ block content
       <circle cx="10.5" cy="7.8999" r="1.5" fill="white"/>
     </svg>
   section.home-section-1
-    <svg width="28" height="33" viewBox="0 0 28 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg data-slide-in-anim width="28" height="33" viewBox="0 0 28 33" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M7.79007 29.5358L7.7002 29.6348L9.67722 33L9.76709 32.9011C12.5529 30.8225 16.1475 30.8225 18.9333 32.9011L19.0232 33L21.0002 29.6348L20.9103 29.5358C16.8664 26.6655 11.7441 26.6655 7.79007 29.5358Z" fill="#EFC47F"/>
       <path d="M12.4039 0.000244141L0 33H4.83387C5.83712 30.3372 14.0456 7.51315 14.0456 7.51315L23.2573 33H28L15.5961 0.000244141H12.4039Z" fill="#EFC47F"/>
       </svg>
-    .text LA MANCHE поєднує у собі риси модерну Англії та Франції кінця ХІХ — початку ХХ сторіч та сучасні технології містобудування, що гармонічно поєднується з архітектурою старого Подолу!
+    .text(data-slide-in-anim) LA MANCHE поєднує у собі риси модерну Англії та Франції кінця ХІХ — початку ХХ сторіч та сучасні технології містобудування, що гармонічно поєднується з архітектурою старого Подолу!
   section.home-section-2
     .home-section-2__text
       p.subtitle Lorem, ipsum.
       .subtitle-with-decor Архітектура LA MANCHE
       p.text LA MANCHE Perfect Residence — престижний будинок клубного типу на Подолі. Він має 9 поверхів, індивідуальні тераси на даху, комерційні приміщення на перших поверхах та підземний паркінг. 
-      +btn('Дізнатися більше', 'gold')
+      +a('Дізнатися більше', 'gold', 'about.html')
     .home-section-2__img
-      +img('home/screen-2-img.png')
+      +img('home/screen-2-img.png')(data-clip-path-animation)
   section.home-section-3
     .home-section-3__top
       .subtitle-with-decor Переваги
@@ -85,14 +85,14 @@ block content
       each val in advantages
         .card-with-text-on-bg-wrap(style=val[0])
           .card-with-text-on-bg
-            .subtitle-with-decor.white.small  #{val[1]}
-            p #{val[2]}
+            .subtitle-with-decor.white.small(data-slide-in-anim)  #{val[1]}
+            p(data-slide-in-anim) #{val[2]}
       each val in advantages
         .card-with-text-on-bg-wrap(style=val[0])
           .card-with-text-on-bg
-            .subtitle-with-decor.white.small  #{val[1]}
-            p #{val[2]}
-  section.home-section-4(style="background-image:url(./assets/images/home/screen-4-bg.jpg)")
+            .subtitle-with-decor.white.small(data-slide-in-anim)  #{val[1]}
+            p(data-slide-in-anim) #{val[2]}
+  section.home-section-4(style="background-image:url(./assets/images/home/screen-4-bg.jpg)" data-live-sections)
     .subtitle-with-decor.white.home-section-4__title Преміальна локація в історичному центрі міста
     .digit-block-wrap
       each val in block4Points
@@ -116,7 +116,7 @@ block content
         .home-flat-card__inner(style="background-image: url(./assets/images/home/"+val[0]+");")
           .home-flat-card__inner-data
             span від
-            span.bold #{val[4]} 
+            span.bold(data-to-animate-number=val[4]) #{val[4]} 
             span /м м<sub>2</sub>
     .home-flat-card.home-section-5__link
       +svg('key-with-decor')
@@ -129,7 +129,7 @@ block content
       .characteristics-wrap
         each val in characteristics 
           .single-characteristic
-            .single-characteristic__value #{val[0]}
+            .single-characteristic__value(data-to-animate-number=val[0]) #{val[0]}
             .single-characteristic__text #{val[1]}
       +a('Перейти до розділу', 'gold', 'characteristics.html')
     .home-section-6__img

@@ -56,3 +56,141 @@ function slider(container) {
 }
 
 slider(document.querySelector('[data-slider]'));
+
+gsap.registerPlugin(ScrollTrigger);
+/* eslint-disable no-undef */
+locoScroll.on('scroll', () => {
+  // eslint-disable-next-line no-unused-expressions
+  ScrollTrigger.update;
+});
+
+ScrollTrigger.scrollerProxy(document.body, {
+  scrollTop(value) {
+    return (arguments.length
+      ? locoScroll.scrollTo(value, 0, 0)
+      : locoScroll.scroll.instance.scroll.y);
+  }, // we don't have to define a scrollLeft because we're only scrolling vertically.
+  getBoundingClientRect() {
+    return {
+      top: 0,
+      left: 0,
+      width: window.innerWidth,
+      height: window.innerHeight,
+    };
+  },
+  pinType: document.body.style.transform ? 'transform' : 'fixed',
+});
+ScrollTrigger.addEventListener('fixed', () => locoScroll.update());
+
+ScrollTrigger.refresh();
+
+const clipPathEasing = new BezierEasing(0.75, 0.01, 0.14, 1);
+const clipPathAnimationBlocks = document.querySelectorAll('[data-clip-path-animation]');
+clipPathAnimationBlocks.forEach((section) => {
+  gsap.set(section, { webkitClipPath: 'polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)' });
+  const tl = gsap.timeline({
+    paused: true,
+    scrollTrigger: {
+      triggerHook: 0.5,
+      trigger: section,
+      end: '+=50%',
+    },
+  });
+  tl.to(section, { webkitClipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', duration: 2, ease: clipPathEasing });
+  gsap.set(section, { backgroundPositionY: '-50px' });
+  gsap.timeline({
+    paused: true,
+    scrollTrigger: {
+      triggerHook: 0.5,
+      trigger: section,
+      // end: '+=50%',
+      onUpdate: (self) => {
+        gsap.to(section, { backgroundPositionY: `${(self.progress * 100) - 50}px` });
+      },
+    },
+  });
+});
+
+const homeInfoLists = document.querySelectorAll('[data-slide-in-anim]');
+const infoListEasing = new BezierEasing(0.17, 0.7, 0.52, 0.93);
+homeInfoLists.forEach((section) => {
+  const tl = gsap.timeline({
+    paused: true,
+    scrollTrigger: {
+      triggerHook: 0.8,
+      trigger: section,
+    },
+  });
+  tl.fromTo(section,
+    { autoAlpha: 0, y: 50 },
+    {
+      autoAlpha: 1, y: 0, duration: 0.9, ease: infoListEasing,
+    });
+});
+
+const liveSections = document.querySelectorAll('[data-live-sections]');
+liveSections.forEach((section) => {
+  gsap.set(section, { transformOrigin: 'bottom' });
+  const tl = gsap.timeline({
+    paused: true,
+    scrollTrigger: {
+      start: '99% bottom',
+      trigger: section,
+      scrub: 1,
+    },
+  });
+  tl.fromTo(section,
+    { scale: 1 },
+    {
+      scale: 1.02,
+    });
+});
+gsap.registerEffect({
+  name: 'counter',
+  extendTimeline: true,
+  defaults: {
+    end: 0,
+    duration: 1.5,
+    ease: 'power1',
+    increment: 1,
+  },
+  effect: (targetArg, config) => {
+    const targets = targetArg;
+    const tl = gsap.timeline();
+    // eslint-disable-next-line no-useless-escape
+    const num = targets[0].innerText.replace(/\,/g, '');
+    targets[0].innerText = num;
+
+    tl.to(targets, {
+      duration: config.duration,
+      innerText: config.end,
+      // snap:{innerText:config.increment},
+      modifiers: {
+        innerText(innerText) {
+          return gsap.utils.snap(config.increment, innerText).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        },
+      },
+      ease: config.ease,
+    }, 0);
+
+    return tl;
+  },
+});
+
+
+const numbersToAnimate = document.querySelectorAll('[data-to-animate-number]');
+numbersToAnimate.forEach((section) => {
+  const sectionArg = section;
+  sectionArg.textContent = 0;
+  gsap.timeline({
+    paused: true,
+    scrollTrigger: {
+      triggerHook: 0.5,
+      trigger: section,
+      // end: '+=50%',
+      onEnter: () => {
+        gsap.timeline().counter(section, { end: section.dataset.toAnimateNumber, increment: 1 });
+      },
+    },
+  });
+});
