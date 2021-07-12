@@ -1,5 +1,11 @@
 .popup-wrapper(data-popup-with-form)
+
     form.popup.form-std.popup-form(data-popup-form)
+        .succes-overlay(data-succes-overlay)
+            .form-std__subtitle Заявка прийнята
+            p Дякуємо за звернення! Очікуйте на дзвінок від менеджера La Manche.
+            p Бажаємо приємного дня та гарного настрою!)
+            +a('На головну', 'gold', 'index.html')
         <svg data-popup-close class="popup__close " width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 0H45V45C20.1472 45 0 24.8528 0 0Z" fill="#EFC47F"/>
             <path d="M21 24L31 14M31 24L21 14" stroke="white"/>
@@ -20,6 +26,9 @@
             .requaired-block-ico.requaired-block-ico--position
                 +svg('requaired')
             .mask-absolute.js-mask-absolute
+        .form-textarea.form-field
+            .form-field-message Введіть ваше повідомлення
+            textarea(placeholder="Повідомлення:" name="message")
         .form-field.form-field-checkbox.disabled.form-field-input(data-field-input data-field-agree data-status="field--inactive")
             input(type='checkbox' name="agreement" placeholder="Телефон:" id="popup-agree").form-field__input
             label.checkbox-decor(for="popup-agree")

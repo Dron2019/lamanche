@@ -89,7 +89,11 @@ forms.forEach((form) => {
       elements: {
         $form,
         showSuccessMessage: false,
-        successAction: () => { window.location.href = 'message'; },
+        successAction: () => {
+          const overlay = $form.querySelector('[data-succes-overlay]');
+          overlay.style.opacity = 1;
+          overlay.style.pointerEvents = 'all';
+        },
         $btnSubmit: $form.querySelector('[data-btn-submit]'),
         fields: {
           name: {
@@ -165,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const popup = document.querySelector('[data-popup-with-form]');
 const closePopup = popup.querySelector('[data-popup-close]');
 const callFormPopup = document.querySelectorAll('[data-call-popup-form]');
-
+const succesOverlay = popup.querySelector('[data-succes-overlay]');
 function closePopupAnimation(popupToAnimate) {
   gsap.timeline()
     .to(popupToAnimate.querySelector('form'), { autoAlpha: 0, y: 100 })
@@ -173,6 +177,8 @@ function closePopupAnimation(popupToAnimate) {
 }
 closePopup.addEventListener('click', () => {
   closePopupAnimation(popup);
+  succesOverlay.style.opacity = 0;
+  succesOverlay.style.pointerEvents = 'none';
 });
 
 popup.addEventListener('click', (evt) => {
