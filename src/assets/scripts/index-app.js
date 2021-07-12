@@ -32,6 +32,7 @@ global.locoScroll = locoScroll;
  */
 const forms = [
   '[data-home-contact]',
+  '[data-popup-form]',
 ];
 const formsWithRedirect = [
   '[data-footer-form]',
@@ -110,6 +111,15 @@ forms.forEach((form) => {
             valid: false,
             error: [],
           },
+          agreement: {
+            inputWrapper: new SexyInput({ animation: 'none', $field: $form.querySelector('[data-field-agree]'), typeInput: 'checkbox' }),
+            rule: yup
+              .string().nullable().required('Необхідно відмітити згоду'),
+
+            defaultMessage: i18next.t('phone'),
+            valid: false,
+            error: [],
+          },
         },
 
       },
@@ -121,6 +131,13 @@ forms.forEach((form) => {
   }
 });
 
+
+document.querySelectorAll('[type="checkbox"]').forEach((checkbox) => {
+  checkbox.addEventListener('change', () => {
+    const chbx = checkbox;
+    chbx.value = !!chbx.checked;
+  });
+});
 /*
  * form handlers end
  */
@@ -141,3 +158,34 @@ document.addEventListener('DOMContentLoaded', () => {
   window.locoScroll.update();
 });
 /** ******************************* */
+
+
+/** form popup handler */
+
+const popup = document.querySelector('[data-popup-with-form]');
+const closePopup = popup.querySelector('[data-popup-close]');
+const callFormPopup = document.querySelectorAll('[data-call-popup-form]');
+
+function closePopupAnimation(popupToAnimate) {
+  gsap.timeline()
+    .to(popupToAnimate.querySelector('form'), { autoAlpha: 0, y: 100 })
+    .set(popupToAnimate, { display: 'none' });
+}
+closePopup.addEventListener('click', () => {
+  closePopupAnimation(popup);
+});
+
+popup.addEventListener('click', (evt) => {
+  if (evt.target.dataset.popupWithForm !== undefined) {
+    closePopupAnimation(popup);
+  }
+});
+callFormPopup.forEach((el) => {
+  el.addEventListener('click', () => {
+    gsap.timeline()
+      .set(popup, { display: 'flex' })
+      .set(popup.querySelector('form'), { autoAlpha: 0, y: -100 })
+      .to(popup.querySelector('form'), { autoAlpha: 1, y: 0 });
+  });
+});
+/** form popup handler END */

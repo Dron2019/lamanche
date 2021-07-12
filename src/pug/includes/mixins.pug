@@ -23,6 +23,7 @@ mixin img(src)
 
 mixin btn(text, color)
 	button(type="button" class="hvr-bounce-to-top button-std "+color)&attributes(attributes) #{text}
+		block
 mixin a(text, color, href)
 	a(href=href class="hvr-bounce-to-top button-std "+color)&attributes(attributes) #{text}
 
