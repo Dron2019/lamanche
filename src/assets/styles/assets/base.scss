@@ -237,6 +237,10 @@ input[type=number]::-webkit-outer-spin-button {
 		--hover-color: var(--color-gold);
 		--hover-text-color: var(--color-grey);
 	}	
+	&.button-std--invert {
+		--hover-color: var(--color-white);
+		--hover-text-color: var(--color-grey);
+	}
 
 	&.button-std--invert:hover {
 

@@ -4,7 +4,8 @@
   "description": "work builder",
   "main": "index.js",
   "scripts": {
-    "gulp": "gulp"
+    "gulp": "gulp",
+    "push-main": "git push origin main"
   },
   "browserslist": [
     "last 3 version"

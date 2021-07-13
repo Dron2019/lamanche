@@ -29,8 +29,8 @@
     --offset: 15px;
   }
   @include from(1680px){
-    padding-left: calc((100vw - 1360px) / 2);
-    padding-right: calc((100vw - 1360px) / 2);
+    padding-left: calc((100vw - 1680px) / 2);
+    padding-right: calc((100vw - 1680px) / 2);
   }
   &__subtitle {
     font-size: 18px;
