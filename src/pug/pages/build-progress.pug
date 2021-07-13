@@ -56,7 +56,7 @@ block content
           .custom-options
             each val, index in years
               if index === 0
-                span.custom-option.selected(data-value=val) #{val[0]}
+                span.custom-option.selected(data-value=val) #{val}
               else
                 span.custom-option(data-value=val) #{val}
       .custom-select-wrapper

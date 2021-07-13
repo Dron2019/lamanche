@@ -35,6 +35,9 @@
   &__subtitle {
     font-size: 18px;
   line-height: 140%;
+  @include from(1680px){
+    font-size: 24px;
+  }
   /* or 25px */
 
 
@@ -46,6 +49,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    @include from(1680px){
+      max-width: 75%;
+    }
   }
   &__social {
     font-size: 10px;
@@ -56,6 +62,9 @@
     text-transform: uppercase;
     text-decoration: none;
     color: inherit;
+    @include from(1680px){
+      font-size: 12px;
+    }
   }
   &__delimiter {
     height: 1px;
@@ -83,6 +92,7 @@
   &__form-wrap {
     @include customOffsetWidth(42, var(--offset));
     max-width: 400px;
+    max-width: 475px;
     @include to(768px){
       order: 2;
       @include customOffsetWidth(75, var(--offset));
@@ -134,15 +144,26 @@
       text-transform: uppercase;
       margin-right: auto;
       margin-left: 25px;
+      @include from(1680px){
+        font-size: 12px;
+      }
     }
   }
   .perfect-logo {
     width: 75px;
     height: 35px;
+    @include from(1680px){
+      width: 90px;
+    height: 45px;
+    }
   }
   .smarto {
     width: 70px;
     height: 28px;
+    @include from(1680px){
+      width: 90px;
+    height: 36px;
+    }
   }
   @include to(575px){
     &__bottom .text {
@@ -172,6 +193,9 @@
       line-height: 140%;
       color: var(--color-grey);
       // margin-bottom: 15px;
+      @include from(1680px){
+        font-size: 24px;
+      }
   }
   
   &__icon {

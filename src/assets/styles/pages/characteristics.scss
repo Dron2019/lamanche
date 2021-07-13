@@ -8,9 +8,19 @@
     max-width: 950px;
     margin-left: auto;
     margin-right: auto;
+    @include from(1680px){
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
     .character-item {
         margin-bottom: var(--offset);
         @include customOffsetWidth(50, var(--offset));
+        @include from(1680px){
+            justify-content: center;
+        }
+    }
+    @include from(1680px){
+        max-width: 1320px;
     }
     @include to(1120px){
         --offset: 34px;
@@ -31,15 +41,27 @@
     --offset: 30px;
     display: flex;
     flex-wrap: wrap;
+    @include from(1680px){
+        --offset: 42px;
+    }
     &__img {
         
-        @include customOffsetWidth(25, var(--offset));
         padding-bottom: 20px;
         max-width: 57px;
+        @include from(1680px){
+            
+            @include customOffsetWidth(35, var(--offset));
+            max-width: 70px;
+        }
     }
     &__text-wrap {
         
         @include customOffsetWidth(75, var(--offset));
+        @include from(1680px){
+            @include customOffsetWidth(65, var(--offset));
+            max-width: 330px;
+
+        }
     }
     &__title {
         font-size: 22px;
@@ -47,10 +69,17 @@
         color: var(--color-grey);
         padding-right: 20%;
         margin-bottom: 10px;
+        @include from(1680px){
+            font-size: 26px;
+
+        }
     }
     &__text {
         font-size: 15px;
         line-height: 160%;
+        @include from(1680px){
+            font-size: 18px;
+        }
     }
     @include to(575px){
         --offset: 20px;

@@ -23,6 +23,9 @@
     line-height: 100%;
     background: #ffffff;
     cursor: pointer;
+    @include from(1680px){
+        font-size: 20px;
+    }
     
 }
 .custom-options {

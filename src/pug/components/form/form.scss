@@ -7,11 +7,18 @@ form {
   width: 100%;
   background-color: var(--color-white);
   padding: 40px 50px 50px 50px ;
+  @include from(1680px){
+    padding: 53px 60px;
+  }
   legend {
     font-weight: 550;
     font-size: 18px;
     line-height: 120%;
     color: var(--color-grey);
+    @include from(1680px){
+      font-size: 24px;
+    line-height: 120%;
+    }
   }
 }
 .form-label {
@@ -32,7 +39,7 @@ form {
 
 .form-field:not(#t) {
   position: relative;
-  margin: 60px 0 0;
+  margin: 45px 0 0;
   background: none;
   border-bottom: 1px solid rgba(110, 122, 129, 0.3);
   transition: all 0.3s;

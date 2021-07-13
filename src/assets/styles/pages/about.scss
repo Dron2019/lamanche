@@ -1,6 +1,11 @@
 .about-container {
     background-repeat: no-repeat;
     background-position: top right;
+    @include from(1680px){
+     padding-left: calc((100vw - 1680px) / 2 + 4%);   
+     padding-right: calc((100vw - 1680px) / 2 + 4%);   
+     max-width: none
+    }
 }
 .about-content-wrap {
     @include shift-padding(1);
@@ -11,10 +16,17 @@
     margin-right: calc((var(--offset) / 2) * -1);
     line-height: 160%;
     font-size: 15px;
+    @include from(1680px){
+            margin-bottom: 100px;
+    }
     .wide-img {
         @include customOffsetWidth(100, var(--offset));
         margin-top: 100px;
         margin-bottom: 50px;
+        @include from(1680px){
+            margin-top: 50px;
+            margin-bottom: 70px;
+        }
         @include to(950px){
             margin-top: 50px;
         }
@@ -25,6 +37,12 @@
     }
     .about-top-text-block-small {
         @include customOffsetWidth(33, var(--offset));
+        font-weight: 300;
+        @include from(1680px){
+            @include customOffsetWidth(40, var(--offset));
+            font-size: 16px;
+            line-height: 1.6em;
+        }
         @include to(950px){
             @include customOffsetWidth(50, var(--offset));
         }
@@ -42,6 +60,9 @@
         align-items: center;
         text-transform: uppercase;
         color: var(--color-grey);
+        @include from(1680px){
+            font-size: 28px;
+        }
         @include to(575px){
             font-size: 18px;
             @include customOffsetWidth(100, var(--offset));
@@ -56,6 +77,9 @@
 
         letter-spacing: 0.05em;
         text-transform: uppercase;
+        @include from(1680px){
+            font-size: 14px;
+        }
     }
     .about-mini-subtitle.light {
         color: #C8C8C9;
@@ -63,6 +87,10 @@
     .aboute-top-block-mini-img {
         @include customOffsetWidth(33, var(--offset));
         object-fit: cover;
+        @include from(1680px){
+            @include customOffsetWidth(40, var(--offset));
+
+        }
         @include to(950px){
             @include customOffsetWidth(50, var(--offset));
         }
@@ -91,6 +119,10 @@
         display: flex;
         flex-direction: column;
         align-self: center;
+        @include from(1680px){
+            
+            @include customOffsetWidth(60, var(--offset));
+        }
         @include to(950px){
             @include customOffsetWidth(50, var(--offset));
         }
@@ -101,6 +133,9 @@
             margin-top: 40px;
             width: 50%;
             margin-right: auto;
+            @include from(1680px){
+                font-size: 16px;
+            }
             @include to(950px){
                 width: 100%;
 
@@ -118,6 +153,11 @@
         margin-top: 50px;
         padding-top: 100px;
         padding-bottom: 100px;
+        @include from(1680px){
+            padding-top: 150px;
+            padding-bottom: 150px;
+            margin-top: 70px;
+        }
         &:after {
             content: '';
             background-color: var(--color-grey);
@@ -144,6 +184,10 @@
         line-height: 160%;
         text-transform: uppercase;
         color: #FFFFFF;
+        @include from(1680px){
+            font-size: 28px;
+            @include customOffsetWidth(40, var(--offset));
+        }
         @include to(950px){
             @include customOffsetWidth(50, var(--offset));
         }
@@ -153,7 +197,10 @@
         }
     }
     .about-bg-block-small  {
-        @include customOffsetWidth(33, var(--offset));
+        @include customOffsetWidth(40, var(--offset));
+        @include from(1680px){
+            font-size: 18px;
+        }
         @include to(950px){
             @include customOffsetWidth(50, var(--offset));
         }
@@ -162,7 +209,7 @@
         }
     }
     .about-block-map-wrap {
-        height: 50vw;
+        height: 40vw;
         @include customOffsetWidth(100, var(--offset));
         margin-top: 65px;
         position: relative;
@@ -206,6 +253,9 @@
         /* or 35px */
         text-transform: uppercase;
         color: var(--color-grey);
+        @include from(1680px){
+            font-size: 28px;
+        }
         @include to(950px){
             font-size: 18px;
         }
@@ -218,6 +268,12 @@
         display: flex;
         flex-direction: column;
         margin-bottom: var(--offset);
+        @include from(1680px){
+            img {
+                height: 100%;
+                object-fit: cover
+            }
+        }
         @include to(575px){
             @include customOffsetWidth(100, var(--offset));
         }

@@ -2,6 +2,9 @@
     @include row-flex();
     @include shift-padding-left(1);
     margin-bottom: 100px;
+    .swiper-container {
+        overflow: visible
+    }
     &__side {
         @include shift(0);
         @include size(2);
@@ -13,6 +16,10 @@
         font-size: 15px;
         line-height: 160%;
         color: var(--text-gray);
+        @include from(1680px){
+            font-size: 18px;
+            @include size(9);
+        }
         
     }
     .button-std {
@@ -59,6 +66,9 @@ justify-content: center;align-items: center;
     background-color: var(--color-gold);
     margin-left: 10px;
 }
+@include from(1680px){
+    font-size: 16px;
+}
 @include to(575px){
  justify-content: flex-start;   
  padding-bottom: 20px;
@@ -85,6 +95,15 @@ justify-content: center;align-items: center;
         }
         svg:hover {
             animation: pulse 1s infinite ease-in-out;
+        }
+        @include from(1680px){
+            width: calc(66% - 45px);
+            top: 50%;
+            transform: translateY(-50%);
+            height: 100px;
+            z-index: 10;
+            left: 25px;
+            height: 115px;
         }
     }
     @include to(768px){

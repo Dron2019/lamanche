@@ -250,6 +250,19 @@ window.addEventListener('load', () => {
   locoScroll.update();
 });
 
-setTimeout(() => {
-  locoScroll.update();
-}, 5000);
+const blockForUpdatingLocoScroll = document.querySelectorAll('.footer, .about-block-last');
+blockForUpdatingLocoScroll.forEach((image) => {
+  const callback = function (entries, observer) {
+    /* Content excerpted, show below */
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        locoScroll.update();
+        observer.unobserve(image);
+      }
+    });
+  };
+  // eslint-disable-next-line no-undef
+  const observer = new IntersectionObserver(callback, options);
+  const target = image;
+  observer.observe(target);
+});

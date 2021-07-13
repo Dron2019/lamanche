@@ -23,9 +23,17 @@
 .icon--camera {
     width: 21px;
     height: 19px;
+    @include from(1680px){
+        width: 29px;
+    height: 25px;
+    }
 }
 
 .icon--build-arrow {
     width: 21px;
     height: 10px;
+    @include from(1680px){
+        width: 27px;
+    height: 16px;
+    }
 }

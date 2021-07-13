@@ -3,6 +3,9 @@
 }
 .build-cards-wrap {
     --offset:60px;
+    @include from(1680px){
+        margin-bottom: 100px;
+    }
     @include to(1240px){
         --offset:30px;
     }
@@ -40,6 +43,9 @@
     @include shift-padding(1);
     flex-wrap: wrap;
     width: 100%;
+    @include from(1680px){
+        margin-top: 30px;
+    }
     .custom-select-wrapper {
         width: 25%;
     }
@@ -143,6 +149,9 @@ input.apple-switch {
     text-decoration-line: underline;
     text-transform: uppercase;
     color: var(--color-grey);
+    @include from(1680px){
+        font-size: 16px;
+    }
 }
 
 .build-progress-card {
@@ -153,7 +162,9 @@ input.apple-switch {
     text-decoration: none;
     color: inherit;
    
-
+    @include from(1680px){
+        height: 325px;
+    }
     &__outer {
         background-color: var(--color-light-grey);
         width: 55%;
@@ -206,6 +217,10 @@ input.apple-switch {
         text-transform: uppercase;
         display: flex;
         align-items: center;
+        @include from(1680px){
+            font-size: 16px;
+        }
+        
     }
     &__subtitle:after {
         display: inline-block;
@@ -228,6 +243,9 @@ input.apple-switch {
         /* Grey */
 
         color: var(--color-grey);
+        @include from(1680px){
+            font-size: 14px;
+        }
         svg {
             margin-left: 15px;
         }
@@ -246,6 +264,9 @@ input.apple-switch {
         width: max-content;
         margin-top: auto;
         margin-bottom: auto;
+        @include from(1680px){
+            font-size: 26px;
+        }
     }
     &__title:after {
         position: absolute;
