@@ -7,6 +7,7 @@ const swiper = new Swiper('.mySwiper', {
   spaceBetween: 30,
   loop: false,
   freeMode: true,
+  centeredSlides: true,
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',

@@ -1,23 +1,25 @@
 .gal-slider {
     margin-top: 50px;
-    @include shift-left(2);
-    margin-right: calc(var(--page-side-fields) * -1);
+    // @include shift-left(2);
+    // margin-right: calc(var(--page-side-fields) * -1);
     position: relative;
-    user-select: none;
+    // user-select: none;
     margin-bottom: 100px;
     .swiper-container {
         overflow: visible;
+        // pointer-events: none;
     }
     .swiper-button-prev {
         transform: rotate(180deg);
     }
     .slider-nav {
         position: absolute;
-        width: 66%;
+        width: 100%;
         top: 50%;
-        transform: translateY(-50%);
+        transform: translate(-50%, -50%);
         height: 100px;
         z-index: 10;
+        left: 50%;
         svg {
             height: 100%;
             width: auto;
