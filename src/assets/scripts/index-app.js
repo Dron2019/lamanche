@@ -242,3 +242,14 @@ lazyBackgrounds.forEach((image) => {
   const target = image;
   observer.observe(target);
 });
+
+window.addEventListener('DOMContentLoaded', () => {
+  locoScroll.update();
+});
+window.addEventListener('load', () => {
+  locoScroll.update();
+});
+
+setTimeout(() => {
+  locoScroll.update();
+}, 5000);

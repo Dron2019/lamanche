@@ -5,9 +5,12 @@
     flex-wrap: wrap;
     margin-left: calc((var(--offset) / 2) * -1);
     margin-right: calc((var(--offset) / 2) * -1);
+    max-width: 950px;
+    margin-left: auto;
+    margin-right: auto;
     .character-item {
         margin-bottom: var(--offset);
-        @include customOffsetWidth(33, var(--offset));
+        @include customOffsetWidth(50, var(--offset));
     }
     @include to(1120px){
         --offset: 34px;

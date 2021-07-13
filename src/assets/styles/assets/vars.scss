@@ -33,6 +33,13 @@ $gold: #CFA46E;
   --container-top-padding: 40px;
 }
 
+@media screen and (min-width: 1440px){
+  :root {
+    --header-h: 100px;
+    --logo-w: 180px;
+    --sliceFigure-big: 362px;
+  }
+}
 @media screen and (max-width: 1440px){
   :root {
     --header-h: 80px;

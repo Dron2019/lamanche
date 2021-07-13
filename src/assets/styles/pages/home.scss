@@ -13,6 +13,11 @@
     // align-content: center;
     padding-left:  Max( calc((100vw - 590px) / 2), var(--page-side-fields));
     padding-right: Max(calc((100vw - 590px) / 2), var(--page-side-fields));
+    @include from(1680px){
+        padding-left:  Max( calc((100vw - 768px) / 2), var(--page-side-fields));
+        padding-right: Max(calc((100vw - 768px) / 2), var(--page-side-fields));
+
+    }
     &__text-block {
         margin-top: auto;
         margin-bottom: 0;
@@ -26,6 +31,10 @@
         margin-top: auto;
         align-self: flex-start;
         margin-bottom: 0;
+        font-weight: 300;
+        @include from(1680px){
+                    font-size: 20px;
+        }
     }
     &__text~&__text {
         margin-top: 10px;
@@ -38,6 +47,9 @@
         text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
         margin-top: 40px;
        align-self: flex-start;
+       @include from(1680px){
+        font-size: 53px;
+       }
     }
     .button-std {
         margin: 40px auto 0 auto;
@@ -50,6 +62,9 @@
         margin-bottom: 0;
         margin-bottom: 0;
         margin-top: auto;
+        @include from(1680px){
+            height: 45px;
+        }
     }
     @include to(575px){
         &__title {
@@ -76,8 +91,20 @@
     font-size: 18px;
     line-height: 150%;
     color: var(--color-white);
+    margin-top: -1px;
+    @include from(1680px){
+        padding-top: 120px;
+    padding-bottom: 120px;
+    padding-left: calc((100vw - 768px) / 2);
+    padding-right: calc((100vw - 768px) / 2);
+    font-size: 24px;
+    }
     svg {
         margin-bottom: 30px;
+        @include from(1680px){
+            width: 40px;
+            height: auto;
+        }
     }
     @include to(950px){
         padding-left: var(--page-side-fields);
@@ -100,6 +127,9 @@
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;
+        @include from(1680px){
+            padding-left: calc((100vw - 1720px) / 2 + 4%);
+        }
     }
     &__img {
         width: 50%;
@@ -234,16 +264,28 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
+    @include from(1680px){
+        padding-left: 11.5%;
+    padding-right: 11.5%;
+    }
     p {
         text-align: center;
     }
     .subtitle-with-decor {
-        width: 100%;
+        // width: 100%;
         display: flex;
         margin-bottom: 20px;
+        margin-left: auto;
+        margin-right: auto;
         &:after {
             margin-left: auto;
         }
+        @include from(1680px){
+            text-align: center;
+        }
+    }
+    .subtitle-with-decor::after {
+        transform: translateY(150%);
     }
     @include to(575px){
         padding-left: 30px;
@@ -323,6 +365,11 @@
     @include shift-padding(1);
     padding-top: 100px;
     padding-bottom: calc(100px - var(--offset));
+    @include from(1680px){
+        max-width: 1680px;
+     margin-left: auto;
+     margin-right: auto;   
+    }
     .subtitle-with-decor {
         @include size(12);
         margin-left: calc((var(--offset) / 2));
@@ -371,7 +418,9 @@
     height: 285px;
     position: relative;
     --v-padding:30px;
-   
+   @include from(1680px){
+       height: 320px;
+   }
 
     &__outer {
         background-color: var(--color-light-grey);
@@ -429,6 +478,9 @@
         width: max-content;
         margin-top: auto;
         margin-bottom: auto;
+        @include from(1680px){
+            font-size: 24px;
+        }
     }
     &__title:after {
         position: absolute;
@@ -449,6 +501,9 @@
         font-weight: 550;
         font-size: 14px;
         line-height: 140%;
+        @include from(1680px){
+            font-size: 18px;
+        }
     }
     &__data-item span:first-child:after {
         content: ' ';
@@ -481,6 +536,10 @@
     --v-padding:107px;
     margin-left: calc((var(--offset) / 2) * -1);
     margin-right: calc((var(--offset) / 2) * -1);
+    @include from(1680px){
+        padding-left: calc((100vw - 1720px) / 2);
+        padding-right: calc((100vw - 1720px) / 2);
+    }
     &__text {
         width: calc(47% - var(--offset));
         margin-left: calc(var(--offset) / 2);
@@ -528,6 +587,17 @@
             width: 70px;
             margin-right: 60px;
         }
+
+    }
+    @include from(1680px){
+        .characteristics-wrap { 
+
+            .single-characteristic  {
+                width:  100px;
+                // margin-right: 60px;
+            }
+        }
+
     }
     @include to(575px){
         --offset:20px;
@@ -575,6 +645,11 @@
     }
     .all {
         transform: translateY(-100%);
+    }
+    @include from(1680px){
+        .current {
+            font-size: 96px;
+        }
     }
 }
 
@@ -633,6 +708,16 @@
             animation: pulse 1s infinite ease-in-out;
         }
     }
+    @include from(1680px){
+        .slider-nav {
+            padding-left: calc((100vw - 1720px) / 2);
+            padding-right: calc((100vw - 1720px) / 2);
+            svg {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    }
     @include to(575px){
         .slider-nav svg {
             width: 35px;
@@ -668,6 +753,10 @@
         margin-right: calc(var(--offset) / 2);
         border: 1px solid olivedrab;
     }
+    @include from(1680px){
+        padding-left: calc((100vw - 1680px) / 2);
+        padding-right: calc((100vw - 1680px) / 2);
+    }
     @include to(575px){
         --v-padding: 50px;
         --offset: 20px;
@@ -695,6 +784,9 @@
         font-size: 18px;
         line-height: 140%;
         color: var(--color-grey);
+        @include from(1680px){
+            font-size: 22px;
+        }
     }
     &__icon {
         width: 46px;
@@ -704,6 +796,15 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        @include from(1680px){
+            width: 60px;
+            height: 60px;
+            svg {
+                height: 40%;
+    width: 40%;
+            }
+
+        }   
     }
     &__group {
         display: flex;

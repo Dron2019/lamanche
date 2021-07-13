@@ -49,16 +49,20 @@ block scripts
   script(defer src='./assets/scripts/libs.js')
   script(defer src='./assets/scripts/header.js')
   script(defer src='./assets/scripts/home.js')
-  //- script(defer src='./assets/scripts/map.js')
+  script(defer src='./assets/scripts/map.js')
 block content
   //- include ../includes/breadcrumbs.pug
   section.home-section-0(style="background-image: url(./assets/images/home/home-screen-bg.jpg)")
+    .lang-block
+      a(href="#").active UK 
+      a(href="#") RU 
+      a(href="#") EN 
     .home-section-0__text-block
       .home-section-0__text IV квартал 2022 г.
       .home-section-0__text Апартаменти від 2.56 млн ₴
       .home-section-0__title Ваша приватна резиденція у центрі Подолу
       +btn('Обрати квартиру', 'gold')
-      +btn('Записатися на перегляд', 'grey')(data-call-popup-form)
+      +btn('Записатися на перегляд', 'grey')(data-call-popup-form class="button-std--invert")
     <svg class="scroll-mouse" width="21" height="32" viewBox="0 0 21 32" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0.5 10.5C0.5 4.97715 4.97715 0.5 10.5 0.5C16.0228 0.5 20.5 4.97715 20.5 10.5V21.5C20.5 27.0228 16.0228 31.5 10.5 31.5C4.97715 31.5 0.5 27.0228 0.5 21.5V10.5Z" stroke="white"/>
       <circle cx="10.5" cy="7.8999" r="1.5" fill="white"/>
@@ -71,7 +75,6 @@ block content
     .text(data-slide-in-anim) LA MANCHE поєднує у собі риси модерну Англії та Франції кінця ХІХ — початку ХХ сторіч та сучасні технології містобудування, що гармонічно поєднується з архітектурою старого Подолу!
   section.home-section-2
     .home-section-2__text
-      p.subtitle Lorem, ipsum.
       .subtitle-with-decor Архітектура LA MANCHE
       p.text LA MANCHE Perfect Residence — престижний будинок клубного типу на Подолі. Він має 9 поверхів, індивідуальні тераси на даху, комерційні приміщення на перших поверхах та підземний паркінг. 
       +a('Дізнатися більше', 'gold', 'about.html')
@@ -84,11 +87,6 @@ block content
     .home-section-3__cards
       each val in advantages
         .card-with-text-on-bg-wrap(data-background-lazy data-src=val[0] )
-          .card-with-text-on-bg
-            .subtitle-with-decor.white.small(data-slide-in-anim)  #{val[1]}
-            p(data-slide-in-anim) #{val[2]}
-      each val in advantages
-        .card-with-text-on-bg-wrap(data-background-lazy data-src=val[0])
           .card-with-text-on-bg
             .subtitle-with-decor.white.small(data-slide-in-anim)  #{val[1]}
             p(data-slide-in-anim) #{val[2]}
