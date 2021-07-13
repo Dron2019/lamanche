@@ -13,10 +13,10 @@ block variable
       }
     ]
     var advantages = [
-      ['background-image: url(./assets/images/home/home-advantage-01.jpg)', 'Ландшафтний парк', 'Індивідуальний ландшафтний проєкт з зонами відпочинку, альтанками, дитячим майданчиком.',],
-      ['background-image: url(./assets/images/home/home-advantage-02.jpg)', 'Закрита територія', 'Максимум приватності для створення свого ідеального простору з цілодобовою охороною.',],
-      ['background-image: url(./assets/images/home/home-advantage-03.jpg)', 'Власний підземний паркінг', 'Станція підзарядки електромобілів та ліфт до усіх поверхів клубного будинку.',],
-      ['background-image: url(./assets/images/home/home-advantage-04.jpg)', 'Просторне лобі', 'Преміальный конс\'єрж-сервис, який вирішить всі ваші запитання',],
+      ['./assets/images/home/home-advantage-01.jpg', 'Ландшафтний парк', 'Індивідуальний ландшафтний проєкт з зонами відпочинку, альтанками, дитячим майданчиком.',],
+      ['./assets/images/home/home-advantage-02.jpg', 'Закрита територія', 'Максимум приватності для створення свого ідеального простору з цілодобовою охороною.',],
+      ['./assets/images/home/home-advantage-03.jpg', 'Власний підземний паркінг', 'Станція підзарядки електромобілів та ліфт до усіх поверхів клубного будинку.',],
+      ['./assets/images/home/home-advantage-04.jpg', 'Просторне лобі', 'Преміальный конс\'єрж-сервис, який вирішить всі ваші запитання',],
     ];
     var block4Points = [
       ['Контрактова площа', '900 м',],
@@ -83,16 +83,16 @@ block content
       //- .subtitle Lorem, ipsum.
     .home-section-3__cards
       each val in advantages
-        .card-with-text-on-bg-wrap(style=val[0])
+        .card-with-text-on-bg-wrap(data-background-lazy data-src=val[0] )
           .card-with-text-on-bg
             .subtitle-with-decor.white.small(data-slide-in-anim)  #{val[1]}
             p(data-slide-in-anim) #{val[2]}
       each val in advantages
-        .card-with-text-on-bg-wrap(style=val[0])
+        .card-with-text-on-bg-wrap(data-background-lazy data-src=val[0])
           .card-with-text-on-bg
             .subtitle-with-decor.white.small(data-slide-in-anim)  #{val[1]}
             p(data-slide-in-anim) #{val[2]}
-  section.home-section-4(style="background-image:url(./assets/images/home/screen-4-bg.jpg)" data-live-sections)
+  section.home-section-4(data-background-lazy data-src="./assets/images/home/screen-4-bg.jpg" style="" data-live-sections)
     .subtitle-with-decor.white.home-section-4__title Преміальна локація в історичному центрі міста
     .digit-block-wrap
       each val in block4Points
@@ -113,7 +113,7 @@ block content
             .home-flat-card__data-item
               span Площа:
               span від #{val[3]} м<sub>2</sub>
-        .home-flat-card__inner(style="background-image: url(./assets/images/home/"+val[0]+");")
+        .home-flat-card__inner(data-background-lazy data-src="./assets/images/home/"+val[0] style="")
           .home-flat-card__inner-data
             span від
             span.bold(data-to-animate-number=val[4]) #{val[4]} 
@@ -153,21 +153,21 @@ block content
         .current 01
         .all 08
       .slider-wrapper
-        img.slide(src="./assets/images/home/slider/home-slide-01.jpg")
-        img.slide(src="./assets/images/home/slider/home-slide-02.jpg")
-        img.slide(src="./assets/images/home/slider/home-slide-01.jpg")
-        img.slide(src="./assets/images/home/slider/home-slide-02.jpg")
-        img.slide(src="./assets/images/home/slider/home-slide-01.jpg")
-        img.slide(src="./assets/images/home/slider/home-slide-02.jpg")
-        img.slide(src="./assets/images/home/slider/home-slide-01.jpg")
-        img.slide(src="./assets/images/home/slider/home-slide-02.jpg")
-        img.slide(src="./assets/images/home/slider/home-slide-01.jpg")
-        img.slide(src="./assets/images/home/slider/home-slide-02.jpg")
-        img.slide(src="./assets/images/home/slider/home-slide-01.jpg")
-        img.slide(src="./assets/images/home/slider/home-slide-02.jpg")
-        img.slide(src="./assets/images/home/slider/home-slide-01.jpg")
-        img.slide(src="./assets/images/home/slider/home-slide-02.jpg")
-        img.slide(src="./assets/images/home/slider/home-slide-01.jpg")
+        img.slide(data-src="./assets/images/home/slider/home-slide-01.jpg")
+        img.slide(data-src="./assets/images/home/slider/home-slide-02.jpg")
+        img.slide(data-src="./assets/images/home/slider/home-slide-01.jpg")
+        img.slide(data-src="./assets/images/home/slider/home-slide-02.jpg")
+        img.slide(data-src="./assets/images/home/slider/home-slide-01.jpg")
+        img.slide(data-src="./assets/images/home/slider/home-slide-02.jpg")
+        img.slide(data-src="./assets/images/home/slider/home-slide-01.jpg")
+        img.slide(data-src="./assets/images/home/slider/home-slide-02.jpg")
+        img.slide(data-src="./assets/images/home/slider/home-slide-01.jpg")
+        img.slide(data-src="./assets/images/home/slider/home-slide-02.jpg")
+        img.slide(data-src="./assets/images/home/slider/home-slide-01.jpg")
+        img.slide(data-src="./assets/images/home/slider/home-slide-02.jpg")
+        img.slide(data-src="./assets/images/home/slider/home-slide-01.jpg")
+        img.slide(data-src="./assets/images/home/slider/home-slide-02.jpg")
+        img.slide(data-src="./assets/images/home/slider/home-slide-01.jpg")
   section.home-section-8
     .subtitle-with-decor Контакти
     .home-section-8__text.home-contact-block(style="background-image: url(./assets/images/home/contacts-bg.svg)")

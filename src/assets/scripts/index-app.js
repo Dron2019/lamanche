@@ -197,3 +197,48 @@ callFormPopup.forEach((el) => {
   });
 });
 /** form popup handler END */
+const options = {
+  rootMargin: '0px',
+  threshold: 0.1,
+};
+const lazyImages = document.querySelectorAll('img[data-src]');
+
+lazyImages.forEach((imageArgs) => {
+  const image = imageArgs;
+  image.style.opacity = 0;
+  image.style.transition = ' .3s ease-out';
+  image.addEventListener('load', () => {
+    image.style.opacity = 1;
+  });
+  const callback = (entries) => {
+    /* Content excerpted, show below */
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const lazyImage = entry.target;
+        lazyImage.src = lazyImage.dataset.src;
+      }
+    });
+  };
+  const observer = new IntersectionObserver(callback, options);
+  const target = image;
+  observer.observe(target);
+});
+
+
+const lazyBackgrounds = document.querySelectorAll('[data-background-lazy]');
+lazyBackgrounds.forEach((image) => {
+  const callback = function (entries, observer) {
+    /* Content excerpted, show below */
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const lazyImage = entry.target;
+        lazyImage.style.backgroundImage = `url(${lazyImage.dataset.src})`;
+        observer.unobserve(lazyImage);
+      }
+    });
+  };
+  // eslint-disable-next-line no-undef
+  const observer = new IntersectionObserver(callback, options);
+  const target = image;
+  observer.observe(target);
+});

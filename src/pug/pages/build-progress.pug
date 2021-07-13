@@ -83,7 +83,7 @@ block content
               .build-progress-card__link 
                 span Переглянути звіт
                 +svg('build-arrow')
-          .build-progress-card__inner(style="background-image: url(./assets/images/build-progress/"+val[0]+");")
+          .build-progress-card__inner(data-background-lazy data-src="./assets/images/build-progress/"+val[0] style="")
                 
 block footer
   include ../includes/footer.pug
