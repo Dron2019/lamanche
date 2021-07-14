@@ -7,26 +7,34 @@ block variable
     var class_page = 'class-page-build-progress'
     var breadcrumbsSubitem = [
     ]
-    var years = [2020,2021,2022,2023];
+    var years = [
+      ['null', 'Рік'],
+      [2020, '2020'],
+      [2021, '2021'],
+      [2022, '2022'],
+      [2023, '2023'],
+    ];
     var monthtes = [
+      ['Місяць','null'],
       ['Січень','01'],
       ['Лютий','02'],
-      ['Лютий','03'],
-      ['Лютий','04'],
-      ['Лютий','05'],
-      ['Лютий','06'],
-      ['Лютий','07'],
-      ['Лютий','08'],
-      ['Лютий','09'],
-      ['Лютий','010'],
-      ['Лютий','011'],
+      ['Березень','03'],
+      ['Квітень','04'],
+      ['Травень','05'],
+      ['Червень','06'],
+      ['Липень','07'],
+      ['Серпень','08'],
+      ['Вересень','09'],
+      ['Жовтень','10'],
+      ['Листопад','11'],
+      ['Грудень','12'],
       ];
     var flatBlocksData = [
-      ['build-card-01.jpg','Червень','20','55.5', '20000', '02.06.2021'],
-      ['build-card-02.jpg','Червень','30','46.7', '30000', '03.06.2021'],
-      ['build-card-03.jpg','Червень','40','127.5', '40000', '04.06.2021'],
-      ['build-card-04.jpg','Червень','50','202.4', '50000', '05.06.2021'],
-      ['build-card-05.jpg','Червень','60','99.4', '60000', '06.06.2021'],
+      ['build-card-01.jpg','Червень','20','55.5', '20000', '02.06.2021', 'true'],
+      ['build-card-02.jpg','Червень','30','46.7', '30000', '03.07.2022', 'false'],
+      ['build-card-03.jpg','Червень','40','127.5', '40000', '04.08.2020', 'true'],
+      ['build-card-04.jpg','Червень','50','202.4', '50000', '05.09.2023', 'false'],
+      ['build-card-05.jpg','Червень','60','99.4', '60000', '06.10.2021', 'true'],
     ];
 block meta
   title= title_page
@@ -47,19 +55,19 @@ block content
     .progress-head
       .progress-checkbox-wrapper
         .text-grey Контент з відео
-        <input class="apple-switch" type="checkbox">
-      .custom-select-wrapper
+        <input class="apple-switch" data-name="with_video" data-video-chechbox type="checkbox">
+      .custom-select-wrapper(data-name="year")
         .custom-select
           .custom-select__trigger
-            span #{years[0]}
+            span #{years[0][1]}
             .arrow
           .custom-options
             each val, index in years
               if index === 0
-                span.custom-option.selected(data-value=val) #{val}
+                span.custom-option.selected(data-value=val[0]) #{val[1]}
               else
-                span.custom-option(data-value=val) #{val}
-      .custom-select-wrapper
+                span.custom-option(data-value=val[0]) #{val[1]}
+      .custom-select-wrapper(data-name="month")
         .custom-select
           .custom-select__trigger
             span #{monthtes[0][0]}
@@ -73,9 +81,9 @@ block content
       a(href="web-camera").underlined-link-wrap
         .underlined-link Веб-камера
         +svg('camera')
-    .build-cards-wrap
+    .build-cards-wrap(data-no-cards-selector="no-cards" data-no-cards-title="За вашими параметрами нічого не знайдено")
       each val in flatBlocksData
-        a(href="single-build-progress.html").build-progress-card
+        a(href="single-build-progress.html" data-with_video=val[6] data-month=val[5].split('.')[1] data-year=val[5].split('.')[2]).build-progress-card
           .build-progress-card__outer 
             .build-progress-card__subtitle #{val[5]}
             .build-progress-card__title #{val[1]}

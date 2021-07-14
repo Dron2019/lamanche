@@ -14,6 +14,20 @@
     margin-right: calc((var(--offset) / 2) * -1);
     display: flex;
     flex-wrap: wrap;
+    &.no-cards::after {
+        content: attr(data-no-cards-title);
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        font-size: 54px;
+        color: var(--color-grey);
+        font-weight: 550;
+        height: 350px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 125%;
+    }
     @include shift-padding(1);
     .build-progress-card {
         @include customOffsetWidth(50, var(--offset));
