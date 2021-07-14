@@ -194,3 +194,27 @@ numbersToAnimate.forEach((section) => {
     },
   });
 });
+
+const videos = document.querySelectorAll('video');
+videos.forEach((section) => {
+  ScrollTrigger.create({
+    triggerHook: 0.1,
+    trigger: section,
+    onEnter: () => {
+      section.play();
+      console.log('enter');
+    },
+    onEnterBack: () => {
+      section.play();
+      console.log('enter');
+    },
+    onLeave: () => {
+      section.pause();
+      console.log('leave');
+    },
+    onLeaveBack: () => {
+      section.pause();
+      console.log('leave');
+    },
+  });
+});

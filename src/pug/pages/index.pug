@@ -90,7 +90,10 @@ block content
           .card-with-text-on-bg
             .subtitle-with-decor.white.small(data-slide-in-anim)  #{val[1]}
             p(data-slide-in-anim) #{val[2]}
-  section.home-section-4(data-background-lazy data-src="./assets/images/home/screen-4-bg.jpg" style="" data-live-sections)
+  section.home-section-4(data-background-lazy data-src="./assets/images/home/poster.jpg" style="" data-live-sections)
+    .video-wrapper 
+      video(poster="./assets/images/home/poster.jpg" loop="true" muted)
+        source(src="static/lamanche.mp4" type="video/mp4")
     .subtitle-with-decor.white.home-section-4__title Преміальна локація в історичному центрі міста
     .digit-block-wrap
       each val in block4Points
