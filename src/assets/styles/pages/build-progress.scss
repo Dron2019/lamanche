@@ -27,6 +27,11 @@
         justify-content: center;
         align-items: center;
         line-height: 125%;
+        @include to(575px){
+            font-size: 36px;
+            padding-left: 15px;
+            padding-right: 15px;   
+        }
     }
     @include shift-padding(1);
     .build-progress-card {

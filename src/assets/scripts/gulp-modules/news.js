@@ -1,10 +1,17 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-unused-expressions */
 /* eslint-disable no-undef */
 /* eslint-disable no-loop-func */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable no-param-reassign */
-/* eslint-disable func-names */
-
 /* eslint-disable no-restricted-syntax */
+
+const filterItems = {
+  year: 'null',
+  month: 'null',
+};
+
+const cards = document.querySelectorAll('.news-card');
+const cardsWrapper = document.querySelector('.news-cards-wrap');
+
 function filterBuildCards(items, filterObject, wrapper, afterCallback = () => {}) {
   items.forEach((card) => {
     const validFieldLength = Object.entries(filterObject).length;
@@ -29,22 +36,6 @@ function filterBuildCards(items, filterObject, wrapper, afterCallback = () => {}
   afterCallback();
 }
 
-const filterItems = {
-  year: 'null',
-  month: 'null',
-  with_video: 'null',
-};
-const withVideoCheckbox = document.querySelector('[data-video-chechbox]');
-const cards = document.querySelectorAll('.build-progress-card');
-const cardsWrapper = document.querySelector('.build-cards-wrap');
-
-
-withVideoCheckbox.addEventListener('change', () => {
-  filterItems[withVideoCheckbox.dataset.name] = !withVideoCheckbox.checked;
-  filterBuildCards(cards, filterItems, cardsWrapper, () => {
-    locoScroll.update();
-  });
-});
 for (const dropdown of document.querySelectorAll('.custom-select-wrapper')) {
   dropdown.addEventListener('click', function () {
     this.querySelector('.custom-select').classList.toggle('open');

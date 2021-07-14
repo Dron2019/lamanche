@@ -1,0 +1,132 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'Новини'
+    var id_page = 'id-page-news'
+    var class_page = 'class-page-news'
+    var breadcrumbsSubitem = [
+    ];
+    var cards = [
+      {
+        promotion: 'true',
+        date: '02.10.2020',
+        title: 'Lorem ipsum dolor sit amet.',
+        text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore quae assumenda ducimus?',
+        img: './assets/images/news/test.jpg'
+      },
+      {
+        date: '02.10.2020',
+        title: 'Lorem ipsum dolor sit amet.',
+        text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore quae assumenda ducimus?',
+        img: './assets/images/news/test.jpg'
+      },
+      {
+        date: '02.10.2020',
+        title: 'Lorem ipsum dolor sit amet.',
+        text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore quae assumenda ducimus?',
+        img: './assets/images/news/test.jpg'
+      },
+      {
+        promotion: 'true',
+        date: '02.10.2020',
+        title: 'Lorem ipsum dolor sit amet.',
+        text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore quae assumenda ducimus?',
+        img: './assets/images/news/test.jpg'
+      },
+      {
+        date: '02.10.2020',
+        title: 'Lorem ipsum dolor sit amet.',
+        text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore quae assumenda ducimus?',
+        img: './assets/images/news/test.jpg'
+      },
+      {
+        promotion: 'true',
+        date: '02.10.2020',
+        title: 'Lorem ipsum dolor sit amet.',
+        text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore quae assumenda ducimus?',
+        img: './assets/images/news/test.jpg'
+      },
+    ];
+    var years = [
+      ['null', 'Рік'],
+      [2020, '2020'],
+      [2021, '2021'],
+      [2022, '2022'],
+      [2023, '2023'],
+    ];
+    var monthtes = [
+      ['Місяць','null'],
+      ['Січень','01'],
+      ['Лютий','02'],
+      ['Березень','03'],
+      ['Квітень','04'],
+      ['Травень','05'],
+      ['Червень','06'],
+      ['Липень','07'],
+      ['Серпень','08'],
+      ['Вересень','09'],
+      ['Жовтень','10'],
+      ['Листопад','11'],
+      ['Грудень','12'],
+    ];
+  
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/index.bundle.js')
+  script(defer src='./assets/scripts/libs.js')
+  script(defer src='./assets/scripts/index.js')
+  script(defer src='./assets/scripts/header.js')
+  script(defer src='./assets/scripts/news.js')
+block content
+  .container.news-wrapper
+    include ../includes/breadcrumbs.pug
+    h1.page-title Новини
+    .news-nav-wrap
+      .custom-select-wrapper(data-name="year")
+          .custom-select
+            .custom-select__trigger
+              span #{years[0][1]}
+              .arrow
+            .custom-options
+              each val, index in years
+                if index === 0
+                  span.custom-option.selected(data-value=val[0]) #{val[1]}
+                else
+                  span.custom-option(data-value=val[0]) #{val[1]}
+      .custom-select-wrapper(data-name="month")
+        .custom-select
+          .custom-select__trigger
+            span #{monthtes[0][0]}
+            .arrow
+          .custom-options
+            each val, index in monthtes
+              if index === 0
+                span.custom-option.selected(data-value=val[1]) #{val[0]}
+              else
+                span.custom-option(data-value=val[1]) #{val[0]}
+    .news-cards-wrap(data-no-cards-selector="no-cards" data-no-cards-title="За вашими параметрами нічого не знайдено")
+      each val in cards
+        a(href="single-news.html" data-month="03" data-year='2020').news-card
+          if val.promotion === 'true'
+            .promotion-item 
+              span Акція
+              +svg('megafon')
+          img.news-card__img(src=val.img)
+          .news-card__text
+            .news-card__date #{val.date}
+            .news-card__title #{val.title}
+            .news-card__description #{val.text}
+            .underlined-link-wrap.news-card__link 
+              .underlined-link Дізнатись більше
+              +svg('build-arrow')
+block footer
+  include ../includes/footer.pug
+
+block header
+  include ../includes/header.pug
