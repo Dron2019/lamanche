@@ -14,6 +14,9 @@ switcher.addEventListener('change', (evt) => {
   tl.to(panorama, { autoAlpha: 0, duration: 0.5, ease: easeOut });
   tl.add(() => { panorama.src = switchUrls[+evt.target.checked]; });
   tl.add(() => { switcher.previousElementSibling.dataset.value = +evt.target.checked; });
-  tl.add(() => { panorama.src = switchUrls[+evt.target.checked]; });
+  tl.add(() => {
+    panorama.src = switchUrls[+evt.target.checked];
+    panorama.contentWindow.location.reload();
+  });
   tl.to(panorama, { autoAlpha: 1, duration: 0.5, ease: easeIn }, '<');
 });
