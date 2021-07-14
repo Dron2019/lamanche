@@ -248,6 +248,7 @@ input.apple-switch {
         }
         svg {
             margin-left: 15px;
+            // transition: .3s ease-in-out;
         }
     }
     &__title {
@@ -290,6 +291,11 @@ input.apple-switch {
     }
     &__data-item span:first-child:after {
         content: ' ';
+    }
+    @include from(951px){
+        &:hover &__link {
+            animation: pulsate-fwd 0.75s infinite ease-in-out;
+        }
     }
     @include to(575px){
         

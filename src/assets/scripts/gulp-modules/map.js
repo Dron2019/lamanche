@@ -161,7 +161,8 @@ function initMap() {
     });
   });
 
-  const baseFolder = './assets/images/map/';
+  let baseFolder = '/wp-content/themes/lamanche/assets/images/map/';
+  if (window.location.href.match(/localhost/)) baseFolder = './assets/images/map/';
   // const baseFolder = './assets/images/markers/';
   const defaultMarkerSize = new google.maps.Size(40, 50);
   const buildLogoSize = new google.maps.Size(87, 87);

@@ -334,6 +334,7 @@ p~p {
 		right: 0;
 		bottom: 30px;
 	}
+	
 	@include to(575px){
 		.underlined-link-wrap {
 			bottom: 14px;
@@ -342,6 +343,16 @@ p~p {
 	}
 }
 
+.underlined-link-wrap {
+	svg {
+		transition:  .3s ease-in-out;
+	}
+	@include from(950px){
+		&:hover svg {
+			transform: rotate(360deg);
+		}
+	}
+}
 .lang-block {
 	position: absolute;
 	top: 50vh;
@@ -399,6 +410,8 @@ p~p {
 	transition: transform .3s ease-in-out;
 	position: fixed;
 	opacity: 0;
+	width: 100px;
+	height: 100px;
 	&.left-side {
 		transform: rotate(-180deg);
 	}

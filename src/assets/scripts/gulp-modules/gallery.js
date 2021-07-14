@@ -32,9 +32,12 @@ const galSwiper = new Swiper('.mySwiper', {
 });
 
 galSwiper.on('afterInit', () => {
-  locoScroll.update();
+  // locoScroll.update();
 });
-
+locoScroll.destroy();
+setTimeout(() => {
+  document.querySelector('.page__inner').style.transform = '';
+}, 3000);
 const switchItems = document.querySelectorAll('[data-content-type]');
 switchItems.forEach((item) => {
   item.addEventListener('click', () => {
@@ -84,7 +87,7 @@ function sideSwitchArrow(swiper, arrow, container) {
 
 
   function desktopNavButtonHandler(evt) {
-    arrow.style.position = 'fixed';
+    // arrow.style.position = 'fixed';
     arrow.style.left = `${evt.clientX - 18}px`;
     arrow.style.top = `${evt.clientY - 18}px`;
 

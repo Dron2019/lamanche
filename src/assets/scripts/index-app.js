@@ -250,7 +250,7 @@ window.addEventListener('load', () => {
   locoScroll.update();
 });
 
-const blockForUpdatingLocoScroll = document.querySelectorAll('.footer, .about-block-last');
+const blockForUpdatingLocoScroll = document.querySelectorAll('.page__content>*:last-child, .footer, .about-block-last, .about-block-last');
 blockForUpdatingLocoScroll.forEach((image) => {
   const callback = function (entries, observer) {
     /* Content excerpted, show below */
