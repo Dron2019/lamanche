@@ -85,6 +85,8 @@ block scripts
   script(defer src='./assets/scripts/news.js')
 block content
   .container.news-wrapper
+    .news-wrapper__bg.news-wrapper__left-bg(style="background-image: url(./assets/images/news/reverse.svg)")
+    .news-wrapper__bg.news-wrapper__right-bg(style="background-image: url(./assets/images/news/bg.svg)")
     include ../includes/breadcrumbs.pug
     h1.page-title Новини
     .news-nav-wrap

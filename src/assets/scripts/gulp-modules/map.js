@@ -164,7 +164,7 @@ function initMap() {
   let baseFolder = '/wp-content/themes/lamanche/assets/images/map/';
   if (window.location.href.match(/localhost/)) baseFolder = './assets/images/map/';
   // const baseFolder = './assets/images/markers/';
-  const defaultMarkerSize = new google.maps.Size(40, 50);
+  const defaultMarkerSize = new google.maps.Size(44, 60);
   const buildLogoSize = new google.maps.Size(87, 87);
   const markersAdresses = {
     main: `${baseFolder}marker-main.png`,
@@ -176,6 +176,9 @@ function initMap() {
     forest: `${baseFolder}marker-forest.svg`,
     med: `${baseFolder}marker-med.svg`,
     supermarket: `${baseFolder}marker-supermarket.svg`,
+    sport: `${baseFolder}marker-sport.svg`,
+    bank: `${baseFolder}marker-bank.svg`,
+    museum: `${baseFolder}marker-museum.svg`,
   };
   // eslint-disable-next-line no-unused-vars
   const markerPopupStyle = `
@@ -190,57 +193,103 @@ function initMap() {
 
   /* beautify preserve:start */
   const markersData = [
-
     {
-      content: '<div>PARK</div>',
-      position: { lat: 50.472626, lng: 30.5142653 },
+      content: '<div>ЖК "La Manche"</div>',
+      position: { lat: 50.47315200396692, lng: 30.517570821411027 },
       type: 'main',
       icon: { url: markersAdresses.main, scaledSize: buildLogoSize },
     },
     {
-      content: '<div>PARK</div>',
-      position: { lat: 50.473626, lng: 30.5153653 },
-      type: 'cinema',
-      icon: { url: markersAdresses.cinema, scaledSize: defaultMarkerSize },
-    },
-    {
-      content: '<div>PARK</div>',
-      position: { lat: 50.474626, lng: 30.5153653 },
-      type: 'game',
-      icon: { url: markersAdresses.game, scaledSize: defaultMarkerSize },
-    },
-    {
-      content: '<div>PARK</div>',
-      position: { lat: 50.475626, lng: 30.5153653 },
-      type: 'metro',
-      icon: { url: markersAdresses.metro, scaledSize: defaultMarkerSize },
-    },
-    {
-      content: '<div>PARK</div>',
-      position: { lat: 50.476626, lng: 30.5153653 },
-      type: 'education',
-      icon: { url: markersAdresses.shop, scaledSize: defaultMarkerSize },
-    },
-    {
-      content: '<div>PARK</div>',
-      position: { lat: 50.477626, lng: 30.5153653 },
-      type: 'forest',
-      icon: { url: markersAdresses.forest, scaledSize: defaultMarkerSize },
-    },
-    {
-      content: '<div>PARK</div>',
-      position: { lat: 50.478626, lng: 30.5153653 },
+      content: '<div>ЖК "La Manche"</div>',
+      position: { lat: 50.473781, lng: 30.512321 },
       type: 'med',
       icon: { url: markersAdresses.med, scaledSize: defaultMarkerSize },
     },
     {
-      content: '<div>PARK</div>',
-      position: { lat: 50.479626, lng: 30.5153653 },
-      type: 'supermarket',
-      icon: { url: markersAdresses.supermarket, scaledSize: defaultMarkerSize },
+      content: '<div>ЖК "La Manche"</div>',
+      position: { lat: 50.472021, lng: 30.513921 },
+      type: 'game',
+      icon: { url: markersAdresses.game, scaledSize: defaultMarkerSize },
+    },
+    {
+      content: '<div>ЖК "La Manche"</div>',
+      position: { lat: 50.472894, lng: 30.513015 },
+      type: 'education',
+      icon: { url: markersAdresses.education, scaledSize: defaultMarkerSize },
+    },
+    {
+      content: '<div>ЖК "La Manche"</div>',
+      position: { lat: 50.472159, lng: 30.502965 },
+      type: 'bank',
+      icon: { url: markersAdresses.bank, scaledSize: defaultMarkerSize },
+    },
+    {
+      content: '<div>ЖК "La Manche"</div>',
+      position: { lat: 50.472355, lng: 30.511470 },
+      type: 'bank',
+      icon: { url: markersAdresses.bank, scaledSize: defaultMarkerSize },
+    },
+    {
+      content: '<div>ЖК "La Manche"</div>',
+      position: { lat: 50.471460, lng: 30.512037 },
+      type: 'med',
+      icon: { url: markersAdresses.med, scaledSize: defaultMarkerSize },
+    },
+    {
+      content: '<div>ЖК "La Manche"</div>',
+      position: { lat: 50.466557, lng: 30.513491 },
+      type: 'metro',
+      icon: { url: markersAdresses.metro, scaledSize: defaultMarkerSize },
+    },
+    {
+      content: '<div>ЖК "La Manche"</div>',
+      position: { lat: 50.466369, lng: 30.517440 },
+      type: 'museum',
+      icon: { url: markersAdresses.museum, scaledSize: defaultMarkerSize },
+    },
+    {
+      content: '<div>ЖК "La Manche"</div>',
+      position: { lat: 50.465546, lng: 30.522570 },
+      type: 'education',
+      icon: { url: markersAdresses.education, scaledSize: defaultMarkerSize },
+    },
+    {
+      content: '<div>ЖК "La Manche"</div>',
+      position: { lat: 50.467424, lng: 30.507700 },
+      type: 'education',
+      icon: { url: markersAdresses.education, scaledSize: defaultMarkerSize },
+    },
+    {
+      content: '<div>ЖК "La Manche"</div>',
+      position: { lat: 50.467384, lng: 30.508963 },
+      type: 'education',
+      icon: { url: markersAdresses.education, scaledSize: defaultMarkerSize },
+    },
+    {
+      content: '<div>ЖК "La Manche"</div>',
+      position: { lat: 50.468431, lng: 30.510183 },
+      type: 'cinema',
+      icon: { url: markersAdresses.cinema, scaledSize: defaultMarkerSize },
+    },
+    {
+      content: '<div>ЖК "La Manche"</div>',
+      position: { lat: 50.472831, lng: 30.511344 },
+      type: 'sport',
+      icon: { url: markersAdresses.sport, scaledSize: defaultMarkerSize },
+    },
+    {
+      content: '<div>ЖК "La Manche"</div>',
+      position: { lat: 50.474018, lng: 30.503866 },
+      type: 'metro',
+      icon: { url: markersAdresses.metro, scaledSize: defaultMarkerSize },
+    },
+    {
+      content: '<div>ЖК "La Manche"</div>',
+      position: { lat: 50.471777, lng: 30.507165 },
+      type: 'shop',
+      icon: { url: markersAdresses.shop, scaledSize: defaultMarkerSize },
     },
   ];
-
   const markersCategoriesList = new Set();
   markersData.forEach((el) => { markersCategoriesList.add(el.type); });
   console.log(markersCategoriesList);
@@ -278,9 +327,9 @@ window.addEventListener('load', () => {
     // добавить плавность появление блока с маркерами
     if (legend.classList.contains('opened')) {
       gsap.fromTo('.map-wrap__legend-markers-wrap', { height: 0 },
-        { height: '50vh' });
+        { height: '35vw' });
     } else {
-      gsap.fromTo('.map-wrap__legend-markers-wrap', { height: '50vh' }, { height: 0 });
+      gsap.fromTo('.map-wrap__legend-markers-wrap', { height: '35vw' }, { height: 0 });
     }
   });
   legend.addEventListener('mouseenter', () => {

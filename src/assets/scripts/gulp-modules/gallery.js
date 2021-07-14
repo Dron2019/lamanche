@@ -3,6 +3,7 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-undef */
+const switchItems = document.querySelectorAll('[data-content-type]');
 // eslint-disable-next-line no-undef
 const galSwiper = new Swiper('.mySwiper', {
   slidesPerView: 1.5,
@@ -31,26 +32,60 @@ const galSwiper = new Swiper('.mySwiper', {
   },
 });
 
-galSwiper.on('afterInit', () => {
-  // locoScroll.update();
+filterSlides(switchItems[0], galSwiper);
+
+galSwiper.on('update', (swiper) => {
+  document.querySelectorAll('iframe').forEach(stopIframeVideo);
+  const activeFrame = document.querySelectorAll('.swiper-slide:not([style*="none"]) iframe')[swiper.realIndex];
+  const prevFrame = document.querySelectorAll('.swiper-slide:not([style*="none"]) iframe')[swiper.previousIndex];
+  console.log(activeFrame, '\n', prevFrame);
+  if (activeFrame === undefined) return;
+  startIframeVideo(activeFrame);
+  if (prevFrame !== undefined) stopIframeVideo(prevFrame);
+  // console.log(swiper);
+  // console.log(activeFrame);
 });
+galSwiper.on('activeIndexChange', (swiper) => {
+  const activeFrame = document.querySelectorAll('.swiper-slide:not([style*="none"]) iframe')[swiper.realIndex];
+  const prevFrame = document.querySelectorAll('.swiper-slide:not([style*="none"]) iframe')[swiper.previousIndex];
+  console.log(activeFrame, '\n', prevFrame);
+  if (activeFrame === undefined) return;
+  startIframeVideo(activeFrame);
+  if (prevFrame !== undefined) stopIframeVideo(prevFrame);
+  // console.log(swiper);
+  // console.log(activeFrame);
+});
+
 locoScroll.destroy();
+
 setTimeout(() => {
   document.querySelector('.page__inner').style.transform = '';
 }, 3000);
-const switchItems = document.querySelectorAll('[data-content-type]');
+
+
 switchItems.forEach((item) => {
   item.addEventListener('click', () => {
     const currentActive = document.querySelector('.active[data-content-type]');
     if (currentActive !== null) {
       currentActive.classList.remove('active');
     }
-    console.log(currentActive);
     item.classList.add('active');
+    filterSlides(item, galSwiper);
   });
 });
 
-
+function filterSlides(filterButton, swiper) {
+  const typeForFilter = filterButton.dataset.contentType;
+  const slides = document.querySelectorAll('.swiper-slide');
+  slides.forEach((slide) => {
+    if (slide.dataset.type === typeForFilter) {
+      slide.style.display = '';
+    } else {
+      slide.style.display = 'none';
+    }
+  });
+  swiper.update();
+}
 /** СТрелка переключатель в зависимости от положения на єкране */
 
 function sideSwitchArrow(swiper, arrow, container) {
@@ -137,3 +172,13 @@ sideSwitchArrow(
   document.querySelector('.gal-slider'),
 );
 /** СТрелка переключатель в зависимости от положения на єкране END */
+
+
+function stopIframeVideo(element) {
+  element.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
+}
+
+function startIframeVideo(element) {
+  console.log(element);
+  element.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+}

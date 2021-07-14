@@ -38,6 +38,17 @@
         padding-top: 90px;
         padding-left: 80px;
     }
+    .swiper-slide {
+        height: 60vh;
+        iframe {
+            pointer-events: none;
+        }
+        img,iframe {
+            height: 100%;
+            object-fit: cover;
+            width: 100%;
+        }
+    }
     @include to(768px){
         margin-left: 0;width: 100%;
         .slider-nav {

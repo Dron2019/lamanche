@@ -1,8 +1,39 @@
 .news-wrapper {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: var(--footer-margin);
+    padding-bottom: var(--footer-margin);
+    position: relative;
     --offset: 70px;
+    --bg-width: 200px;
+    @include from(1680px){
+        max-width: none;
+        padding-left: calc((100vw - 1720px) / 2);   
+        padding-right: calc((100vw - 1720px) / 2);   
+    }
+    &__bg {
+        position: absolute;
+        width: var(--bg-width);
+        background-size: contain;
+        background-repeat: repeat-y;
+        z-index: -1;
+        pointer-events: none;
+    }
+    &__left-bg {
+        height: 100%;
+        left: 0;
+        top: 0%;
+        background-position-y: 100vh;
+        background-position-x: calc(var(--bg-width) / -2);
+        background-size: var(--bg-width);
+    }
+    &__right-bg {
+        height: 100%;
+        right: 0;
+        top: 0;
+        background-position-y: 0;
+        background-position-x: calc(var(--bg-width) / 2);
+        background-size: var(--bg-width);
+    }
     .news-cards-wrap {
         width: 55%;
         margin-left: auto;
