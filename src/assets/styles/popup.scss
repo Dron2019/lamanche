@@ -10,6 +10,7 @@
     justify-content: center;align-items: center;
     flex-wrap: wrap;
     cursor: pointer;
+    z-index: 1000;
     form {
         background-color: #ffffff;
         position: relative;
@@ -17,7 +18,8 @@
     display: none;
     @include to(575px){
      padding-top: var(--header-h);
-     align-items: flex-start;   
+     align-items: center;  
+     align-content: center;
     }
 }
 .popup {
@@ -151,8 +153,8 @@ color: var(--color-black);
     @include to(575px){
         padding-left: 25px;
         padding-right: 25px;
-        padding-top: 25px;
-        padding-bottom: 25px;
+        padding-top: 50px;
+        padding-bottom: 50px;
         // top: var(--header-h);
         .form-field:not(#t) {
             margin-top: 15px;

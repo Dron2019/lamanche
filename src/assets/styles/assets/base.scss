@@ -44,6 +44,9 @@ body {
 	@include from(1680px){
 		font-size: 18px;
 	}
+	@include to(575px){
+		font-size: 15px;
+	}
 }
 
 body input, body textarea {
@@ -274,6 +277,9 @@ input[type=number]::-webkit-outer-spin-button {
 	}
 	&.small {
 		font-size: 18px;
+		@include to(575px){
+			font-size: 20px;
+		}
 	}
 	@include from(1680px){
 		font-size: 42px;
@@ -344,12 +350,19 @@ p~p {
 }
 
 .underlined-link-wrap {
+	.underlined-link {
+		transition: color .3s ease-in-out;
+	}
 	svg {
 		transition:  .3s ease-in-out;
 	}
 	@include from(950px){
+		&:hover .underlined-link {
+			color: var(--color-gold);
+		}
 		&:hover svg {
-			transform: rotate(360deg);
+			// transform: rotate(360deg);
+			stroke: #efc47f;
 		}
 	}
 }
@@ -363,6 +376,9 @@ p~p {
 	align-content: flex-start;
 	z-index: 500;
 	--size: 46px;
+	@include to(575px){
+		display: none;	
+	}
 	@include to(360px){
 		--size: 35px;
 	}
@@ -415,6 +431,7 @@ p~p {
 	opacity: 0;
 	width: 100px;
 	height: 100px;
+	pointer-events: none;
 	&.left-side {
 		transform: rotate(-180deg);
 	}

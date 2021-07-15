@@ -327,9 +327,9 @@ window.addEventListener('load', () => {
     // добавить плавность появление блока с маркерами
     if (legend.classList.contains('opened')) {
       gsap.fromTo('.map-wrap__legend-markers-wrap', { height: 0 },
-        { height: '35vw' });
+        { height: '35vh' });
     } else {
-      gsap.fromTo('.map-wrap__legend-markers-wrap', { height: '35vw' }, { height: 0 });
+      gsap.fromTo('.map-wrap__legend-markers-wrap', { height: '35vh' }, { height: 0 });
     }
   });
   legend.addEventListener('mouseenter', () => {

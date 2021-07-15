@@ -29,6 +29,11 @@
     .swiper-button-prev {
         transform: rotate(180deg);
     }
+    @include from(576px){
+        .slider-nav {
+     display: none;       
+        }
+    }
     @include to(768px){
         @include shift-padding-left(0);
         &__content {
@@ -49,8 +54,9 @@
 }
 .single-progress-date {
     font-weight: 300;
-font-size: 12px;
+font-size: 15px;
 line-height: 100%;
+line-height: 160%;
 /* identical to box height, or 12px */
 
 letter-spacing: 0.05em;

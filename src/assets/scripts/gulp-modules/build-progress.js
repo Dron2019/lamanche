@@ -64,7 +64,7 @@ function filterBuildCards(items, filterObject, wrapper, afterCallback = () => {}
     Object.entries(filterObject).forEach((validField) => {
       const key = validField[0];
       const value = validField[1].toString();
-      if (card.dataset[key] === value || value === 'null' || card.dataset[key] === '') {
+      if (card.dataset[key] === value || value === 'null') {
         validFieldsCount += 1;
       }
     });
@@ -84,7 +84,12 @@ function filterBuildCards(items, filterObject, wrapper, afterCallback = () => {}
 function handleFilterBuildCards() {
   const cards = document.querySelectorAll('.build-progress-card');
   withVideoCheckbox.addEventListener('change', () => {
-    filterItems[withVideoCheckbox.dataset.name] = !withVideoCheckbox.checked;
+    if (withVideoCheckbox.checked === false) {
+      filterItems[withVideoCheckbox.dataset.name] = '1';
+    } else {
+      filterItems[withVideoCheckbox.dataset.name] = '';
+    }
+    // filterItems[withVideoCheckbox.dataset.name] = !withVideoCheckbox.checked;
     filterBuildCards(cards, filterItems, cardsWrapper, () => {
       locoScroll.update();
     });
@@ -128,8 +133,9 @@ function closePopup(evt) {
       clearProps: 'all',
     }).set(webCameraPopup, { pointerEvents: 'none' })
       .to(webCameraPopup.querySelector('.web-camera-popup'), { autoAlpha: 0, y: 100, clearProps: 'all' })
-      .set(webCameraPopup.querySelector('.web-camera-popup'), { autoAlpha: 0, clearProps: 'all' })
-      .set(webCameraPopup, { autoAlpha: 0, y: 0, clearProps: 'all' });
+      .set(webCameraPopup.querySelector('.web-camera-popup'), { autoAlpha: 0 })
+      .to(webCameraPopup, { autoAlpha: 0 })
+      .set(webCameraPopup.querySelector('.web-camera-popup'), { autoAlpha: 0, y: 0, clearProps: 'all' });
   }
 }
 webCameraPopup.addEventListener('click', closePopup);
@@ -150,6 +156,7 @@ webCamClose.addEventListener('click', (evt) => {
     clearProps: 'all',
   }).set(webCameraPopup, { pointerEvents: 'none' })
     .to(webCameraPopup.querySelector('.web-camera-popup'), { autoAlpha: 0, y: 100, clearProps: 'all' })
-    .set(webCameraPopup.querySelector('.web-camera-popup'), { autoAlpha: 0, clearProps: 'all' })
-    .set(webCameraPopup, { autoAlpha: 0, y: 0, clearProps: 'all' });
+    .set(webCameraPopup.querySelector('.web-camera-popup'), { autoAlpha: 0 })
+    .to(webCameraPopup, { autoAlpha: 0 })
+    .set(webCameraPopup.querySelector('.web-camera-popup'), { autoAlpha: 0, y: 0, clearProps: 'all' });
 });

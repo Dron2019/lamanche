@@ -1,3 +1,4 @@
+/* eslint-disable prefer-arrow-callback */
 /* eslint-disable no-use-before-define */
 /* eslint-disable func-names */
 /* eslint-disable no-proto */
@@ -53,7 +54,7 @@ function sideSwitchArrow(swiper, arrow, container) {
   };
   arrow.__proto__.show = function () {
     this.style.opacity = '1';
-    this.style.pointerEvents = 'auto';
+    // this.style.pointerEvents = 'auto';
   };
   arrow.dataset.side = 'leftSide';
 
@@ -98,10 +99,12 @@ function sideSwitchArrow(swiper, arrow, container) {
       // switchGallerySlide('rightSide')
     }
   }
-  arrow.addEventListener('click', () => {
+  container.addEventListener('click', function changeMe() {
     switchGallerySlide(arrow.dataset.side);
   });
-
+  if (document.documentElement.clientWidth < 576) {
+    container.removeEventListener('click', changeMe);
+  }
   const navigate = {
     leftSide: () => {
       swiper.slidePrev();

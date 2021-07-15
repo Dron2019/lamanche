@@ -141,6 +141,14 @@
       content: attr(data-open);
     }
   }
+  @include from(576px){
+    &__menu-call {
+      display: none;   
+    }
+    &__links {
+      margin-left: 0;
+    }
+  }
   @include to(1240px){
     &__links a:last-child {
       display: none;
@@ -164,14 +172,17 @@
   @include to(575px){
    
     &__logo {
-      margin-left: 15px;
+      margin-left: 18px;
+    }
+    &__menu-call {
+      font-size: 12px;
     }
     &__menu-call-icon {
-      width: 28px;
-      height: 28px;
+      width: 40px;
+      height: 40px;
       svg {
-        width: 8px;
-        height: 8px;
+        width: 10px;
+        height: 10px;
       }
     }
     &__tel {

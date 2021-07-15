@@ -5,6 +5,10 @@
     position: relative;
     // user-select: none;
     margin-bottom: 100px;
+    @include to(575px){
+        margin-bottom: 80px;
+        margin-top: 30px;
+    }
     .swiper-container {
         overflow: visible;
         // pointer-events: none;
@@ -37,6 +41,12 @@
         background: linear-gradient(140deg, rgba(0, 0, 0, 0) 45%, #000000 106%);
         padding-top: 90px;
         padding-left: 80px;
+        @include to(575px){
+            
+            background: linear-gradient(140deg, rgba(0, 0, 0, 0) 50%, #000000 106%);
+            padding-top: 120px;
+            padding-left: 120px;
+        }
     }
     .swiper-slide {
         height: 60vh;
@@ -65,6 +75,9 @@
         }
     }
     @include to(575px){
+        .swiper-slide {
+            height: 100vw;
+        }
         margin-left: 0;
         margin-right: 0;
         .slider-nav {
@@ -121,5 +134,11 @@
             position: static;
             margin-left: auto;
         }   
+    }
+    @include to(575px){
+        .gallery-switcher {
+            margin-left: 0;
+            margin-right: auto;       
+        }
     }
 }

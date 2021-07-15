@@ -24,7 +24,7 @@
     --offset:30px;
   }
   @include to(575px){
-    padding-top: 50px;
+    padding-top: 80px;
 
     --offset: 15px;
   }
@@ -154,7 +154,7 @@
     height: 35px;
     @include from(1680px){
       width: 90px;
-    height: 45px;
+      height: 45px;
     }
   }
   .smarto {
