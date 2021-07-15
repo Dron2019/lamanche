@@ -141,6 +141,9 @@ color: var(--color-black);
         line-height: 160%;
         resize: none;
         color: #1D1D27;
+        @include from(1680px){
+            font-size: 18px;
+        }
     }
     textarea::placeholder {
         color: #878787;

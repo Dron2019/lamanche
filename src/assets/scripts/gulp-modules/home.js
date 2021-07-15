@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-
+@@include('../libs/hammer/hammer.js')
 function slider(container) {
   const nav = container.querySelector('.slider-nav');
   const currentNum = container.querySelector('.current');
@@ -11,44 +11,65 @@ function slider(container) {
   const transitionSpeed = 1.75;
   let currentIndex = 0;
   let nextIndex = 0;
+  const hammer = new Hammer(container, {
+
+  });
+  hammer.on('swipeleft', (ev) => {
+    console.log(ev);
+    indexIncrement();
+    animateSlidesForward($slides[currentIndex], $slides[nextIndex]);
+    currentIndex = nextIndex;
+    setCurrentIndexView(nextIndex + 1);
+  });
+  hammer.on('swiperight', () => {
+    indexDecrement();
+    animateSlidesBackward($slides[currentIndex], $slides[nextIndex]);
+    currentIndex = nextIndex;
+    setCurrentIndexView(nextIndex + 1);
+  });
   allNum.textContent = $slides.length;
   function animateSlidesForward(current, next) {
     gsap.set(next, { webkitClipPath: 'polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)' });
     gsap.timeline({})
-      .set(nav, { pointerEvents: 'none' })
+      .set(container, { pointerEvents: 'none' })
       .set(current, { zIndex: 3 })
       .set(next, { zIndex: 4 })
       .to(next, { webkitClipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', ease: transitionEasing, duration: transitionSpeed })
-      .set(nav, { pointerEvents: 'all' })
+      .set(container, { pointerEvents: 'all' })
       .set(current, { zIndex: 2 });
   }
   function animateSlidesBackward(current, next) {
     gsap.set(next, { webkitClipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)' });
     gsap.timeline({})
-      .set(nav, { pointerEvents: 'none' })
+      .set(container, { pointerEvents: 'none' })
       .set(current, { zIndex: 3 })
       .set(next, { zIndex: 4 })
       .to(next, { webkitClipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', ease: transitionEasing, duration: transitionSpeed })
-      .set(nav, { pointerEvents: 'all' })
+      .set(container, { pointerEvents: 'all' })
       .set(current, { zIndex: 2 });
   }
-
-  function setCurrentIndexView(index) {
-    const toView = index < 10 ? `0${index.toString()}` : index;
-    currentNum.textContent = toView;
-  }
-  nextArrow.addEventListener('click', () => {
+  function indexIncrement() {
     if (nextIndex !== ($slides.length - 1)) {
       nextIndex += 1;
     } else {
       nextIndex = 0;
     }
+  }
+  function indexDecrement() {
+    nextIndex = (nextIndex === 0) ? $slides.length - 1 : nextIndex - 1;
+  }
+  function setCurrentIndexView(index) {
+    const toView = index < 10 ? `0${index.toString()}` : index;
+    currentNum.textContent = toView;
+  }
+  nextArrow.addEventListener('click', () => {
+    indexIncrement();
     animateSlidesForward($slides[currentIndex], $slides[nextIndex]);
     setCurrentIndexView(nextIndex + 1);
     currentIndex = nextIndex;
   });
   prevArrow.addEventListener('click', () => {
-    nextIndex = (nextIndex === 0) ? $slides.length - 1 : nextIndex - 1;
+    indexDecrement();
     animateSlidesBackward($slides[currentIndex], $slides[nextIndex]);
     setCurrentIndexView(nextIndex + 1);
     currentIndex = nextIndex;
