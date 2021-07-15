@@ -4,6 +4,25 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable func-names */
 /* eslint-disable no-restricted-syntax */
+
+
+let url = '/wp-admin/admin-ajax.php';
+if (window.location.href.match(/localhost/)) url = 'https://lamanche-wp.smarto.agency/wp-admin/admin-ajax.php';
+const fetchData = new FormData();
+fetchData.append('action', 'build');
+fetch(url, {
+  method: 'POST',
+  body: fetchData,
+  // mode: 'same-origin',
+})
+  .then((response) => {
+    console.log(response);
+  })
+  .catch((response) => {
+    console.log(response);
+  });
+
+
 function filterBuildCards(items, filterObject, wrapper, afterCallback = () => {}) {
   items.forEach((card) => {
     const validFieldLength = Object.entries(filterObject).length;

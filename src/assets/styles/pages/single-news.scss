@@ -141,3 +141,26 @@
         object-fit: cover;
     }
 }
+
+
+.similar-news-wrap {
+    margin-bottom: var(--footer-margin);
+    @include row-flex();
+    @include shift-padding(2.5);
+    @include to(1120px){
+        @include shift-padding(2);
+    }
+    @include to(768px){
+        @include shift-padding(0);
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .news-card~.news-card {
+        margin-top: 50px;
+        @include to(768px){
+            margin-top: 30px;
+        }
+    }
+}

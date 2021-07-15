@@ -18,6 +18,21 @@ block variable
       ['build-card-04.jpg'],
       ['build-card-05.jpg'],
     ];
+    var cards = [
+      {
+        promotion: 'true',
+        date: '02.10.2020',
+        title: 'Lorem ipsum dolor sit amet.',
+        text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore quae assumenda ducimus?',
+        img: './assets/images/news/test.jpg'
+      },
+      {
+        date: '02.10.2020',
+        title: 'Lorem ipsum dolor sit amet.',
+        text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore quae assumenda ducimus?',
+        img: './assets/images/news/test.jpg'
+      },
+    ];
   
 block meta
   title= title_page
@@ -61,6 +76,22 @@ block content
       .single-news-article__video-block
         .single-news-article__video-block-proportions
           <iframe width="560" height="315" src="https://www.youtube.com/embed/RfjiwkorOfo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    .similar-news-wrap
+      .page-title Інші новини
+      each val in cards
+        a(href="single-news.html" data-month="03" data-year='2020').news-card
+          if val.promotion === 'true'
+            .promotion-item 
+              span Акція
+              +svg('megafon')
+          img.news-card__img(src=val.img)
+          .news-card__text
+            .news-card__date #{val.date}
+            .news-card__title #{val.title}
+            .news-card__description #{val.text}
+            .underlined-link-wrap.news-card__link 
+              .underlined-link Дізнатись більше
+              +svg('build-arrow')
 block footer
   include ../includes/footer.pug
 
