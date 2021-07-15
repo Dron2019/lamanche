@@ -9,17 +9,22 @@
     margin-right: auto;
     margin-bottom: 10px;
     text-transform: uppercase;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     font-size: 12px;
-            line-height: 100%;
-            @include from(1680px){
-                font-size: 15px;
-            }
+    line-height: 100%;
+    @include from(1680px){
+        font-size: 15px;
+    }
     a {
         text-decoration: none;
     }
     &-list {
         display: flex;
         max-width: 100%;
+        overflow: hidden;
     }
     &-item:not(:first-child):before {
         content: '';
@@ -46,6 +51,11 @@
         &__current--color {
             color: var(--text-gray);
             pointer-events: none;
+            // white-space: nowrap;
+            // overflow: visible;
+
+            // overflow: hidden;
+            text-overflow: ellipsis;
         }
     }
     @include from(1680px) {

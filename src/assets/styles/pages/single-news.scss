@@ -4,7 +4,26 @@
     border: 1px solid #DBDBDB;
     --side-padding: 60px;
     font-size: 15px;
-line-height: 160%;
+    line-height: 160%;
+    margin-top: 50px;
+    @include size(10);
+    @include shift(1);
+    margin-bottom: var(--footer-margin);
+    @include from(1680px){
+        font-size: 18px;
+    }
+    @include to(950px){
+        --side-padding: 30px;
+    }
+    @include to(575px){
+        font-size: 14px;
+    }
+    @include to(1024px){
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+        --side-padding: var(--page-side-fields);
+    }
     &__title {
         width: 100%;
         padding-left: var(--side-padding);
@@ -14,11 +33,17 @@ line-height: 160%;
         font-size: 20px;
         line-height: 150%;
         color: var(--color-black);
+        @include from(1680px){
+            font-size: 28px;
+        }
     }
     &__slider {
         width: 50%;
         border-top: 1px solid #DBDBDB;
         position: relative;
+        @include to(575px){
+            width: 100%;
+        }
     }
     &__top-right {
         width: 50%;
@@ -27,6 +52,9 @@ line-height: 160%;
         padding-right: var(--side-padding);
         padding-left: var(--side-padding);
         border-top: 1px solid #DBDBDB;
+        @include to(575px){
+            width: 100%;
+        }
     }
     &__bottom-right {
         width: 50%;
@@ -35,6 +63,11 @@ line-height: 160%;
         padding-left: var(--side-padding);
         padding-right: var(--side-padding);
         border-top: 1px solid #DBDBDB;
+        @include to(575px){
+            width: 100%;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
     }
     &__bottom-left {
         width: 50%;
@@ -43,6 +76,11 @@ line-height: 160%;
         padding-left: var(--side-padding);
         padding-right: calc(var(--side-padding) / 2);
         border-top: 1px solid #DBDBDB;
+        @include to(575px){
+            width: 100%;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
     }
     &__numbers {
         position: absolute;
@@ -54,6 +92,21 @@ line-height: 160%;
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+    &__video-block {
+        width: 100%;
+    }
+    &__video-block-proportions {
+        position: relative;
+        padding-bottom: 52.5%;
+        &>* {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     }
     .all {
         font-size: 72px;
@@ -83,5 +136,8 @@ line-height: 160%;
     }
     .button-std {
         margin-top: 25px;
+    }
+    .swiper-slide {
+        object-fit: cover;
     }
 }
