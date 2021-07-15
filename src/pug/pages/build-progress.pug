@@ -78,7 +78,7 @@ block content
                 span.custom-option.selected(data-value=val[1]) #{val[0]}
               else
                 span.custom-option(data-value=val[1]) #{val[0]}
-      a(href="web-camera").underlined-link-wrap
+      a(href="#" data-web-camera-popup).underlined-link-wrap
         .underlined-link Веб-камера
         +svg('camera')
     .build-cards-wrap(data-no-cards-selector="no-cards" data-no-cards-title="За вашими параметрами нічого не знайдено")
@@ -92,7 +92,14 @@ block content
                 span Переглянути звіт
                 +svg('build-arrow')
           .build-progress-card__inner(data-background-lazy data-src="./assets/images/build-progress/"+val[0] style="")
-                
+    .web-camera-popup-wrapper(data-web-cam-popup)
+      .web-camera-popup
+        <svg data-popup-close="" class="web-camera-popup__close" width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0H45V45C20.1472 45 0 24.8528 0 0Z" fill="#EFC47F"></path>
+          <path d="M21 24L31 14M31 24L21 14" stroke="white"></path>
+          </svg>
+        <iframe class="iv-i" src="https://open.ivideon.com/embed/v2/?server=100-HQrunT5KaVo0qMcpKTK3h2&amp;camera=196608&amp;width=&amp;height=&amp;lang=ru" width="100" allowfullscreen="allowfullscreen"></iframe>
+      
 block footer
   include ../includes/footer.pug
 

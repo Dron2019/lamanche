@@ -8,4 +8,5 @@
 /package-lock.json
 /dist/
 /prod/
+/.vscode/
 /src/assets/svg-sprite/sprite/symbol_sprite.php
