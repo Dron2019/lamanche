@@ -71,7 +71,6 @@ window.addEventListener('click', (e) => {
   }
 });
 
-
 const webCameraCallPopup = document.querySelector('[data-web-camera-popup]');
 const webCameraPopup = document.querySelector('[data-web-cam-popup]');
 const webCamClose = webCameraPopup.querySelector('[data-popup-close]');

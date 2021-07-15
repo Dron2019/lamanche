@@ -363,6 +363,9 @@ p~p {
 	align-content: flex-start;
 	z-index: 500;
 	--size: 46px;
+	@include to(360px){
+		--size: 35px;
+	}
 	a {
 		font-size: 12px;
 		line-height: 100%;

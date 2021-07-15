@@ -1,0 +1,87 @@
+.single-news-article {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid #DBDBDB;
+    --side-padding: 60px;
+    font-size: 15px;
+line-height: 160%;
+    &__title {
+        width: 100%;
+        padding-left: var(--side-padding);
+        padding-right: var(--side-padding);
+        padding-top: 25px;
+        padding-bottom: 25px;
+        font-size: 20px;
+        line-height: 150%;
+        color: var(--color-black);
+    }
+    &__slider {
+        width: 50%;
+        border-top: 1px solid #DBDBDB;
+        position: relative;
+    }
+    &__top-right {
+        width: 50%;
+        padding-top: 35px;
+        padding-bottom: 35px;
+        padding-right: var(--side-padding);
+        padding-left: var(--side-padding);
+        border-top: 1px solid #DBDBDB;
+    }
+    &__bottom-right {
+        width: 50%;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        padding-left: var(--side-padding);
+        padding-right: var(--side-padding);
+        border-top: 1px solid #DBDBDB;
+    }
+    &__bottom-left {
+        width: 50%;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        padding-left: var(--side-padding);
+        padding-right: calc(var(--side-padding) / 2);
+        border-top: 1px solid #DBDBDB;
+    }
+    &__numbers {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 10px;
+        color: var(--color-white);
+        z-index: 5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .all {
+        font-size: 72px;
+        line-height: 100%;
+        /* identical to box height, or 72px */
+
+        text-align: center;
+        text-transform: uppercase;
+        position: relative;
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+    .current {
+        position: absolute;
+        bottom: 100%;
+        right: 0;
+        font-size: 12px;
+        line-height: 100%;
+        /* identical to box height, or 12px */
+
+        text-align: right;
+        text-transform: uppercase;
+    }
+    .button-next,
+    .button-prev {
+        cursor: pointer;
+    }
+    .button-std {
+        margin-top: 25px;
+    }
+}

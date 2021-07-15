@@ -141,12 +141,12 @@
       content: attr(data-open);
     }
   }
-  @include to(1150px){
+  @include to(1240px){
     &__links a:last-child {
       display: none;
     }
   }
-  @include to(1024px){
+  @include to(1120px){
     &__links a:nth-last-child(2) {
       display: none;
     }
@@ -156,10 +156,13 @@
       display: none;
     }
   }
-  @include to(575px){
+  @include to(768px){
     &__links {
       display: none;
     }
+  }
+  @include to(575px){
+   
     &__logo {
       margin-left: 15px;
     }
