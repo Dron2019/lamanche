@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable prefer-arrow-callback */
 /* eslint-disable no-proto */
 /* eslint-disable func-names */
@@ -169,11 +170,11 @@ function sideSwitchArrow(swiper, arrow, container) {
 
   // eslint-disable-next-line no-unused-vars
 }
-sideSwitchArrow(
-  galSwiper,
-  document.querySelector('.moving-arrow'),
-  document.querySelector('.gal-slider'),
-);
+// sideSwitchArrow(
+//   galSwiper,
+//   document.querySelector('.moving-arrow'),
+//   document.querySelector('.gal-slider'),
+// );
 /** СТрелка переключатель в зависимости от положения на єкране END */
 
 
