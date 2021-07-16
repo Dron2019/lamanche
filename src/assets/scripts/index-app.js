@@ -288,3 +288,10 @@ blockForUpdatingLocoScroll.forEach((image) => {
   const target = image;
   observer.observe(target);
 });
+
+
+document.querySelectorAll('[data-up]').forEach((arrow) => {
+  arrow.addEventListener('click', () => {
+    if (locoScroll !== undefined) locoScroll.scrollTo(0, 0);
+  });
+});

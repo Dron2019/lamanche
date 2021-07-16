@@ -38,7 +38,7 @@ maps.forEach((image) => {
 function initMap() {
   const gmarkers1 = [];
   const center = {
-    lat: 50.472626, lng: 30.5142653,
+    lat: 50.47315200396692, lng: 30.517570821411027,
   };
     /** Массив, куда записываются выбраные категории */
   const choosedCategories = new Set();

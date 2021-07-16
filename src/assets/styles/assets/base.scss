@@ -436,3 +436,18 @@ p~p {
 		transform: rotate(-180deg);
 	}
 }
+
+.up-arrow {
+	position: fixed;
+	right: var(--page-side-fields);
+	top: 50%;
+	transform: translateY(-50%);
+	width: 36px;
+	height: 36px;
+	cursor: pointer;
+	z-index: 15;
+	mix-blend-mode:difference;
+	@include to(575px){
+		display: none;	
+	}
+}

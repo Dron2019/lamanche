@@ -859,6 +859,11 @@
         margin-left: calc(var(--offset) / 2);
         margin-right: calc(var(--offset) / 2);
         // border: 1px solid olivedrab;
+        @include to(575px){
+            height: 50vh;
+            width: calc(100% - var(--offset));
+            margin-top: 50px;
+        }
     }
     @include from(1680px){
         padding-left: calc((100vw - 1680px) / 2);

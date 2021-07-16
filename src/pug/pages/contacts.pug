@@ -6,10 +6,6 @@ block variable
     var class_page = 'page-contacts'
     // var breadcrumbsBtn = 'filter'
     var breadcrumbsSubitem = [
-      {
-        label: 'Contacts',
-        link: pagesLink[0].contacts
-      }
     ]
 block meta
   title= title_page
@@ -22,52 +18,38 @@ block scripts
   script(defer src='./assets/scripts/index.js')
   script(defer src='./assets/scripts/libs.js')
   script(defer src='./assets/scripts/header.js')
+  script(defer src='./assets/scripts/map.js')
 block content
-  .contacts
+  .container
     include ../includes/breadcrumbs.pug
-    h1.title контакти
-    .contact
-      .contact__location
-        .contact__title Розташування:
-        .contact__desc м. Київ, Оболонський район,<br> пр-т Степана Бандрери, 30
-        a(href="").contact__link
-          span Показати на Google Maps
-          .contact__link__arrow
-            +svg('arrow')
-      .contact__sales
-        .contact__title Відділ продажів:
-        .contact__phone 044 555-55-55
-        .contact__mail info@beregresidence.com
-        .contact__work-time
-          span Пн-пт: 09:00-19:00
-          span Сб-вс: 10:00-18:00
-
-    .form
-      h5.form-label.home-contact--width Залишились питання?
-      form(data-home-contact autocomplete="off").home-contact--width
-        .form-field.form-field-input(data-field-input data-field-name data-status="field--inactive")
-          input(type='text' name="name" placeholder="Ім’я:").form-field__input
-          .form-field-message Ваше ім’я
-          .input-message(data-input-message)
-
-        .form-field.disabled.form-field-input(data-field-input data-field-phone data-status="field--inactive")
-          input(type='text' name="phone" placeholder="Телефон:").form-field__input
-          .form-field-message Ваш телефон
-          .mask-absolute.js-mask-absolute
-          .input-message(data-input-message)
-
-        .form-textarea
-          textarea(placeholder="Повідомлення:")
-          .form-field-message Введіть ваше повідомлення
-
-        .form-btn-wrap.df.jcsb.aic
-          button( class="main-button home-contact-btn--size" type="submit" data-btn-submit="data-btn-submit")
-            span.main-button__text(data-btn-submit-text="data-btn-submit-text") Надіслати
-            .main-button__arrow
-              +svg('arrow')
-
-      //include ../components/form/form.pug
-
+    h1.page-title #{title_page}
+    .home-section-8.contact-page-section
+      .home-section-8__text.home-contact-block(style="background-image: url(./assets/images/home/contacts-bg.svg)")
+        .subtitle Адреса об’єкту:
+        a(target='_blank' href="https://goo.gl/maps/sgHxqVUGaunDDJPU6").home-contact-block__group
+          .home-contact-block__icon
+            +svg('marker')
+          .home-contact-block__group-text м. Київ, вул. Щекавицька, 46
+        .subtitle.double-margin Відділ продажу:
+        a(href="tel:0442994966").home-contact-block__group
+          .home-contact-block__icon
+            +svg('tel')
+          .home-contact-block__group-text.subtitle +38 (044) 299 49 66
+        .home-contact-block__group
+          .home-contact-block__icon
+            +svg('clock')
+          .home-contact-block__group-text
+            .text Пн-Пт: 10:00 - 19:00 
+            .text Сб: 11:00 - 16:00
+            .text Нд: по запису
+        a(href="https://goo.gl/maps/VjrTXj3KXCQ5UWVu6" target='_blank').home-contact-block__group
+          .home-contact-block__icon
+            +svg('marker')
+          .home-contact-block__group-text
+            .text м. Київ,
+            .text вул. Набережно-Хрещатицька, 49А
+        +a('Показати на карті', 'gold', 'https://goo.gl/maps/sgHxqVUGaunDDJPU6')(target="_blank" class="double-margin")
+      .home-section-8__map.map#map
 block footer
   include ../includes/footer.pug
 
