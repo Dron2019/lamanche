@@ -8,23 +8,21 @@ block variable
     var breadcrumbsSubitem = [
     ];
     var logos = [
-      './assets/images/developer/5kv_ru-white.svg                 ',
-      './assets/images/developer/logo_polaris_transparent.svg',
-      './assets/images/developer/ALL_PG_logos-_Stanford-mono.svg  ',
-      './assets/images/developer/new-_woods_ru-white.svg',
-      './assets/images/developer/bereg1_ru-white.svg              ',
-      './assets/images/developer/PG-_Rusaniv-RU-mono.svg',
-      './assets/images/developer/garden-white.svg                 ',
-      './assets/images/developer/PG-_Terracotta-RU-white.svg',
-      './assets/images/developer/kandinsky_logo_white.svg         ',
-      './assets/images/developer/PG_white-V.svg',
-      './assets/images/developer/Philadelphia-mono-1.svg',
-      './assets/images/developer/Lebediny-svg-white_ru.svg        ',
-      './assets/images/developer/PTL_white.svg',
-      './assets/images/developer/logo.svg                         ',
-      './assets/images/developer/Rybalsky_ua-white.svg',
-      './assets/images/developer/logo_FRANKLIN_white.svg          ',
-      './assets/images/developer/Trabotti_LOGObook2.svg',
+      ['./assets/images/developer/5kv_ru-white.svg                 ','https://perfect-group.ua/ru/projects/v-kvartal/'],
+      ['./assets/images/developer/logo_polaris_transparent.svg','https://polaris.kiev.ua/'],
+      ['./assets/images/developer/ALL_PG_logos-_Stanford-mono.svg  ','https://stanford.kiev.ua/'],
+      ['./assets/images/developer/new-_woods_ru-white.svg','https://perfect-group.ua/ru/projects/woodstoria/'],
+      ['./assets/images/developer/bereg1_ru-white.svg              ','https://perfect-group.ua/ru/projects/bereginya/'],
+      ['./assets/images/developer/PG-_Rusaniv-RU-mono.svg','https://rusaniv.com/'],
+      ['./assets/images/developer/garden-white.svg                 ','https://perfect-group.ua/ru/projects/zhk-the-garden/'],
+      ['./assets/images/developer/PG-_Terracotta-RU-white.svg','https://terracotta.kiev.ua/'],
+      ['./assets/images/developer/kandinsky_logo_white.svg         ','https://kandinsky-residence.com.ua/'],
+      ['./assets/images/developer/Philadelphia-mono-1.svg','https://philadelphia.kiev.ua/'],
+      ['./assets/images/developer/Lebediny-svg-white_ru.svg        ','https://lebedinyiy.com.ua/ua/'],
+      ['./assets/images/developer/logo.svg                         ','https://kyivproekt.space/'],
+      ['./assets/images/developer/Rybalsky_ua-white.svg','https://rybalsky.com.ua/'],
+      ['./assets/images/developer/logo_FRANKLIN_white.svg          ','https://franklin.kiev.ua/en/'],
+      ['./assets/images/developer/Trabotti_LOGObook2.svg','https://trabotti.com.ua/ru'],
     ]
   
 block meta
@@ -40,7 +38,7 @@ block scripts
   script(defer src='./assets/scripts/header.js')
   script(defer src='./assets/scripts/developer.js')
 block content
-  .container
+  .container.developer-page-wrapper
     include ../includes/breadcrumbs.pug
     h1.page-title #{title_page}
     .developer-wrapper
@@ -58,7 +56,8 @@ block content
         .swiper-container.mySwiper  
           .swiper-wrapper
             each val in logos
-              img(src=val, alt="").swiper-slide
+              a(href=val[1] target='_blank').swiper-slide
+                img(src=val[0], alt="")
 
 
 
