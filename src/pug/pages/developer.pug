@@ -1,0 +1,69 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'Девелопер'
+    var id_page = 'id-page-developer'
+    var class_page = 'class-page-developer'
+    var breadcrumbsSubitem = [
+    ];
+    var logos = [
+      './assets/images/developer/5kv_ru-white.svg                 ',
+      './assets/images/developer/logo_polaris_transparent.svg',
+      './assets/images/developer/ALL_PG_logos-_Stanford-mono.svg  ',
+      './assets/images/developer/new-_woods_ru-white.svg',
+      './assets/images/developer/bereg1_ru-white.svg              ',
+      './assets/images/developer/PG-_Rusaniv-RU-mono.svg',
+      './assets/images/developer/garden-white.svg                 ',
+      './assets/images/developer/PG-_Terracotta-RU-white.svg',
+      './assets/images/developer/kandinsky_logo_white.svg         ',
+      './assets/images/developer/PG_white-V.svg',
+      './assets/images/developer/Philadelphia-mono-1.svg',
+      './assets/images/developer/Lebediny-svg-white_ru.svg        ',
+      './assets/images/developer/PTL_white.svg',
+      './assets/images/developer/logo.svg                         ',
+      './assets/images/developer/Rybalsky_ua-white.svg',
+      './assets/images/developer/logo_FRANKLIN_white.svg          ',
+      './assets/images/developer/Trabotti_LOGObook2.svg',
+    ]
+  
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/index.bundle.js')
+  script(defer src='./assets/scripts/libs.js')
+  script(defer src='./assets/scripts/index.js')
+  script(defer src='./assets/scripts/header.js')
+  script(defer src='./assets/scripts/developer.js')
+block content
+  .container
+    include ../includes/breadcrumbs.pug
+    h1.page-title #{title_page}
+    .developer-wrapper
+      .developer-wrapper__title Perfect Group – бренд, під ім'ям якого об'єднано 30 компаній, що мають багатий актив успішно реалізованих проектів в галузі нерухомості. 
+      .developer-wrapper__logo 
+        +img('perfect-logo.svg')
+        a(href="https://perfect-group.ua" target='_blank').underlined-link-wrap
+          .underlined-link сайт забудовника
+          +svg('build-arrow')
+      .developer-wrapper__text 
+        p За 29 років роботи, компанією побудовано 92 житлових будинки. У 2019 Perfect Group увійшла до рейтингу ТОП-10 забудовників Києва за кількістю реалізованих об'єктів.
+        p У Perfect Group працюють з переконанням: <span class="fw-550">«Все повинно бути «Perfect», тобто ідеально».</span>
+      .developer-wrapper__slider
+        p В бізнес-портфелі компанії є як самостійні, так і партнерські проекти, серед яких такі преміальні об'єкти як:
+        .swiper-container.mySwiper  
+          .swiper-wrapper
+            each val in logos
+              img(src=val, alt="").swiper-slide
+
+
+
+block footer
+  include ../includes/footer.pug
+
+block header
+  include ../includes/header.pug
