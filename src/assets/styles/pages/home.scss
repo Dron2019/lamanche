@@ -780,7 +780,7 @@
         z-index: 5;
         background: linear-gradient(
             140deg
-            , rgba(0, 0, 0, 0) 29%, #000000 100%);
+            , rgba(0, 0, 0, 0) 42%, #000000 100%);
             padding-top: 150px;
             padding-left: 150px;
             @include to(575px){
@@ -807,6 +807,9 @@
         }
         svg:hover {
             animation: pulse 1s infinite ease-in-out;
+        }
+        @include from(576px){
+            display: none;
         }
     }
     @include from(1680px){
