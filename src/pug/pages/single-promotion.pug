@@ -1,0 +1,77 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'Знижка 8% на однокімнатні квартири до 23.09.21'
+    var id_page = 'id-page-single-promotion'
+    var class_page = 'class-page-single-promotion'
+    var breadcrumbsSubitem = [
+    ]
+    var flatBlocksData = [
+      ['build-card-01.jpg'],
+      ['build-card-02.jpg'],
+      ['build-card-03.jpg'],
+      ['build-card-04.jpg'],
+      ['build-card-05.jpg'],
+    ];
+    var cards = [
+      {
+        promotion: 'true',
+        date: '02.10.2020',
+        title: 'Знижка 8% на однокімнатні квартири до 23.09.21',
+        text: 'Інфраструктура комплексу буде представлена галерею бутиків, розкішним SPA-центром ...',
+        img: './assets/images/test-promotion.jpg'
+      },
+      {
+        promotion: 'true',
+        date: '02.10.2020',
+        title: 'Безвідсоткова розстрочка 50% на 50%',
+        text: 'Пропозиція ідеально підійде для тих, хто вже сьогодні замислюється про найбільш ... Пропозиція ідеально підійде для тих, хто вже сьогодні замислюється про найбільш ... ',
+        img: './assets/images/test-promotion.jpg'
+      },
+    ];
+  
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/index.bundle.js')
+  script(defer src='./assets/scripts/libs.js')
+  script(defer src='./assets/scripts/index.js')
+  script(defer src='./assets/scripts/header.js')
+  script(defer src='./assets/scripts/single-news.js')
+block content
+  .container
+    include ../includes/breadcrumbs.pug
+    .single-news-article 
+      .single-news-article__title
+        p Дневник строительства ЖК La Manche от 22.09.2020 Начинаем информировать о ходе строительства 
+      .single-news-article__slider.swiper-container.mySwiper
+        .single-news-article__numbers
+
+          <svg class="button-prev" width="28" height="17" viewBox="0 0 28 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M26.9277 8.5L1.92774 8.5M1.92774 8.5L9.42774 0.999998M1.92774 8.5L9.42773 16" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+            </svg>
+          .all 08
+            .current 02
+          <svg class="button-next" width="29" height="17" viewBox="0 0 29 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.92773 8.5L26.9277 8.5M26.9277 8.5L19.4277 16M26.9277 8.5L19.4277 1" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+            </svg>
+        .swiper-wrapper
+          each val in flatBlocksData
+            img(src="./assets/images/build-progress/"+val).swiper-slide
+      .single-news-article__top-right 
+        p Начинаем информировать о ходе строительства жилого комплекса элиткласса La Manche...У середу, 14 жовтня, наші менеджери працюють за стандартним графіком — з 9.00 до 19.00.
+        p Якщо у робочі будні вам бракувало часу, щоб завітати до нашого офісу, додатковий вихідний стане гарною можливістю для цього. У середу, 14 жовтня, наші менеджери працюють за стандартним графіком. 
+      .single-news-article__bottom-left У середу, 14 жовтня, наші менеджери працюють за стандартним графіком. Якщо у робочі будні вам бракувало часу, щоб завітати до нашого офісу, додатковий вихідний стане гарною можливістю для цього. Інфраструктура комплексу буде представлена галерею бутиків, розкішним SPA-центром з басейном, фітнес-центром з тренувальними залами, кафе та рестораном.
+      .single-news-article__bottom-right 
+        p Інфраструктура комплексу буде представлена галерею бутиків, розкішним SPA-центром з басейном, фітнес-центром з тренувальними залами, кафе та рестораном з власною терасою, – до послуг мешканців.
+        +a('Обрати квартиру', 'gold', '3d.html')
+block footer
+  include ../includes/footer.pug
+
+block header
+  include ../includes/header.pug

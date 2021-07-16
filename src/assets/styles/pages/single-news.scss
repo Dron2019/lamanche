@@ -118,6 +118,9 @@
         position: relative;
         margin-left: 30px;
         margin-right: 30px;
+        @include to(575px){
+            font-size: 56px;
+        }
     }
     .current {
         position: absolute;
