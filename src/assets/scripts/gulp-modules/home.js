@@ -239,3 +239,11 @@ videos.forEach((section) => {
     },
   });
 });
+
+
+
+document.querySelectorAll('.scroll-mouse').forEach((mouse) => {
+  mouse.addEventListener('click', () => {
+    locoScroll.scrollTo(mouse.closest('section').nextElementSibling);
+  });
+})

@@ -66,6 +66,16 @@
             height: 45px;
         }
     }
+    @include from(576px){
+        .mobile-show {
+            display: none;
+        }
+    }
+    @include to(575px){
+        .desktop-show {
+            display: none;
+        }
+    }
     @include to(575px){
         &__title {
             font-size: 36px;

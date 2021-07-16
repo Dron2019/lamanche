@@ -27,7 +27,7 @@ const lang = langDetect();
           field_too_short: 'телефон должен содержать не менее {{cnt}} символов',
           field_too_long: 'телефон должен содержать не более {{cnt}} символов',
           only_number: 'здесь только цифры',
-          required: 'это поле обязательне',
+          required: 'Это поле обязательное',
           sendingSuccessTitle: 'Cообщение отправлено',
           sendingSuccessText: 'Ждите ответа наших менеджеров',
           sendingErrorText: 'Ждите ответа наших менеджеров',

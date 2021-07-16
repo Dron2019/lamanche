@@ -105,6 +105,29 @@
         height: 48px;
         margin-right: auto;
     }
+    &__langs {
+        display: flex;
+        flex-wrap: wrap;
+        @include from(576px){
+            display: none;    
+        }
+        a {
+            text-decoration: none;
+            color: var(--color-grey);
+            font-size: 10px;
+            line-height: 100%;
+            /* identical to box height, or 10px */
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        a.active {
+            font-weight: 800;
+        }
+        a~a {
+            margin-left: 10px;
+        }
+    }
     @include to(1240px){
         --right-offset: 60px;
         &__right {
@@ -154,6 +177,7 @@
         &__social-block {
             width: 100%;
             justify-content: space-between;
+            margin-bottom: 25px;
         }
     }
 }
