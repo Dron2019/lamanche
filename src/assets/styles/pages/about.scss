@@ -375,6 +375,7 @@
 
 .map-wrap {
     --side-padding:40px;
+    overflow: hidden;
     &__legend{
         width: Max(20%, 290px);
         position: relative;

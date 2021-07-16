@@ -223,6 +223,28 @@ lazyImages.forEach((imageArgs) => {
   const target = image;
   observer.observe(target);
 });
+const lazyposter = document.querySelectorAll('[data-poster]');
+
+lazyposter.forEach((imageArgs) => {
+  const image = imageArgs;
+  image.style.opacity = 0;
+  image.style.transition = ' .3s ease-out';
+  image.addEventListener('load', () => {
+    image.style.opacity = 1;
+  });
+  const callback = (entries) => {
+    /* Content excerpted, show below */
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const lazyImage = entry.target;
+        lazyImage.poster = lazyImage.dataset.poster;
+      }
+    });
+  };
+  const observer = new IntersectionObserver(callback, options);
+  const target = image;
+  observer.observe(target);
+});
 
 
 const lazyBackgrounds = document.querySelectorAll('[data-background-lazy]');

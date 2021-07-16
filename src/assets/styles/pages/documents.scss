@@ -1,0 +1,118 @@
+.docs-wrapper {
+    --offset: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-left: calc((var(--offset) / 2) * -1);
+    margin-right: calc((var(--offset) / 2) * -1);
+    margin-bottom: calc(var(--footer-margin) - var(--offset));
+    @include shift-padding(1.85);
+    @include to(1140px){
+        @include shift-padding(1);
+    }
+    @include to(1024px){
+        padding-left: var(--page-side-fields);
+        padding-right: var(--page-side-fields);;
+    }
+    .doc {
+        @include customOffsetWidth(33, var(--offset));
+        margin-bottom: var(--offset);
+        @include to(950px){
+            --offset: 30px;
+            @include customOffsetWidth(50, var(--offset));
+        }
+        @include to(575px){
+            --offset: var(--page-side-fields);
+            @include customOffsetWidth(100, var(--offset));
+
+        }
+    }
+}
+.doc {
+    border: 1px solid #EFEFEF;
+    text-align: center;
+    text-decoration: none;
+    color: var(--color-grey);
+    display: block;
+    
+    &__img {
+        width: calc(100% - (100% * 84 / 267) * 2);
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 50px;
+        margin-top: 27px;
+        transition: transform .5s ease-in-out;
+    }
+    &__link {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        font-size: 12px;
+        line-height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* identical to box height, or 12px */
+
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color:var(--color-grey) ;
+        text-decoration: none;
+        border-top: 1px solid #EFEFEF;
+        &:after {
+            content: '';
+            display: inline-block;
+            width: 13px;
+            height: 15.3px;
+            
+            background-image: url("data:image/svg+xml,%3Csvg width='15' height='17' viewBox='0 0 15 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.77424 1L7.77423 12.7302M7.77423 12.7302L3.34242 8.31115M7.77423 12.7302L12.2061 8.31115' stroke='%23383E41' stroke-miterlimit='10' stroke-linecap='round'/%3E%3Cpath d='M14 16.2969L1 16.2969' stroke='%23383E41' stroke-miterlimit='10' stroke-linecap='round'/%3E%3C/svg%3E%0A");
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin-left: 18px;
+        }
+    }
+    &__title {
+        font-weight: 550;
+        font-size: 15px;
+        line-height: 130%;
+        padding-left: 5%;
+        padding-right: 5%;
+        /* or 19px */
+
+        text-align: center;
+        text-decoration-line: underline;
+        color: var(--color-grey);
+        margin-bottom: 20px;
+        @include from(1680px){
+            font-size: 20px;
+        }
+    }
+    &__date {
+        margin-bottom: 15px;
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 100%;
+        /* identical to box height, or 12px */
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: var(--color-grey);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &:after {
+            content: '';
+            width: 6px;
+            height: 6px;
+            display: inline-block;
+            background-repeat: no-repeat;
+            background-color: var(--color-gold);
+            border-radius: 50%;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+    }
+    @include from(950px){
+        &:hover &__img {
+            transform: scale(1.05);
+        }
+    }
+}
