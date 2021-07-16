@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 /* eslint-disable no-param-reassign */
 const apartments = [
   {
@@ -361,6 +362,50 @@ const apartments = [
     price_m2: '33 462',
   },
 ];
+function handleFilterItemsChanges(filterArg) {
+  const filter = filterArg;
+  const filterItems = document.querySelectorAll('[data-filter-item]');
+  filterItems.forEach((item) => {
+    const { type, name, value } = item.dataset;
+    item.addEventListener('change', () => {
+      if (type === 'checkbox' && item.checked) {
+        filter[name].add(value);
+      } else if (type === 'radio' && item.checked) {
+        filter[name] = value;
+      } else if (type === 'checkbox' && !item.checked) {
+        filter[name].delete(value);
+      }
+    });
+  });
+}
+function initFilterItems() {
+  const filterItems = document.querySelectorAll('[data-filter-item]');
+  const object = {};
+  filterItems.forEach((item) => {
+    const { type, name } = item.dataset;
+    const { id } = item;
+
+    if (type === 'checkbox') {
+      object[name] = new Set();
+    } else if (type === 'radio') {
+      object[name] = '';
+    } else {
+      object[id] = {
+        min: '',
+        max: '',
+      };
+    }
+  });
+  return object;
+}
+const filter = initFilterItems();
+handleFilterItemsChanges(filter);
+function setFilteringValues(dataObjectArg, key, digit) {
+  const dataObject = dataObjectArg;
+  dataObject[key].min = digit[0];
+  dataObject[key].max = digit[1];
+}
+
 function initBoxRange({ range, onChange, onFinish }) {
   let minV = 0;
   //   let maxV = 0;
@@ -417,11 +462,11 @@ RANGES.forEach((elArgs) => {
     onStart: (/* ionRange */) => {},
     onFinish: (/* ionRange */) => {
     //   setFilter(ionRange, ionRange.input[0]);
-    //   setFilteringValues(
-    //     filter,
-    //     el.getAttribute('id'),
-    //     [range.old_from, range.old_to],
-    //   );
+      setFilteringValues(
+        filter,
+        el.getAttribute('id'),
+        [range.old_from, range.old_to],
+      );
     },
   });
   el.range = range;

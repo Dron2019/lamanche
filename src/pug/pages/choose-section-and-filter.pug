@@ -30,29 +30,29 @@ block content
       .filter-title Підбір по параметрам
       .filter-mini-group
         .filter-subtitle Секція:
-        <input class="js-range-init" id="section" type="hidden" data-from="0" data-min="0" data-to="100" data-max="100">
+        <input data-type="range" data-filter-item class="js-range-init" id="section" type="hidden" data-from="0" data-min="0" data-to="100" data-max="100">
       .filter-mini-group
         .filter-subtitle Загальна пл. м²:
-        <input class="js-range-init" id="all_room" type="hidden" data-from="0" data-min="0" data-to="100" data-max="100">
+        <input data-type="range" data-filter-item class="js-range-init" id="all_room" type="hidden" data-from="0" data-min="0" data-to="100" data-max="100">
       .filter-mini-group
         .filter-subtitle Житлова пл. м²:
-        <input class="js-range-init" id="live_room" type="hidden" data-from="0" data-min="0" data-to="100" data-max="100">
+        <input data-type="range" data-filter-item class="js-range-init" id="live_room" type="hidden" data-from="0" data-min="0" data-to="100" data-max="100">
       .filter-mini-group
         .filter-subtitle Кімнати:
         each val in rooms
           .checkbox-quares
-            input(id="room"+val type="checkbox", name="")
+            input( data-filter-item data-type="checkbox" data-value=val data-name="rooms" id="room"+val type="checkbox", name="")
             label(for="room"+val) #{val}
       .filter-mini-group
         .filter-subtitle План поверху:
         .checkbox-with-span
-          input#all(type="checkbox" checked name="")
+          input#all( data-filter-item data-type="radio" data-name="floors" data-value="1" type="radio" checked name="floors")
           label(for="all") Усі
         .checkbox-with-span
-          input#typical(type="checkbox" name="")
+          input#typical( data-filter-item data-type="radio" data-name="floors" data-value="2" type="radio" name="floors")
           label(for="typical") Типовий
         .checkbox-with-span
-          input#double-level(type="checkbox" name="")
+          input#double-level( data-filter-item data-type="radio" data-name="floors" data-value="3" type="radio" name="floors")
           label(for="double-level") Дворівневий
       +btn('Показати результати', 'gold')(data-filter-button data-count-results="  (115)")
     .choose-flat-content-wrapper__content
