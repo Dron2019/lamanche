@@ -1,0 +1,63 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'Обрати квартиру'
+    var id_page = 'id-page-choose-section-and-filter'
+    var class_page = 'class-page-choose-section-and-filter'
+    var breadcrumbsSubitem = [
+    ];
+    var rooms = [
+      1,2,3,4,5,
+    ]
+  
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/index.bundle.js')
+  script(defer src='./assets/scripts/libs.js')
+  script(defer src='./assets/scripts/index.js')
+  script(defer src='./assets/scripts/header.js')
+  script(defer src='./assets/scripts/choose-section-and-filter.js')
+block content
+  .choose-flat-content-wrapper
+    .choose-flat-content-wrapper__filter
+      include ../includes/breadcrumbs.pug
+      .filter-title Підбір по параметрам
+      .filter-mini-group
+        .filter-subtitle Секція:
+        <input class="js-range-init" id="section" type="hidden" data-from="0" data-min="0" data-to="100" data-max="100">
+      .filter-mini-group
+        .filter-subtitle Загальна пл. м²:
+        <input class="js-range-init" id="all_room" type="hidden" data-from="0" data-min="0" data-to="100" data-max="100">
+      .filter-mini-group
+        .filter-subtitle Житлова пл. м²:
+        <input class="js-range-init" id="live_room" type="hidden" data-from="0" data-min="0" data-to="100" data-max="100">
+      .filter-mini-group
+        .filter-subtitle Кімнати:
+        each val in rooms
+          .checkbox-quares
+            input(id="room"+val type="checkbox", name="")
+            label(for="room"+val) #{val}
+      .filter-mini-group
+        .filter-subtitle План поверху:
+        .checkbox-with-span
+          input#all(type="checkbox" checked name="")
+          label(for="all") Усі
+        .checkbox-with-span
+          input#typical(type="checkbox" name="")
+          label(for="typical") Типовий
+        .checkbox-with-span
+          input#double-level(type="checkbox" name="")
+          label(for="double-level") Дворівневий
+      +btn('Показати результати', 'gold')(data-filter-button data-count-results="  (115)")
+    .choose-flat-content-wrapper__content
+block footer
+  include ../includes/footer.pug
+
+block header
+  include ../includes/header.pug
