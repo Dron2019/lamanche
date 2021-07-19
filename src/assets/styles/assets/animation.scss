@@ -85,14 +85,16 @@
 	-webkit-transition-timing-function: ease-out;
 	transition-timing-function: ease-out;
   }
-  .hvr-bounce-to-top:hover, .hvr-bounce-to-top:focus, .hvr-bounce-to-top:active {
-	color: var(--hover-text-color);
-  }
-  .hvr-bounce-to-top:hover:before, .hvr-bounce-to-top:focus:before, .hvr-bounce-to-top:active:before {
-	-webkit-transform: scaleY(1);
-	transform: scaleY(1);
-	-webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
-	transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+  @include from(951px){
+	  .hvr-bounce-to-top:hover{
+		color: var(--hover-text-color);
+	  }
+	  .hvr-bounce-to-top:hover:before, .hvr-bounce-to-top:active:before {
+		-webkit-transform: scaleY(1);
+		transform: scaleY(1);
+		-webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+		transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+	  }
   }
 
 

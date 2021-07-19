@@ -99,9 +99,10 @@ function sideSwitchArrow(swiper, arrow, container) {
       // switchGallerySlide('rightSide')
     }
   }
-  container.addEventListener('click', function changeMe() {
+  function changeMe() {
     switchGallerySlide(arrow.dataset.side);
-  });
+  }
+  container.addEventListener('click', changeMe);
   if (document.documentElement.clientWidth < 576) {
     container.removeEventListener('click', changeMe);
   }
