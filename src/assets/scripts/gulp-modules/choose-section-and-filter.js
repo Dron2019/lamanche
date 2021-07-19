@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-param-reassign */
 const apartments = [
@@ -485,3 +486,69 @@ function renderPathesInfo(path) {
 }
 const floorLinkPathes = document.querySelectorAll('[data-info-path]');
 floorLinkPathes.forEach(renderPathesInfo);
+
+const filterWrapper = document.querySelector('[data-filter-wrapper]');
+const planWrapper = document.querySelector('[data-build-plan-wrapper]');
+const switchScreenItems = document.querySelectorAll('[data-switch-screen]');
+
+let currentPageState = 'planWrapper';
+
+gsap.defaults(
+  {
+    duration: 0.25,
+  },
+);
+const screensSwitcher = {
+  filterWrapper: () => {
+    gsap.timeline()
+      .to(planWrapper, { x: 50, autoAlpha: 0, clearProps: 'all' })
+      .set(planWrapper, { display: 'none' })
+      .set(filterWrapper, { display: '' })
+      .fromTo(filterWrapper, { x: -50, autoAlpha: 0 }, { x: 0, autoAlpha: 1 }, '<');
+  },
+  planWrapper: () => {
+    gsap.timeline()
+      .to(filterWrapper, { x: 50, autoAlpha: 0, clearProps: 'all' })
+      .set(filterWrapper, { display: 'none' })
+      .set(planWrapper, { display: '' })
+      .fromTo(planWrapper, { x: -50, autoAlpha: 0 }, { x: 0, autoAlpha: 1 }, '<');
+  },
+};
+screensSwitcher[currentPageState]();
+switchScreenItems.forEach((el) => {
+  el.addEventListener('click', () => {
+    if (currentPageState === el.dataset.switchScreen) return;
+    currentPageState = el.dataset.switchScreen;
+    screensSwitcher[currentPageState]();
+  });
+});
+
+const cardsContainer = document.querySelector('[data-cards-container]');
+const tablesContainer = document.querySelector('[data-tables-container]');
+const switchFilterScreenItems = document.querySelectorAll('[data-switch-filter-screen]');
+let currentFilterState = 'cardsContainer';
+const filterScreensSwitcher = {
+  cardsContainer: () => {
+    gsap.timeline()
+      .to(tablesContainer, { x: 50, autoAlpha: 0, clearProps: 'all' })
+      .set(tablesContainer, { display: 'none' })
+      .set(cardsContainer, { display: '' })
+      .fromTo(cardsContainer, { x: -50, autoAlpha: 0 }, { x: 0, autoAlpha: 1 }, '<');
+  },
+  tablesContainer: () => {
+    gsap.timeline()
+      .to(cardsContainer, { x: 50, autoAlpha: 0, clearProps: 'all' })
+      .set(cardsContainer, { display: 'none' })
+      .set(tablesContainer, { display: '' })
+      .fromTo(tablesContainer, { x: -50, autoAlpha: 0 }, { x: 0, autoAlpha: 1 }, '<');
+  },
+};
+
+filterScreensSwitcher[currentFilterState]();
+switchFilterScreenItems.forEach((el) => {
+  el.addEventListener('click', () => {
+    if (currentFilterState === el.dataset.switchFilterScreen) return;
+    currentFilterState = el.dataset.switchFilterScreen;
+    filterScreensSwitcher[currentFilterState]();
+  });
+});
