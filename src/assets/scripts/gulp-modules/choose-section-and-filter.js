@@ -471,3 +471,17 @@ RANGES.forEach((elArgs) => {
   });
   el.range = range;
 });
+
+function renderPathesInfo(path) {
+  path.addEventListener('mouseenter', () => {
+    const dataInfo = Object.entries(path.dataset);
+    dataInfo.forEach((item) => {
+      const renderEl = document.querySelector(`[data-render='${item[0]}']`);
+      if (renderEl !== null) {
+        renderEl.textContent = item[1];
+      }
+    });
+  });
+}
+const floorLinkPathes = document.querySelectorAll('[data-info-path]');
+floorLinkPathes.forEach(renderPathesInfo);

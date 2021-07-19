@@ -1,7 +1,8 @@
 .choose-flat-content-wrapper {
-    --self-padding-top: 40px;
+    --self-padding-top: 80px;
     --self-padding-left: 45px;
     --self-padding-right: 50px;
+    --offset: 36px;
     @include row-flex();
     min-height: 100vh;
     .breadcrumbs {
@@ -16,9 +17,35 @@
         align-self: stretch
     }
     &__content {
+        padding-top: calc(var(--header-h) + var(--self-padding-top));
         @include size(9);
         @include shift(0);
         padding-right: var(--self-padding-right);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+    .flat-card {
+        @include customOffsetWidth(33, var(--offset));
+        margin-bottom: var(--offset);
+        @include from(1680px){
+            // @include customOffsetWidth(25, var(--offset));
+
+        }
+        @include to(1280px){
+            @include customOffsetWidth(50, var(--offset));
+
+        }
+    }
+    .build-plan-wrapper {
+        min-height: calc(100vh - (var(--self-padding-top) + var(--header-h)));
+    }
+    .cards-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: calc((var(--offset) / 2) * -1);
+        margin-right: calc((var(--offset) / 2) * -1);
+        width: calc(100% + var(--offset));
     }
     .button-std {
         max-width: none;
@@ -187,3 +214,130 @@
 //   .irs--flat .irs-from:before, .irs--flat .irs-to:before, .irs--flat .irs-single:before {
 //     display: none;
 //   }
+
+
+.flat-card {
+    border: 1px solid #EFEFEF;
+    padding-bottom: 31px;
+    padding-top: 10px;
+    padding-left: 26px;
+    padding-right: 26px;
+    --h: 340px;
+    min-height: var(--h);
+    text-align: center;
+    text-decoration: none;
+    color: var(--color-grey);
+    &__img {
+        height: calc(var(--h)  * 0.42);
+        width: 100%;
+        object-fit: contain;
+        object-position: center;
+        margin-bottom: 20px;
+    }
+    &__title {
+        font-size: 18px;
+        line-height: 130%;
+        color: var(--color-grey);
+        margin-bottom: 0px;
+        @include from(1680px){
+            font-size: 24px;
+        }
+    }
+    &__info-wrap {
+        text-align: left;
+        border-collapse:separate; 
+        border-spacing:0 10px;
+    }
+    &__info-wrap-item {
+        color: var(--color-grey);
+        
+    }
+    &__info-wrap-item~&__info-wrap-item {
+        padding-top: 10px;
+    }
+    &__info-wrap-item td:last-child {
+        font-weight: 550;
+        padding-left: 10px;
+    }
+    &__link {
+        margin-top: 10px;
+    }
+}
+
+.build-plan-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    width: 100%;
+    color: var(--color-grey);
+    padding-bottom: var(--footer-margin);
+    
+    &>* {
+        flex-grow: 1;
+    }
+    &__left {
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-right: 82px;
+        padding-left: 82px;
+        svg {
+            // margin-left: auto;
+            width: 100%;
+            height: auto;
+        }
+    }
+    &__right {
+        width: 30%;
+        display: flex;
+        align-self: stretch;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    &__subtitle {
+        font-weight: 550;
+        font-size: 18px;
+        line-height: 100%;
+        text-align: center;
+        width: 100%;
+        margin-bottom: 22px;
+    }
+    [data-link] {
+        transition: .3s ease-in-out;
+        fill: rgba(0,0,0,0);
+        cursor: pointer;
+    }
+    [data-link]:hover {
+        fill: #efefef75;
+    }
+    .compass {
+        margin-left: auto;
+        display: block;
+    }
+    
+}
+
+.section-info {
+    border: 1px solid #EFEFEF;
+    --side-padding: 40px;
+    color: var(--color-grey);
+    &__title {
+        font-weight: 550;
+        font-size: 18px;
+        line-height: 100%;
+        padding-top: 25px;
+        padding-bottom: 25px;
+        border-bottom: 1px solid #EFEFEF;
+        padding-left: var(--side-padding);
+    }
+    table {
+        width: calc(100% - var(--side-padding) * 2);
+        margin: 25px auto;
+        padding-left: var(--side-padding);
+        padding-right: var(--side-padding);
+        font-size: 15px;
+        line-height: calc(100% + 15px);
+    }
+
+}
