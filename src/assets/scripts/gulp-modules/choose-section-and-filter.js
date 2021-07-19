@@ -3,6 +3,7 @@
 /* eslint-disable no-param-reassign */
 const apartments = [
   {
+    floors: '1',
     id: '82',
     build: '1',
     floor: '6',
@@ -18,6 +19,7 @@ const apartments = [
     price_m2: '34 904',
   },
   {
+    floors: '1',
     id: '83',
     build: '1',
     floor: '6',
@@ -33,6 +35,7 @@ const apartments = [
     price_m2: '35 367',
   },
   {
+    floors: '1',
     id: '84',
     build: '1',
     floor: '6',
@@ -48,6 +51,7 @@ const apartments = [
     price_m2: '36 839',
   },
   {
+    floors: '1',
     id: '85',
     build: '1',
     floor: '6',
@@ -63,6 +67,7 @@ const apartments = [
     price_m2: '36 105',
   },
   {
+    floors: '1',
     id: '86',
     build: '1',
     floor: '6',
@@ -78,6 +83,7 @@ const apartments = [
     price_m2: '38 682',
   },
   {
+    floors: '1',
     id: '87',
     build: '1',
     floor: '6',
@@ -93,6 +99,7 @@ const apartments = [
     price_m2: '39 160',
   },
   {
+    floors: '1',
     id: '89',
     build: '1',
     floor: '6',
@@ -108,6 +115,7 @@ const apartments = [
     price_m2: '33 720',
   },
   {
+    floors: '1',
     id: '91',
     build: '1',
     floor: '6',
@@ -123,6 +131,7 @@ const apartments = [
     price_m2: '37 170',
   },
   {
+    floors: '1',
     id: '426',
     build: '2',
     floor: '6',
@@ -138,6 +147,7 @@ const apartments = [
     price_m2: '35 437',
   },
   {
+    floors: '1',
     id: '428',
     build: '2',
     floor: '6',
@@ -153,6 +163,7 @@ const apartments = [
     price_m2: '35 760',
   },
   {
+    floors: '1',
     id: '430',
     build: '2',
     floor: '6',
@@ -168,6 +179,7 @@ const apartments = [
     price_m2: '33 954',
   },
   {
+    floors: '1',
     id: '432',
     build: '2',
     floor: '6',
@@ -183,6 +195,7 @@ const apartments = [
     price_m2: '38 255',
   },
   {
+    floors: '1',
     id: '433',
     build: '2',
     floor: '6',
@@ -198,6 +211,7 @@ const apartments = [
     price_m2: '37 311',
   },
   {
+    floors: '1',
     id: '446',
     build: '2',
     floor: '6',
@@ -213,6 +227,7 @@ const apartments = [
     price_m2: '37 231',
   },
   {
+    floors: '1',
     id: '485',
     build: '2',
     floor: '6',
@@ -228,6 +243,7 @@ const apartments = [
     price_m2: '37 969',
   },
   {
+    floors: '1',
     id: '2',
     build: '1',
     floor: '7',
@@ -243,6 +259,7 @@ const apartments = [
     price_m2: '33 693',
   },
   {
+    floors: '1',
     id: '13',
     build: '1',
     floor: '7',
@@ -258,6 +275,7 @@ const apartments = [
     price_m2: '35 598',
   },
   {
+    floors: '1',
     id: '24',
     build: '1',
     floor: '7',
@@ -273,6 +291,7 @@ const apartments = [
     price_m2: '34 181',
   },
   {
+    floors: '1',
     id: '35',
     build: '1',
     floor: '7',
@@ -288,6 +307,7 @@ const apartments = [
     price_m2: '36 685',
   },
   {
+    floors: '1',
     id: '46',
     build: '1',
     floor: '7',
@@ -303,6 +323,7 @@ const apartments = [
     price_m2: '35 834',
   },
   {
+    floors: '1',
     id: '57',
     build: '1',
     floor: '7',
@@ -318,6 +339,7 @@ const apartments = [
     price_m2: '33 633',
   },
   {
+    floors: '1',
     id: '570',
     build: '2',
     floor: '7',
@@ -333,6 +355,7 @@ const apartments = [
     price_m2: '36 157',
   },
   {
+    floors: '1',
     id: '68',
     build: '1',
     floor: '7',
@@ -348,6 +371,7 @@ const apartments = [
     price_m2: '33 426',
   },
   {
+    floors: '1',
     id: '79',
     build: '1',
     floor: '7',
@@ -363,6 +387,120 @@ const apartments = [
     price_m2: '33 462',
   },
 ];
+function tableFlatTemplate(flatData) {
+  let dataset = '';
+  Object.entries(flatData).forEach((filterValue) => {
+    dataset += ` data-${filterValue[0]}='${filterValue[1]}'`;
+  });
+  return `
+    <tr data-filter-me data-some="3" ${dataset}>
+      <td><img src="${flatData.img_big}" title="foto" alt="foto"/>
+      </td>
+      <td> 
+        <div>${flatData.rooms}</div>
+      </td>
+      <td> 
+        <div>${flatData.section}</div>
+      </td>
+      <td> 
+        <div>${flatData.floor}</div>
+      </td>
+      <td> 
+        <div>${flatData.all_room}</div>
+      </td>
+      <td> 
+        <div>${flatData.live_room}</div>
+      </td>
+    </tr>
+  `;
+}
+function cardFlatTemplate(flatData) {
+  let dataset = '';
+  Object.entries(flatData).forEach((filterValue) => {
+    dataset += ` data-${filterValue[0]}='${filterValue[1]}'`;
+  });
+  return `
+  <a data-filter-me class="flat-card" ${dataset} href="flat?id=${flatData.id}">
+    <img class="flat-card__img" src="${flatData.img_big}" title="foto" alt="foto"/>
+    <div class="flat-card__title">Тип 1А</div>
+    <table class="flat-card__info-wrap" data-some="0">
+      <tr class="flat-card__info-wrap-item">
+        <td>Загальна площа:</td>
+        <td>${flatData.all_room} м2</td>
+      </tr>
+      <tr class="flat-card__info-wrap-item">
+        <td>Житлова площа:</td>
+        <td>${flatData.live_room} м2</td>
+      </tr>
+      <tr class="flat-card__info-wrap-item">
+        <td>Ціна від:</td>
+        <td>66 453 грн/ м2</td>
+      </tr>
+      <tr class="flat-card__info-wrap-item">
+        <td>Кімнат:</td>
+        <td>${flatData.rooms}</td>
+      </tr>
+    </table>
+    <div class="flat-card__link underlined-link-wrap"> 
+      <div class="underlined-link">переглянути</div>
+      <svg class="icon--build-arrow" role="presentation">
+        <use xlink:href="#icon-build-arrow"></use>
+      </svg>
+    </div>
+  </a>
+  `;
+}
+function filterFlats(filterDataValues, cb = () => {}) {
+  const objectsToFilter = document.querySelectorAll('[data-filter-me]');
+  const validationDataArray = Object.entries(filterDataValues);
+  const validationDataLength = validationDataArray.length;
+  objectsToFilter.forEach((flat) => {
+    let validFieldsCount = 0;
+    validationDataArray.forEach((filterPoint) => {
+      const name = filterPoint[0];
+      const value = filterPoint[1];
+      const constructor = Object.getPrototypeOf(value).constructor.name;
+      switch (constructor) {
+        case 'Object':
+          if (value.min === '' && value.max === '') {
+            validFieldsCount += 1;
+            break;
+          }
+          if (value.min <= +flat.dataset[name]
+            && value.max >= +flat.dataset[name]) validFieldsCount += 1;
+          break;
+        case 'Set':
+          if (value.size === 0) {
+            validFieldsCount += 1;
+            break;
+          }
+          if (value.has(flat.dataset[name])) validFieldsCount += 1;
+          break;
+        case 'String':
+          if (value === '') {
+            validFieldsCount += 1;
+            break;
+          }
+          if (value === flat.dataset[name]) validFieldsCount += 1;
+          break;
+        case 'Array':
+          validFieldsCount += 1;
+          break;
+        default:
+          break;
+      }
+    });
+    if ((validFieldsCount === validationDataLength)) {
+      flat.style.display = '';
+      flat.dataset.isValid = '1';
+    } else {
+      flat.style.display = 'none';
+      flat.dataset.isValid = '';
+    }
+    // filterDataValues.validFlatsCount[0] = validFlatsCount;
+    cb();
+  });
+}
 function handleFilterItemsChanges(filterArg) {
   const filter = filterArg;
   const filterItems = document.querySelectorAll('[data-filter-item]');
@@ -487,32 +625,28 @@ function renderPathesInfo(path) {
 const floorLinkPathes = document.querySelectorAll('[data-info-path]');
 floorLinkPathes.forEach(renderPathesInfo);
 
+gsap.defaults({ duration: 0.25 });
+function changeScreenWithEffects(toOpenElement, toCloseElement) {
+  gsap.timeline()
+    .to(toCloseElement, { y: 25, autoAlpha: 0, clearProps: 'all' })
+    .set(toCloseElement, { display: 'none' })
+    .set(toOpenElement, { display: '' })
+    .fromTo(toOpenElement, { y: -25, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, '<')
+    .add(() => {
+      locoScroll.update();
+    });
+}
+
 const filterWrapper = document.querySelector('[data-filter-wrapper]');
 const planWrapper = document.querySelector('[data-build-plan-wrapper]');
 const switchScreenItems = document.querySelectorAll('[data-switch-screen]');
 
 let currentPageState = 'planWrapper';
 
-gsap.defaults(
-  {
-    duration: 0.25,
-  },
-);
+
 const screensSwitcher = {
-  filterWrapper: () => {
-    gsap.timeline()
-      .to(planWrapper, { x: 50, autoAlpha: 0, clearProps: 'all' })
-      .set(planWrapper, { display: 'none' })
-      .set(filterWrapper, { display: '' })
-      .fromTo(filterWrapper, { x: -50, autoAlpha: 0 }, { x: 0, autoAlpha: 1 }, '<');
-  },
-  planWrapper: () => {
-    gsap.timeline()
-      .to(filterWrapper, { x: 50, autoAlpha: 0, clearProps: 'all' })
-      .set(filterWrapper, { display: 'none' })
-      .set(planWrapper, { display: '' })
-      .fromTo(planWrapper, { x: -50, autoAlpha: 0 }, { x: 0, autoAlpha: 1 }, '<');
-  },
+  filterWrapper: () => changeScreenWithEffects(filterWrapper, planWrapper),
+  planWrapper: () => changeScreenWithEffects(planWrapper, filterWrapper),
 };
 screensSwitcher[currentPageState]();
 switchScreenItems.forEach((el) => {
@@ -526,29 +660,47 @@ switchScreenItems.forEach((el) => {
 const cardsContainer = document.querySelector('[data-cards-container]');
 const tablesContainer = document.querySelector('[data-tables-container]');
 const switchFilterScreenItems = document.querySelectorAll('[data-switch-filter-screen]');
+// const classNameActiveInFilterScreen = 'filter'
+switchFilterScreenItems[0].classList.add('active');
 let currentFilterState = 'cardsContainer';
 const filterScreensSwitcher = {
-  cardsContainer: () => {
-    gsap.timeline()
-      .to(tablesContainer, { x: 50, autoAlpha: 0, clearProps: 'all' })
-      .set(tablesContainer, { display: 'none' })
-      .set(cardsContainer, { display: '' })
-      .fromTo(cardsContainer, { x: -50, autoAlpha: 0 }, { x: 0, autoAlpha: 1 }, '<');
-  },
-  tablesContainer: () => {
-    gsap.timeline()
-      .to(cardsContainer, { x: 50, autoAlpha: 0, clearProps: 'all' })
-      .set(cardsContainer, { display: 'none' })
-      .set(tablesContainer, { display: '' })
-      .fromTo(tablesContainer, { x: -50, autoAlpha: 0 }, { x: 0, autoAlpha: 1 }, '<');
-  },
+  cardsContainer: () => changeScreenWithEffects(cardsContainer, tablesContainer),
+  tablesContainer: () => changeScreenWithEffects(tablesContainer, cardsContainer),
 };
 
 filterScreensSwitcher[currentFilterState]();
 switchFilterScreenItems.forEach((el) => {
   el.addEventListener('click', () => {
     if (currentFilterState === el.dataset.switchFilterScreen) return;
+    switchFilterScreenItems.forEach(elem => elem.classList.remove('active'));
     currentFilterState = el.dataset.switchFilterScreen;
+    el.classList.add('active');
     filterScreensSwitcher[currentFilterState]();
+  });
+});
+
+
+const tableFlatsRenderContainer = document.querySelector('[data-table-flats-render]');
+const cardFlatsRenderContainer = document.querySelector('[data-card-flats-render]');
+
+tableFlatsRenderContainer.innerHTML = '';
+cardFlatsRenderContainer.innerHTML = '';
+apartments.forEach((appart) => {
+  tableFlatsRenderContainer.innerHTML += tableFlatTemplate(appart);
+  cardFlatsRenderContainer.innerHTML += cardFlatTemplate(appart);
+});
+
+const filterButtons = document.querySelectorAll('[data-filter-button]');
+filterFlats(filter, () => {
+  locoScroll.update();
+});
+filterButtons.forEach((button) => {
+  button.dataset.countResults = document.querySelectorAll('[data-is-valid="1"]').length / 2;
+  button.addEventListener('click', () => {
+    filterFlats(filter, () => {
+      locoScroll.update();
+    });
+    button.dataset.countResults = `
+    (${document.querySelectorAll('[data-is-valid="1"]').length / 2})`;
   });
 });

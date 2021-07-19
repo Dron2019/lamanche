@@ -4,6 +4,7 @@
     --self-padding-right: 50px;
     --offset: 36px;
     @include row-flex();
+    position: relative;
     min-height: 100vh;
     .breadcrumbs {
         margin-bottom: 30px;
@@ -14,7 +15,20 @@
         @include shift(0);
         padding-left: var(--self-padding-left);
         border: 1px solid #EFEFEF;
-        align-self: stretch
+        align-self: stretch;
+        @include to(1240px){
+            @include size(4);
+        }
+        @include to(950px){
+            --self-padding-top: 30px;
+            @include size(12);
+            position: sticky;
+            background-color: var(--color-white);
+            z-index: 10;
+            top: 0;
+            // padding-top: var(--header-h);
+            padding-bottom: 30px;
+        }
     }
     &__content {
         padding-top: calc(var(--header-h) + var(--self-padding-top));
@@ -24,7 +38,14 @@
         display: flex;
         flex-wrap: wrap;
         align-items: flex-start;
-        overflow: hidden
+        overflow: hidden;
+        @include to(1240px){
+            @include size(8);
+            
+        }
+        @include to(950px){
+            @include size(12);
+        }
     }
     .flat-card {
         @include customOffsetWidth(33, var(--offset));
@@ -35,7 +56,11 @@
         }
         @include to(1280px){
             @include customOffsetWidth(50, var(--offset));
-
+        }
+        @include to(950px){
+            @include customOffsetWidth(75, var(--offset));
+            margin-left: auto;
+            margin-right: auto;
         }
     }
     .build-plan-wrapper {
@@ -47,6 +72,9 @@
         margin-left: calc((var(--offset) / 2) * -1);
         margin-right: calc((var(--offset) / 2) * -1);
         width: calc(100% + var(--offset));
+    }
+    .table-wrapper {
+        margin-bottom: var(--footer-margin);
     }
     .button-std {
         max-width: none;
@@ -349,6 +377,7 @@
         display: flex;
         width: 100%;
         align-items: center;
+        margin-bottom: 20px;
     }
     &__nav-item {
         display: flex;
@@ -358,11 +387,30 @@
             margin-left: 10px;
         }
     }
+    &__nav-item path[fill] {
+        fill: var(--text-gray);
+    }
+    &__nav-item path[stroke] {
+        stroke: var(--text-gray);
+    }
+    &__nav-item.active {
+        color: var(--color-grey);
+    }
+    &__nav-item.active path[fill] {
+        fill: var(--color-grey);
+    }
+    &__nav-item.active path[stroke] {
+        stroke: var(--color-grey);
+    }
     &__nav-item~&__nav-item {
         margin-left: 10px;
     }
     &__nav div:first-child {
         margin-right: auto;
+        color: var(--color-black);
+        path {
+            stroke: var(--color-grey);
+        }
     }
 }
 
@@ -374,6 +422,9 @@
     td>div,
     td> img{
         height: 90px;
+    }
+    thead td>div {
+        height: 55px;
     }
     td> img {
         padding-top: 10px;
@@ -390,6 +441,26 @@
         align-items: center;
     }
     tbody tr {
-        border: 1px solid red;
+        border: 1px solid #EFEFEF;
+    }
+}
+.mobile-hide-button {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    font-weight: 550;
+    color: var(--color-grey);
+    background-color: var(--color-white);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border: 1px solid rgb(239, 239, 239);
+    border-radius: 10px;
+    cursor: pointer;
+    
+    @include from(951px){
+        display: none;   
     }
 }

@@ -69,6 +69,7 @@ block content
           input#double-level( data-filter-item data-type="radio" data-name="floors" data-value="3" type="radio" name="floors")
           label(for="double-level") Дворівневий
       +btn('Показати результати', 'gold')(data-filter-button data-switch-screen="filterWrapper" data-count-results="  (115)")
+      .mobile-hide-button Згорнути
     .choose-flat-content-wrapper__content
       .filter-wrapper(data-filter-wrapper)
         .filter-wrapper__nav
@@ -117,7 +118,7 @@ block content
                 div Загальна пл. м²
               td 
                 div Житлова пл. м²
-          tbody
+          tbody(data-table-flats-render)
             - var n = 0;
               while n < 10
                 tr(data-some=n++)
@@ -133,7 +134,7 @@ block content
                     div 154
                   td 
                     div 140
-        .cards-wrapper(data-cards-container)
+        .cards-wrapper(data-cards-container data-card-flats-render)
           - var n = 0;
             while n < 10
               a(href='flat').flat-card
