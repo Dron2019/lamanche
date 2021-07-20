@@ -636,6 +636,11 @@ function changeScreenWithEffects(toOpenElement, toCloseElement) {
       locoScroll.update();
     });
 }
+const hideFilterNavButton = document.querySelector('[data-mobile-hide-filter]');
+const filterNav = document.querySelector('[data-filter-nav]');
+hideFilterNavButton.addEventListener('click', () => {
+  filterNav.classList.toggle('rolled-up');
+});
 
 const filterWrapper = document.querySelector('[data-filter-wrapper]');
 const planWrapper = document.querySelector('[data-build-plan-wrapper]');
@@ -697,6 +702,7 @@ filterFlats(filter, () => {
 filterButtons.forEach((button) => {
   button.dataset.countResults = document.querySelectorAll('[data-is-valid="1"]').length / 2;
   button.addEventListener('click', () => {
+    filterNav.classList.add('rolled-up');
     filterFlats(filter, () => {
       locoScroll.update();
     });

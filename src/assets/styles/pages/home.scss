@@ -106,10 +106,14 @@
     margin-top: -1px;
     @include from(1680px){
         padding-top: 120px;
-    padding-bottom: 120px;
-    padding-left: calc((100vw - 768px) / 2);
-    padding-right: calc((100vw - 768px) / 2);
-    font-size: 24px;
+        padding-bottom: 120px;
+        padding-left: calc((100vw - 768px) / 2);
+        padding-right: calc((100vw - 768px) / 2);
+        font-size: 24px;
+    }
+    @include from-to(576px, 950px){
+        padding-left: var(--page-side-fields);
+        padding-right: var(--page-side-fields);
     }
     svg {
         margin-bottom: 30px;
@@ -194,6 +198,10 @@
     padding-top: 100px;
     padding-bottom: 100px;
     --minus-padding: 40px;
+    @include from-to(576px, 950px){
+        padding-left: var(--page-side-fields);
+        padding-right: var(--page-side-fields);
+    }
     .card-with-text-on-bg-wrap {
         margin-bottom: 60px;
     }
@@ -343,6 +351,10 @@
     // align-content: center;
     justify-content: center;
     position: relative;
+    @include from-to(576px, 950px){
+        padding-left: var(--page-side-fields);
+        padding-right: var(--page-side-fields);
+    }
     .video-wrapper {
         position: absolute;
         left: 0;
@@ -440,6 +452,10 @@
      margin-left: auto;
      margin-right: auto;   
     }
+    @include from-to(576px, 950px){
+        padding-left: var(--page-side-fields);
+        padding-right: var(--page-side-fields);
+    }
     @include to(575px){
         padding-top: 80px;
         padding-bottom: calc(80px - var(--offset));
@@ -461,6 +477,10 @@
         margin-left: calc((var(--offset) / 2));
         margin-right: calc((var(--offset) / 2));
         margin-bottom: 60px;
+        @include from-to(576px, 950px){
+            width: calc(100% - var(--offset));
+
+        }
     }
     &__link {
         display: flex;
@@ -845,6 +865,11 @@
     @include from(1680px){
         --v-padding: 150px;
     }
+    @include from-to(576px, 950px){
+        padding-left: var(--page-side-fields);
+        --offset: 30px;
+        // padding-right: var(--page-side-fields);
+    }
     &>.subtitle-with-decor {
         width: calc(100% - var(--offset));
         margin-left: calc(var(--offset) / 2);
@@ -855,12 +880,19 @@
         width: calc(35% - var(--offset));
         margin-left: calc(var(--offset) / 2);
         margin-right: calc(var(--offset) / 2);
+        @include from-to(576px, 950px){
+
+            width: calc(50% - var(--offset));
+        }
     }
     &__map {
         width: calc(65% - var(--offset));
         margin-left: calc(var(--offset) / 2);
         margin-right: calc(var(--offset) / 2);
         // border: 1px solid olivedrab;
+        @include from-to(576px, 950px){
+            width: calc(50% - var(--offset));
+        }
         @include to(575px){
             height: 50vh;
             width: calc(100% - var(--offset));

@@ -135,6 +135,16 @@
             padding-right: calc(100% / 24);
         }
     } 
+
+    @include from-to(576px, 950px){
+        &__right-bottom {
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+        .perfect-logo {
+            margin-bottom: 20px;
+        }
+    }
     @include to(575px){
         flex-wrap:wrap;
         overflow-y: scroll;

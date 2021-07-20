@@ -141,7 +141,7 @@
       content: attr(data-open);
     }
   }
-  @include from(576px){
+  @include from(769px){
     &__menu-call {
       display: none;   
     }

@@ -1,3 +1,10 @@
+#id-page-choose-section-and-filter {
+    @include to(575px){
+        .page__inner {
+            overflow: initial;
+        }
+    }
+}
 .choose-flat-content-wrapper {
     --self-padding-top: 80px;
     --self-padding-left: 45px;
@@ -8,6 +15,9 @@
     min-height: 100vh;
     .breadcrumbs {
         margin-bottom: 30px;
+        @include to(575px){
+            margin-bottom: 16px;
+        }
     }
     &__filter {
         padding-top: calc(var(--header-h) + var(--self-padding-top));
@@ -23,12 +33,31 @@
             --self-padding-top: 30px;
             @include size(12);
             position: sticky;
+            position: -webkit-sticky;
             background-color: var(--color-white);
             z-index: 10;
             top: 0;
             // padding-top: var(--header-h);
             padding-bottom: 30px;
+            padding-left: var(--page-side-fields);
+            padding-right: var(--page-side-fields);
         }
+    }
+    &__filter.rolled-up{
+        height: 30px;
+        overflow: hidden;
+    }
+    &__filter.rolled-up svg {
+        transform: rotate(0deg);
+    }
+    &__filter.rolled-up>.breadcrumbs {
+        opacity: 0;
+    }
+    &__filter.rolled-up  .mobile-hide-button{
+        transform: translateX(-50%);
+        border-bottom: none;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
     }
     &__content {
         padding-top: calc(var(--header-h) + var(--self-padding-top));
@@ -45,6 +74,10 @@
         }
         @include to(950px){
             @include size(12);
+            --self-padding-right:0;
+            padding-top: 20px;
+            padding-left: var(--page-side-fields);
+            padding-right: var(--page-side-fields);
         }
     }
     .flat-card {
@@ -61,6 +94,10 @@
             @include customOffsetWidth(75, var(--offset));
             margin-left: auto;
             margin-right: auto;
+        }
+        @include to(575px){
+            @include customOffsetWidth(100, var(--offset));
+
         }
     }
     .build-plan-wrapper {
@@ -137,6 +174,10 @@
     margin-left: calc(var(--self-padding-left) * -1);
     padding-left: var(--self-padding-left);
     padding-right: var(--self-padding-left);
+    @include to(575px){
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
     .filter-subtitle {
         width: 100%;
     }
@@ -256,6 +297,10 @@
     text-align: center;
     text-decoration: none;
     color: var(--color-grey);
+    @include to(575px){
+        padding-left: 20px;
+        padding-right: 20px;
+    }
     &__img {
         height: calc(var(--h)  * 0.42);
         width: 100%;
@@ -316,6 +361,12 @@
             width: 100%;
             height: auto;
         }
+        @include to(575px){
+            width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+            margin-bottom: 20px;
+        }
     }
     &__right {
         width: 30%;
@@ -351,6 +402,9 @@
     border: 1px solid #EFEFEF;
     --side-padding: 40px;
     color: var(--color-grey);
+    @include to(575px){
+        --side-padding: var(--page-side-fields);
+    }
     &__title {
         font-weight: 550;
         font-size: 18px;
@@ -443,6 +497,24 @@
     tbody tr {
         border: 1px solid #EFEFEF;
     }
+    @include to(575px){
+        font-size: 12px;
+        line-height: 1.3em;
+        width: auto;
+        margin-left: calc(var(--page-side-fields) * -0.5);
+        margin-right: calc(var(--page-side-fields) * -0.5);
+    }
+    @include to(350px){
+        font-size: 10px;
+        td>div,
+        td> img{
+            height: 60px;
+        }
+        td>img {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+    }
 }
 .mobile-hide-button {
     position: absolute;
@@ -452,15 +524,32 @@
     font-weight: 550;
     color: var(--color-grey);
     background-color: var(--color-white);
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
     padding-top: 7px;
     padding-bottom: 7px;
     border: 1px solid rgb(239, 239, 239);
     border-radius: 10px;
     cursor: pointer;
+    transition: transform .3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+        width: 20px;
+        height: 15px;
+        transition: .3s ease-in-out;
+        transform: rotate(180deg);
+    }
     
     @include from(951px){
         display: none;   
+    }
+    @include to(575px){
+        font-size: 12px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 }
