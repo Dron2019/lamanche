@@ -2,3 +2,4 @@
 @@include('./jquery/jquery.min.js')
 @@include('./swiper/swiper.js')
 @@include('./ion.rangeSlider/js/ion.rangeSlider.min.js')
+@@include('./tippy/popper.min.js')

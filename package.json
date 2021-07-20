@@ -83,6 +83,7 @@
     "webpack-cli": "^3.0.2"
   },
   "dependencies": {
+    "@popperjs/core": "^2.9.2",
     "axios": "^0.21.1",
     "bezier-easing": "^2.1.0",
     "cleave.js": "^1.6.0",
@@ -93,6 +94,7 @@
     "locomotive-scroll": "^4.0.6",
     "node-fetch": "^2.6.1",
     "on-change": "^3.0.2",
+    "tippy.js": "^6.3.1",
     "yup": "^0.32.8"
   }
 }

@@ -10,6 +10,9 @@
     @include from(1240px){
         height: calc(100vh - var(--header-h) - var(--container-top-padding) - 22px);
     }
+    @include to(1120px){
+        --offset: 30px;
+    }
     &__subtitle {
         font-weight: 550;
         font-size: 18px;
@@ -21,8 +24,16 @@
     }
     &__left {
         @include customOffsetWidth(25, var(--offset));
-       
-
+        @include to(950px){
+            @include customOffsetWidth(45, var(--offset));
+            margin-left: auto;
+            margin-right: auto;
+        }
+        @include to(575px){
+            @include customOffsetWidth(100, var(--offset));
+            margin-bottom: 30px;
+        }
+        
     }
     &__right {
         @include customOffsetWidth(22.5, var(--offset));
@@ -30,11 +41,24 @@
         display: flex;
         flex-direction: column;
         padding-bottom: 65px;
+        @include to(950px){
+            @include customOffsetWidth(45, var(--offset));
+            margin-left: auto;
+            margin-right: auto;
+            
+        }
+        @include to(575px){
+            @include customOffsetWidth(100, var(--offset));
+        }
         svg {
             width: 100%;
             height: auto;
             max-height: 100%;
             margin-top: 15px;
+            pointer-events: none;
+            path {
+                pointer-events: all;
+            }
         }
         .compass {
             width: max(50%, 95px);
@@ -49,6 +73,16 @@
         flex-direction: column;
         align-items: center;
         height: 100%;
+        @include to(950px){
+            order: -1;
+            @include customOffsetWidth(75, var(--offset));
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 30px;
+        }
+        @include to(575px){
+            @include customOffsetWidth(100, var(--offset));
+        }
         svg {
             margin-top: 20px;
             width: 100%;
@@ -65,6 +99,10 @@
     color: var(--color-grey);
     font-size: 15px;
     line-height: 100%;
+    
+    @include to(1120px){
+        --side-padding: 20px;
+    }
     &__title {
         font-weight: 550;
         font-size: 18px;
@@ -83,6 +121,10 @@
         padding-top: 25px;
         padding-bottom: 25px;
         line-height: calc(100% + 15px);
+        background-color: #fff;
+        @include to(575px){
+            padding-right: var(--side-padding);
+        }
     }
     &__subtitle-mini {
         font-weight: 550;
@@ -128,14 +170,31 @@ display: flex;
 }
 
 .floor-plan {
+    
     path {
         transition: fill .3s ease-in-out;
         fill: rgba(0,0,0,0);
         cursor: pointer;
     }
+    
     @include from(951px){
-        path:hover {
+        a:hover path {
             fill: rgba(56, 62, 65, 0.45);
         }
+    }
+}
+
+[data-tippy-root] {
+    pointer-events: all !important;
+    border: 1px solid #EFEFEF;
+    .tippy-content {
+        padding: 15px;
+    }
+    
+    .section-info-row {
+        line-height: 2em;
+    }
+    .underlined-link {
+        line-height: 3em;
     }
 }
