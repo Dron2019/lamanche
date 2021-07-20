@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable no-undef */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-param-reassign */
@@ -450,6 +451,53 @@ function cardFlatTemplate(flatData) {
   </a>
   `;
 }
+function prepareValidFlatsArray(filterDataValues, objectOfFlats, cb = () => {}) {
+  const validationDataArray = Object.entries(filterDataValues);
+  const validationDataLength = validationDataArray.length;
+  const validFlats = [];
+  objectOfFlats.forEach((flat) => {
+    let validFieldsCount = 0;
+    validationDataArray.forEach((filterPoint) => {
+      const name = filterPoint[0];
+      const value = filterPoint[1];
+      const constructor = Object.getPrototypeOf(value).constructor.name;
+      switch (constructor) {
+        case 'Object':
+          if (value.min === '' && value.max === '') {
+            validFieldsCount += 1;
+            break;
+          }
+          if (value.min <= +flat[name]
+            && value.max >= +flat[name]) validFieldsCount += 1;
+          break;
+        case 'Set':
+          if (value.size === 0) {
+            validFieldsCount += 1;
+            break;
+          }
+          if (value.has(flat[name])) validFieldsCount += 1;
+          break;
+        case 'String':
+          if (value === '') {
+            validFieldsCount += 1;
+            break;
+          }
+          if (value === flat[name]) validFieldsCount += 1;
+          break;
+        case 'Array':
+          validFieldsCount += 1;
+          break;
+        default:
+          break;
+      }
+    });
+    if ((validFieldsCount === validationDataLength)) {
+      validFlats.push(flat);
+    }
+    cb();
+  });
+  return validFlats;
+}
 function filterFlats(filterDataValues, cb = () => {}) {
   const objectsToFilter = document.querySelectorAll('[data-filter-me]');
   const validationDataArray = Object.entries(filterDataValues);
@@ -702,11 +750,68 @@ filterFlats(filter, () => {
 filterButtons.forEach((button) => {
   button.dataset.countResults = document.querySelectorAll('[data-is-valid="1"]').length / 2;
   button.addEventListener('click', () => {
-    filterNav.classList.add('rolled-up');
-    filterFlats(filter, () => {
+    const validFlats = prepareValidFlatsArray(filter, apartments);
+    // filterFlats(filter, () => {
+    //   locoScroll.update();
+    // });
+    portionedRenderFlats(validFlats, 0, 9, () => {
       locoScroll.update();
     });
     button.dataset.countResults = `
-    (${document.querySelectorAll('[data-is-valid="1"]').length / 2})`;
+    (${validFlats.length})`;
   });
+
+  if (document.documentElement.clientWidth < 576) {
+    button.addEventListener('click', () => {
+      filterNav.classList.add('rolled-up');
+    });
+  }
 });
+
+function portionedRenderFlats(flats, startPoint, endPoint, cb = () => {}) {
+  if (startPoint === 0) {
+    tableFlatsRenderContainer.innerHTML = '';
+    cardFlatsRenderContainer.innerHTML = '';
+  }
+  if (flats[startPoint] === undefined) return;
+  const portion = 9;
+  const options = {
+    rootMargin: '0px',
+    threshold: 0.1,
+  };
+  for (let i = startPoint; i < endPoint; i += 1) {
+    const flat = flats[i];
+    if (flat !== undefined) {
+      tableFlatsRenderContainer.innerHTML += tableFlatTemplate(flat);
+      cardFlatsRenderContainer.innerHTML += cardFlatTemplate(flat);
+    } else {
+      break;
+    }
+  }
+  const lastFlat = cardFlatsRenderContainer.lastElementChild;
+  const lastTable = tableFlatsRenderContainer.lastElementChild;
+  const callbackTable = (entries) => {
+    /* Content excerpted, show below */
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        portionedRenderFlats(flats, endPoint, endPoint + portion, cb);
+        observerTable.unobserve(lastTable);
+      }
+    });
+  };
+  const observerTable = new IntersectionObserver(callbackTable, options);
+  observerTable.observe(lastTable);
+  const callback = (entries) => {
+    /* Content excerpted, show below */
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        portionedRenderFlats(flats, endPoint, endPoint + portion, cb);
+        observer.unobserve(lastFlat);
+      }
+    });
+  };
+  const observer = new IntersectionObserver(callback, options);
+  const target = lastFlat;
+  observer.observe(target);
+  cb();
+}
