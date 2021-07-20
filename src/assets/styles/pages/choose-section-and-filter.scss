@@ -25,7 +25,11 @@
         @include shift(0);
         padding-left: var(--self-padding-left);
         border: 1px solid #EFEFEF;
-        align-self: stretch;
+        align-self: flex-start;
+        position: sticky;
+        position: -webkit-sticky;
+        top: 0;
+        padding-bottom: 20px;
         @include to(1240px){
             @include size(4);
         }
@@ -470,6 +474,11 @@
 
 .table-wrapper {
     width: 100%;
+    cursor: pointer;
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
     img {
         object-fit: contain;
     }
@@ -496,6 +505,12 @@
     }
     tbody tr {
         border: 1px solid #EFEFEF;
+        transition: .3s ease-in-out;
+    }
+    @include from(950px){
+        tbody tr:hover {
+            transform: perspective(100px) translateZ(1px);
+        }
     }
     @include to(575px){
         font-size: 12px;
@@ -551,5 +566,34 @@
         padding-bottom: 5px;
         padding-left: 15px;
         padding-right: 15px;
+    }
+}
+
+.filter-table-image-view {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    // height: calc(100% - (var(--header-h) + var(--self-padding-top)));
+    height: 100%;
+    object-fit: contain;
+    z-index: 5;
+    pointer-events: none;
+    background-color: #fff;
+    height: calc(100% - 20px - var(--header-h) - var(--self-padding-top));
+    opacity: 0;
+    font-weight: 300;
+    font-size: 48px;
+    line-height: 100%;
+    color: var(--color-grey);
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 1em;
+    img {
+        margin-top: 15px;
+    }
+    &[src=''] {
+        opacity: 0;
     }
 }

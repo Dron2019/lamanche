@@ -388,6 +388,7 @@ const apartments = [
     price_m2: '33 462',
   },
 ];
+locoScroll.destroy();
 function tableFlatTemplate(flatData) {
   let dataset = '';
   Object.entries(flatData).forEach((filterValue) => {
@@ -398,19 +399,29 @@ function tableFlatTemplate(flatData) {
       <td><img src="${flatData.img_big}" title="foto" alt="foto"/>
       </td>
       <td> 
-        <div>${flatData.rooms}</div>
+        <a href="flat?id=${flatData.id}">
+          <div>${flatData.rooms}</div>
+        </a>
       </td>
       <td> 
-        <div>${flatData.section}</div>
+        <a href="flat?id=${flatData.id}">
+          <div>${flatData.section}</div>
+        </a>
       </td>
       <td> 
-        <div>${flatData.floor}</div>
+        <a href="flat?id=${flatData.id}">
+          <div>${flatData.floor}</div>
+        </a>
       </td>
       <td> 
-        <div>${flatData.all_room}</div>
+        <a href="flat?id=${flatData.id}">
+          <div>${flatData.all_room}</div>
+        </a>
       </td>
       <td> 
-        <div>${flatData.live_room}</div>
+        <a href="flat?id=${flatData.id}">
+          <div>${flatData.live_room}</div>
+        </a>
       </td>
     </tr>
   `;
@@ -712,6 +723,7 @@ switchScreenItems.forEach((el) => {
 
 const cardsContainer = document.querySelector('[data-cards-container]');
 const tablesContainer = document.querySelector('[data-tables-container]');
+const tableViewImage = document.querySelector('[data-table-image-view]');
 const switchFilterScreenItems = document.querySelectorAll('[data-switch-filter-screen]');
 // const classNameActiveInFilterScreen = 'filter'
 switchFilterScreenItems[0].classList.add('active');
@@ -787,6 +799,25 @@ function portionedRenderFlats(flats, startPoint, endPoint, cb = () => {}) {
     } else {
       break;
     }
+  }
+  const flat = tableFlatsRenderContainer.children;
+  for (let i = 0; i < flats.length; i += 1) {
+    if (flat[i] === undefined) break;
+    flat[i].addEventListener('mouseenter', () => {
+      tableViewImage.style.opacity = 1;
+      tableViewImage.querySelector('img').src = flat[i].querySelector('img').src;
+      tableViewImage.querySelector('[data-table-view-detailed-type]').textContent = flat[i].dataset.type;
+    });
+    flat[i].addEventListener('mouseleave', () => {
+      tableViewImage.querySelector('img').src = '';
+      tableViewImage.style.opacity = 0;
+    });
+    // if (flat !== undefined) {
+    //   tableFlatsRenderContainer.innerHTML += tableFlatTemplate(flat);
+    //   cardFlatsRenderContainer.innerHTML += cardFlatTemplate(flat);
+    // } else {
+    //   break;
+    // }
   }
   const lastFlat = cardFlatsRenderContainer.lastElementChild;
   const lastTable = tableFlatsRenderContainer.lastElementChild;
