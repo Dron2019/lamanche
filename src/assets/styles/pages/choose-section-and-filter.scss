@@ -13,6 +13,9 @@
     @include row-flex();
     position: relative;
     min-height: 100vh;
+    @include to(768px){
+        align-content: flex-start;
+    }
     .breadcrumbs {
         margin-bottom: 30px;
         @include to(575px){
@@ -46,14 +49,21 @@
             padding-left: var(--page-side-fields);
             padding-right: var(--page-side-fields);
         }
+        @include to(575px){
+            --self-padding-top: 15px;
+        }
     }
     &__filter.rolled-up{
         height: 30px;
         overflow: hidden;
     }
+    &__filter.rolled-up {
+        --self-padding-top: 5px;
+    }
     &__filter.rolled-up svg {
         transform: rotate(0deg);
     }
+    &__filter.rolled-up>.filter-title,
     &__filter.rolled-up>.breadcrumbs {
         opacity: 0;
     }
@@ -114,8 +124,29 @@
         margin-right: calc((var(--offset) / 2) * -1);
         width: calc(100% + var(--offset));
     }
+    .cards-wrapper:empty:after {
+        content: 'Nothing to search';
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        font-size: 32px;
+        color: var(--color-grey);
+        line-height: 1.6em;
+        font-weight: 550;
+    }
     .table-wrapper {
         margin-bottom: var(--footer-margin);
+    }
+    [data-table-flats-render]:empty:after {
+        content: 'Nothing to search';
+        position: absolute;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        font-size: 32px;
+        color: var(--color-grey);
+        line-height: 1.6em;
+        font-weight: 550;
     }
     .button-std {
         max-width: none;
@@ -424,7 +455,11 @@
         padding-left: var(--side-padding);
         padding-right: var(--side-padding);
         font-size: 15px;
-        line-height: calc(100% + 15px);
+        // line-height: calc(100% + 15px);
+    }
+    td {
+        padding-top: 5px;
+        padding-bottom: 5px;
     }
 
 }

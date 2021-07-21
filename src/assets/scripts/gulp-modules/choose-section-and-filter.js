@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-undef */
 /* eslint-disable prefer-destructuring */
@@ -845,4 +846,62 @@ function portionedRenderFlats(flats, startPoint, endPoint, cb = () => {}) {
   const target = lastFlat;
   observer.observe(target);
   cb();
+}
+
+/* mobile tolltip for floor plan */
+function createTippyContent(path) {
+  const some = document.createElement('div');
+  const {
+    ceil, flats, commerce, floors,
+  } = path.dataset;
+  console.log(path);
+  // const some = document.querySelector('[data-clone-node-for-tippy]').cloneNode(true);
+  some.innerHTML = `
+    <table>
+      <tr class="section-info-row">
+        <td class="section-info-row-subtitle">Поверхів:</td>
+        <td class="section-info-row-val" data-render="floors"> ${floors}</td>
+      </tr>
+      <tr class="section-info-row">
+        <td class="section-info-row-subtitle">Квартир:</td>
+        <td class="section-info-row-val" data-render="flats">${flats} </td>
+      </tr>
+      <tr class="section-info-row">
+        <td class="section-info-row-subtitle">Висота стель:</td>
+        <td class="section-info-row-val" data-render="ceil">${ceil} </td>
+      </tr>
+      <tr class="section-info-row">
+        <td class="section-info-row-subtitle">Комерція:</td>
+        <td class="section-info-row-val" data-render="commerce"> ${commerce}</td>
+      </tr>
+      <tr>
+        <td>
+          <a class="underlined-link-wrap" href="${path.parentElement.getAttribute('href')}">
+            <div class="underlined-link">  Перейти до поверху</div>
+            <svg class="icon--build-arrow" role="presentation">
+              <use xlink:href="#icon-build-arrow"></use>
+            </svg>
+          </a>
+        </td>
+      </tr>
+    </table>
+  `;
+  return some;
+}
+
+const pathesForTooltip = document.querySelectorAll('[data-info-path]');
+if (document.documentElement.clientWidth < 769) {
+  pathesForTooltip.forEach((path) => {
+    const pathTippy = tippy(path, {
+      content: createTippyContent(path),
+      // interactive: true,
+      placement: 'bottom',
+      allowHTML: true,
+      theme: 'light',
+    });
+    path.parentElement.addEventListener('click', (evt) => {
+      evt.preventDefault();
+      pathTippy.show();
+    });
+  });
 }
