@@ -1,11 +1,23 @@
 .flat-wrapper {
-    --offset: 75px;
+    --offset: 50px;
     display: flex;
     flex-wrap: wrap;
     margin-left: calc((var(--offset) / 2) * -1);
     margin-right: calc((var(--offset) / 2) * -1);
+    margin-top: 30px;
+    margin-bottom: var(--footer-margin);
+    position: relative;
     --subtitle-size: 18px;
     --subtitle-margin: 15px;
+    @include from(1680px){
+        --subtitle-size: 24px;
+    }
+    @include to(1240px){
+        --offset: 30px;
+    }
+    @include to(575px){
+        --subtitle-size: 24px;
+    }
     .flat-wrapper-subtitle {
         font-weight: 550;
         font-size: var(--subtitle-size);
@@ -14,25 +26,79 @@
         margin-bottom: var(--subtitle-margin);
     }
     .flat-info {
-        @include customOffsetWidth(30, var(--offset));
+        @include customOffsetWidth(28, var(--offset));
         margin-top: calc(var(--subtitle-size) + var(--subtitle-margin));
+        align-self: flex-start;
+        @include to(950px){ 
+            @include customOffsetWidth(50, var(--offset));
+            margin-top: 0;
+        }
+        @include to(575px){
+            @include customOffsetWidth(100, var(--offset));
+                margin-bottom: calc(var(--subtitle-margin) * 2);
+        }
         
     }
     .flat-plan-block {
         @include customOffsetWidth(40, var(--offset));
         text-align: center;
+        @include to(950px){
+            order: -1;
+            @include customOffsetWidth(75, var(--offset));
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: calc(var(--subtitle-margin) * 2);
+        }
+        @include to(650px){
+            @include customOffsetWidth(100, var(--offset));
+
+        }
+        img {
+            margin-bottom: 25px;
+        }
+        .flat-wrapper-subtitle {
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
     .floor-plan-block {
         @include customOffsetWidth(20, var(--offset));
+        @include to(950px){ 
+            @include customOffsetWidth(50, var(--offset));
+        }
+        @include to(575px){
+            @include customOffsetWidth(100, var(--offset));
+
+        }
     }
     .floor-plan-block svg {
         width: 100%;
         height: auto;
         margin-bottom: 30px;
     }
+    .floor-plan-block .floor-plan {
+        width: 80%;
+    }
     .compass {
         @include customOffsetWidth(10, var(--offset));
         margin-top: calc(var(--subtitle-size) + var(--subtitle-margin));
+        @include to(950px){ 
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: min(120px, 10vw);
+            height: auto;
+        }
+    }
+    .genplan-svg {
+        width: 100%;
+        height: auto;
+        max-height: 100%;
+        margin-top: 15px;
+        pointer-events: none;
+        path {
+            pointer-events: all;
+        }
     }
 }
 
@@ -45,6 +111,12 @@
     
     font-size: 15px;
     // line-height: 100%;
+    @include from(1680px){
+        font-size: 18px;
+    }
+    @include to(1240px){
+        --side-padding: 25px;
+    }
     .flat-premises {
         border-top: 1px solid #EFEFEF;
         padding-top: var(--v-padding);
@@ -70,4 +142,52 @@
     }
 }
 
+.flat-plan-block {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    img {
+       width: 100%;
+    }
+    button {
+        width: 50%;
+        align-self: center;
+    }
+    a {
+        width: 50%;
+        align-self: center;
+        justify-content: center;
+    }
+    @include to(575px){
+        a,button {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    }
+}
 
+
+.similar-flats {
+    --offset: 35px;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-left: calc((var(--offset) / 2) * -1);
+    margin-right: calc((var(--offset) / 2) * -1);
+    margin-bottom: var(--footer-margin);
+    .flat-card {
+        margin-bottom: var(--offset);
+        @include customOffsetWidth(25, var(--offset));
+        @include to(1240px){
+            @include customOffsetWidth(33, var(--offset));
+
+        }
+        @include to(950px){
+            @include customOffsetWidth(50, var(--offset));
+        }
+        @include to(575px){
+            @include customOffsetWidth(100, var(--offset));
+        }
+    }
+}

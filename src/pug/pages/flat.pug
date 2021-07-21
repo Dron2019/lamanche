@@ -6,6 +6,14 @@ block variable
     var id_page = 'id-page-flat'
     var class_page = 'class-page-flat'
     var breadcrumbsSubitem = [
+      {
+        label: 'Обрати квартиру',
+        link: 'choose-section-and-filter'
+      },
+      {
+        label: 'План поверху',
+        link: 'choose-flat'
+      }
     ];
     var flatOveral = [
         { title: 'Загальна площа:',
@@ -28,6 +36,20 @@ block variable
           value: ' 3,40 м2',},
           {title: 'Балкон:',
           value: ' 1,72 м2',},
+    ];
+    var testInfo = [
+      {
+        name:'Загальна площа:',
+        val:'48,05 м2'
+      },
+      {
+        name:'Житлова площа:',
+        val:'19,25 м2'
+      },
+      {
+        name:'Ціна від:',
+        val:'66 453 грн/ м2'
+      },
     ]
   
 block meta
@@ -60,7 +82,7 @@ block content
       .flat-plan-block
         .flat-wrapper-subtitle Квартира К1-1
         +img('test-flat.jpg')
-        +btn('Записатися на перегляд','grey')
+        +btn('Записатися на перегляд','grey')(data-call-popup-form="data-call-popup-form")
         a(href="pdf").underlined-link-wrap 
           .underlined-link Завантажити PDF
           +svg('download')
@@ -78,6 +100,21 @@ block content
         include ../../assets/images/choose-section-and-filter/genplan.svg
         .flat-wrapper-subtitle План 2-7 поверхів
         include ../../assets/images/floor-plan.svg
+    .page-title Схожі планування
+    .cards-wrapper.similar-flats
+      - var n = 0;
+        while n < 4
+          a(href='flat').flat-card
+            +img('test-flat.jpg').flat-card__img 
+            .flat-card__title Тип 1А
+            table.flat-card__info-wrap(data-some=n++)
+                each val in testInfo
+                  tr.flat-card__info-wrap-item
+                      td #{val.name}
+                      td #{val.val}
+            .flat-card__link.underlined-link-wrap 
+              .underlined-link переглянути
+              +svg('build-arrow')
 
 block footer
   include ../includes/footer.pug
