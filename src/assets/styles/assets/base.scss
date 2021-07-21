@@ -254,6 +254,9 @@ input[type=number]::-webkit-outer-spin-button {
 		font-size: 18px;
 	}
 }
+[data-call-popup-form] {
+	display: none;
+}
 .subtitle-with-decor {
 	font-size: 30px;
 	line-height: 100%;

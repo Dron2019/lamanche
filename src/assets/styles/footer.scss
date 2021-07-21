@@ -29,8 +29,8 @@
     --offset: 15px;
   }
   @include from(1680px){
-    padding-left: calc((100vw - 1680px) / 2);
-    padding-right: calc((100vw - 1680px) / 2);
+    padding-left: calc((100vw - 1240px) / 2);
+    padding-right: calc((100vw - 1240px) / 2);
   }
   &__subtitle {
     font-size: 18px;
@@ -75,9 +75,16 @@
     margin-bottom: 30px;
     @include customOffsetWidth(100, var(--offset));
     order: 4;
+    @include from(1240px){
+      margin-left: -50vw;
+      margin-right: -50vw;
+      order: 4;
+      width: 200vw;
+    }
   }
+  
   &__links-wrap {
-    @include customOffsetWidth(33, var(--offset));
+    @include customOffsetWidth(50, var(--offset));
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
@@ -90,6 +97,7 @@
     }
   }
   &__form-wrap {
+    display: none;
     @include customOffsetWidth(42, var(--offset));
     max-width: 400px;
     max-width: 475px;
@@ -106,7 +114,7 @@
     }
   }
   &__contacts-wrap {
-    @include customOffsetWidth(25, var(--offset));
+    @include customOffsetWidth(33, var(--offset));
     @include to(768px){
       order: 1;
       @include customOffsetWidth(33, var(--offset));
@@ -233,3 +241,4 @@
   }
   
 }
+
