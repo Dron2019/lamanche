@@ -415,7 +415,7 @@ p~p {
 			color: var(--color-white);
 		}
 	}
-	@include from(1680px){
+	@include from(1720px){
 		--size: 60px;
 		left: calc((100vw - 1680px) / 2);
 		a {

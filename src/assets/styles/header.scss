@@ -13,7 +13,7 @@
   --links-v-padding: 16px;
   padding-left: max(calc((100vw - 1720px) / 2), var(--page-side-fields));
   padding-right: max(calc((100vw - 1720px) / 2), var(--page-side-fields));
-  @include from(1680px){
+  @include from(1720px){
     --links-v-padding: 19px;
     --links-padding: 40px;
     padding-left: calc((100vw - 1680px) / 2);

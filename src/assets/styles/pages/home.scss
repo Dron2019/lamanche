@@ -899,7 +899,7 @@
             margin-top: 50px;
         }
     }
-    @include from(1680px){
+    @include from(1720px){
         padding-left: calc((100vw - 1680px) / 2);
         padding-right: calc((100vw - 1680px) / 2);
     }
