@@ -137,7 +137,7 @@ function initMap() {
 
   });
   const filterMarkers = function (category, categoriesArray) {
-    console.log(categoriesArray);
+    // console.log(categoriesArray);
     gmarkers1.forEach((el) => {
       console.log(el.category, categoriesArray.has(el.category), 'FILTER');
       if (categoriesArray.has(el.category) || categoriesArray.size <= 1) {
@@ -149,7 +149,7 @@ function initMap() {
     });
   };
   filterItems.forEach((item) => {
-    console.log(item);
+    // console.log(item);
     item.addEventListener('click', () => {
       item.classList.toggle('active');
       if (item.classList.contains('active')) {
@@ -180,6 +180,13 @@ function initMap() {
     bank: `${baseFolder}marker-bank.svg`,
     museum: `${baseFolder}marker-museum.svg`,
   };
+
+  const currentLang = (function () {
+    const location = window.location.href;
+    if (location.match(/\/en\//)) return 'en';
+    if (location.match(/\/ru\//)) return 'ru';
+    return 'ua';
+  }());
   // eslint-disable-next-line no-unused-vars
   const markerPopupStyle = `
           style="
@@ -194,105 +201,179 @@ function initMap() {
   /* beautify preserve:start */
   const markersData = [
     {
-      content: '<div>ЖК "La Manche"</div>',
+      content: {
+        ua: '<div>ЖК "La Manche"</div>',
+        ru: '<div>ЖК "La Manche"</div>',
+        en: '<div>Residential complex"La Manche"</div>',
+      },
       position: { lat: 50.47315200396692, lng: 30.517570821411027 },
       type: 'main',
       icon: { url: markersAdresses.main, scaledSize: buildLogoSize },
     },
     {
-      content: '<div>ЖК "La Manche"</div>',
+      content: {
+        ua: '<div>Медицинська установа</div>',
+        ru: '<div>Медицинское учреждение</div>',
+        en: '<div>Medicine</div>',
+      },
       position: { lat: 50.473781, lng: 30.512321 },
       type: 'med',
       icon: { url: markersAdresses.med, scaledSize: defaultMarkerSize },
     },
     {
-      content: '<div>ЖК "La Manche"</div>',
+      content: {
+        ua: '<div>Дитячий садочок</div>',
+        ru: '<div>Детский садик</div>',
+        en: '<div>Kindergarten</div>',
+      },
       position: { lat: 50.472021, lng: 30.513921 },
       type: 'game',
       icon: { url: markersAdresses.game, scaledSize: defaultMarkerSize },
     },
     {
-      content: '<div>ЖК "La Manche"</div>',
+      content: {
+        ua: '<div>Заклад освіти</div>',
+        ru: '<div>Образовательное учреждение</div>',
+        en: '<div>Education</div>',
+      },
       position: { lat: 50.472894, lng: 30.513015 },
       type: 'education',
       icon: { url: markersAdresses.education, scaledSize: defaultMarkerSize },
     },
     {
-      content: '<div>ЖК "La Manche"</div>',
+      content: {
+        ua: '<div>Банк</div>',
+        ru: '<div>Банк</div>',
+        en: '<div>Bank</div>',
+      },
       position: { lat: 50.472159, lng: 30.502965 },
       type: 'bank',
       icon: { url: markersAdresses.bank, scaledSize: defaultMarkerSize },
     },
     {
-      content: '<div>ЖК "La Manche"</div>',
+      content: {
+        ua: '<div>Банк</div>',
+        ru: '<div>Банк</div>',
+        en: '<div>Bank</div>',
+      },
       position: { lat: 50.472355, lng: 30.511470 },
       type: 'bank',
       icon: { url: markersAdresses.bank, scaledSize: defaultMarkerSize },
     },
     {
-      content: '<div>ЖК "La Manche"</div>',
+      content: {
+        ua: '<div>Медицинська установа</div>',
+        ru: '<div>Медицинское учреждение</div>',
+        en: '<div>Medicine</div>',
+      },
       position: { lat: 50.471460, lng: 30.512037 },
       type: 'med',
       icon: { url: markersAdresses.med, scaledSize: defaultMarkerSize },
     },
     {
-      content: '<div>ЖК "La Manche"</div>',
+      content: {
+        ua: '<div>Метро</div>',
+        ru: '<div>Метро</div>',
+        en: '<div>Metro</div>',
+      },
       position: { lat: 50.466557, lng: 30.513491 },
       type: 'metro',
       icon: { url: markersAdresses.metro, scaledSize: defaultMarkerSize },
     },
     {
-      content: '<div>ЖК "La Manche"</div>',
+      content: {
+        ua: '<div>Музей</div>',
+        ru: '<div>Музей</div>',
+        en: '<div>Museum</div>',
+      },
       position: { lat: 50.466369, lng: 30.517440 },
       type: 'museum',
       icon: { url: markersAdresses.museum, scaledSize: defaultMarkerSize },
     },
     {
-      content: '<div>ЖК "La Manche"</div>',
+      content: {
+        ua: '<div>Заклад освіти</div>',
+        ru: '<div>Образовательное учреждение</div>',
+        en: '<div>Education</div>',
+      },
       position: { lat: 50.465546, lng: 30.522570 },
       type: 'education',
       icon: { url: markersAdresses.education, scaledSize: defaultMarkerSize },
     },
     {
-      content: '<div>ЖК "La Manche"</div>',
+      content: {
+        ua: '<div>Заклад освіти</div>',
+        ru: '<div>Образовательное учреждение</div>',
+        en: '<div>Education</div>',
+      },
       position: { lat: 50.467424, lng: 30.507700 },
       type: 'education',
       icon: { url: markersAdresses.education, scaledSize: defaultMarkerSize },
     },
     {
-      content: '<div>ЖК "La Manche"</div>',
+      content: {
+        ua: '<div>Заклад освіти</div>',
+        ru: '<div>Образовательное учреждение</div>',
+        en: '<div>Education</div>',
+      },
       position: { lat: 50.467384, lng: 30.508963 },
       type: 'education',
       icon: { url: markersAdresses.education, scaledSize: defaultMarkerSize },
     },
     {
-      content: '<div>ЖК "La Manche"</div>',
+      content: {
+        ua: '<div>Кінотеатр</div>',
+        ru: '<div>Кинотеатр</div>',
+        en: '<div>Cinema</div>',
+      },
       position: { lat: 50.468431, lng: 30.510183 },
       type: 'cinema',
       icon: { url: markersAdresses.cinema, scaledSize: defaultMarkerSize },
     },
     {
-      content: '<div>ЖК "La Manche"</div>',
+      content: {
+        ua: '<div>Спортивний заклад</div>',
+        ru: '<div>Спорт</div>',
+        en: '<div>Sport</div>',
+      },
       position: { lat: 50.472831, lng: 30.511344 },
       type: 'sport',
       icon: { url: markersAdresses.sport, scaledSize: defaultMarkerSize },
     },
     {
-      content: '<div>ЖК "La Manche"</div>',
+      content: {
+        ua: '<div>Метро</div>',
+        ru: '<div>Метро</div>',
+        en: '<div>Metro</div>',
+      },
       position: { lat: 50.474018, lng: 30.503866 },
       type: 'metro',
       icon: { url: markersAdresses.metro, scaledSize: defaultMarkerSize },
     },
     {
-      content: '<div>ЖК "La Manche"</div>',
+      content: {
+        ua: '<div>Магазин</div>',
+        ru: '<div>Магазин</div>',
+        en: '<div>Shop</div>',
+      },
       position: { lat: 50.471777, lng: 30.507165 },
       type: 'shop',
       icon: { url: markersAdresses.shop, scaledSize: defaultMarkerSize },
     },
+    {
+      content: {
+        ua: '<div>Супермаркет</div>',
+        ru: '<div>Супермаркет</div>',
+        en: '<div>Supermarket</div>',
+      },
+      position: { lat: 50.471321, lng: 30.517450 },
+      type: 'supermarket',
+      icon: { url: markersAdresses.supermarket, scaledSize: defaultMarkerSize },
+    },
   ];
   const markersCategoriesList = new Set();
   markersData.forEach((el) => { markersCategoriesList.add(el.type); });
-  console.log(markersCategoriesList);
+  // console.log(markersCategoriesList);
   /* beautify preserve:end */
   const infowindow = new google.maps.InfoWindow({
     content: '',
@@ -309,7 +390,7 @@ function initMap() {
 
 
     google.maps.event.addListener(mapMarker, 'click', function () {
-      infowindow.setContent(marker.content);
+      infowindow.setContent(marker.content[currentLang]);
       infowindow.open(map, mapMarker);
       map.panTo(this.getPosition());
     });
