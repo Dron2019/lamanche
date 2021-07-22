@@ -181,6 +181,7 @@ function initMap() {
     museum: `${baseFolder}marker-museum.svg`,
   };
 
+  // eslint-disable-next-line no-unused-vars
   const currentLang = (function () {
     const location = window.location.href;
     if (location.match(/\/en\//)) return 'en';
@@ -375,6 +376,7 @@ function initMap() {
   markersData.forEach((el) => { markersCategoriesList.add(el.type); });
   // console.log(markersCategoriesList);
   /* beautify preserve:end */
+  // eslint-disable-next-line no-unused-vars
   const infowindow = new google.maps.InfoWindow({
     content: '',
     maxWidth: 200,
@@ -389,11 +391,11 @@ function initMap() {
     });
 
 
-    google.maps.event.addListener(mapMarker, 'click', function () {
-      infowindow.setContent(marker.content[currentLang]);
-      infowindow.open(map, mapMarker);
-      map.panTo(this.getPosition());
-    });
+    // google.maps.event.addListener(mapMarker, 'click', function () {
+    //   infowindow.setContent(marker.content[currentLang]);
+    //   infowindow.open(map, mapMarker);
+    //   map.panTo(this.getPosition());
+    // });
     mapMarker.name = marker.type;
     gmarkers1.push(mapMarker);
   });
