@@ -905,3 +905,32 @@ if (document.documentElement.clientWidth < 769) {
     });
   });
 }
+
+/* Сортировка квартир в списке */
+const filterTableTriggers = document.querySelectorAll('[data-filter]');
+let currentSortEl = '';
+filterTableTriggers.forEach((item) => {
+  item.addEventListener('click', () => {
+    const filterTablesContainerItems = document.querySelectorAll('[data-table-flats-render]>*');
+    const container = document.querySelector('[data-table-flats-render]');
+    if (currentSortEl !== item) {
+      filterTableTriggers.forEach(t => t.classList.remove('current-sorted'));
+      item.classList.add('current-sorted');
+    }
+    item.classList.toggle('ascent');
+    currentSortEl = item;
+    if (item.classList.contains('ascent')) {
+      Array.from(filterTablesContainerItems)
+        .sort((first, second) => (
+          +first.dataset[item.dataset.filter] - +second.dataset[item.dataset.filter]
+        ))
+        .forEach(el => container.insertAdjacentElement('beforeend', el));
+    } else {
+      Array.from(filterTablesContainerItems)
+        .sort((first, second) => (
+          +second.dataset[item.dataset.filter] - +first.dataset[item.dataset.filter]
+        ))
+        .forEach(el => container.insertAdjacentElement('beforeend', el));
+    }
+  });
+});

@@ -115,15 +115,15 @@ block content
             tr
               td 
                 div План
-              td 
+              td(data-filter='rooms')  
                 div Кімнати
-              td 
+              td(data-filter='section') 
                 div Секція
-              td 
+              td(data-filter='floor') 
                 div Поверх
-              td 
+              td(data-filter='all_room')
                 div Загальна пл. м²
-              td 
+              td(data-filter='live_room')
                 div Житлова пл. м²
           tbody(data-table-flats-render)
             - var n = 0;

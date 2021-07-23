@@ -650,3 +650,9 @@
     transform-box: fill-box;
     }
 }
+
+
+[data-filter].current-sorted {
+    font-weight: 550;
+color: var(--color-grey);
+}
