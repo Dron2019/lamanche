@@ -764,6 +764,7 @@ filterButtons.forEach((button) => {
   button.dataset.countResults = document.querySelectorAll('[data-is-valid="1"]').length / 2;
   button.addEventListener('click', () => {
     const validFlats = prepareValidFlatsArray(filter, apartments);
+    window.dispatchEvent(new Event('filtering'));
     // filterFlats(filter, () => {
     //   locoScroll.update();
     // });
@@ -854,7 +855,6 @@ function createTippyContent(path) {
   const {
     ceil, flats, commerce, floors,
   } = path.dataset;
-  console.log(path);
   // const some = document.querySelector('[data-clone-node-for-tippy]').cloneNode(true);
   some.innerHTML = `
     <table>
@@ -933,4 +933,8 @@ filterTableTriggers.forEach((item) => {
         .forEach(el => container.insertAdjacentElement('beforeend', el));
     }
   });
+});
+
+window.addEventListener('filtering', () => {
+  filterTableTriggers.forEach(t => t.classList.remove('current-sorted'));
 });
