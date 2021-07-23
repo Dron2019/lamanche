@@ -937,4 +937,5 @@ filterTableTriggers.forEach((item) => {
 
 window.addEventListener('filtering', () => {
   filterTableTriggers.forEach(t => t.classList.remove('current-sorted'));
+  filterTableTriggers.forEach(t => t.classList.remove('ascent'));
 });
