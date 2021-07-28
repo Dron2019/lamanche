@@ -13,6 +13,10 @@
 	.page__footer-wrapper {
 		flex-shrink: 0;
 	}
+  @include from-to(576px, 769px){
+    max-width: 100vw;
+    overflow: hidden;
+  }
 }
 .section-pading--top {
 	padding-top: 60px;

@@ -1,4 +1,22 @@
 #id-page-choose-section-and-filter {
+    // .header {
+    //     display: none;
+    // }
+    @include from-to(576px, 769px){
+        .choose-flat-content-wrapper {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        .page__inner {
+            overflow: initial;
+        }
+        .footer {
+            width: 100vw;
+            overflow: hidden;
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
     @include to(575px){
         .page__inner {
             overflow: initial;
@@ -97,6 +115,7 @@
     .flat-card {
         @include customOffsetWidth(33, var(--offset));
         margin-bottom: var(--offset);
+        
         @include from(1680px){
             // @include customOffsetWidth(25, var(--offset));
 
@@ -111,6 +130,9 @@
         }
         @include to(575px){
             @include customOffsetWidth(100, var(--offset));
+        }
+        @include from-to(576px, 769px){
+            @include customOffsetWidth(50, var(--offset));
 
         }
     }

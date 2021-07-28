@@ -562,6 +562,10 @@
         .bold:before {
             content: ' ';
         }
+        @include from-to(576px, 769px){
+            min-width: 200px;
+            text-align: center;
+        }
     }
     &__title {
         font-size: 22px;
@@ -635,6 +639,12 @@
     --v-padding:107px;
     margin-left: calc((var(--offset) / 2) * -1);
     margin-right: calc((var(--offset) / 2) * -1);
+    @include from-to(576px, 769px){
+        // margin-left: 0;
+        // margin-right: 0;
+        // width: 100%;
+        // overflow: hidden;
+    }
     @include from(1680px){
         padding-left: calc((100vw - 1680px) / 2);
         padding-right: calc((100vw - 1680px) / 2);
@@ -698,6 +708,11 @@
             margin-right: 50px;
         }
 
+    }
+    @include from-to(575px, 950px){
+        .characteristics-wrap .single-characteristic {
+            margin-bottom: 15px;
+        }
     }
     @include from(1680px){
         .characteristics-wrap { 

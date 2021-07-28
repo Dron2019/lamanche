@@ -22,6 +22,11 @@
       width: 50%;
       position: relative;
   }
+  &__left {
+      @include from-to(576px, 769px){
+          height: 100vh;
+      }
+  }
   &__left-bg {
     //   position: absolute;
     //   left: 0;
