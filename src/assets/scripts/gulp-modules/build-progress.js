@@ -84,7 +84,7 @@ function filterBuildCards(items, filterObject, wrapper, afterCallback = () => {}
 function handleFilterBuildCards() {
   const cards = document.querySelectorAll('.build-progress-card');
   withVideoCheckbox.addEventListener('change', () => {
-    if (withVideoCheckbox.checked === false) {
+    if (withVideoCheckbox.checked === true) {
       filterItems[withVideoCheckbox.dataset.name] = '1';
     } else {
       filterItems[withVideoCheckbox.dataset.name] = '';

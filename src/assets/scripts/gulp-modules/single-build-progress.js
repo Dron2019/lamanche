@@ -44,7 +44,7 @@ swiper1.on('afterInit', () => {
 
 function sideSwitchArrow(swiper, arrow, container) {
   const mediumCordValue = document.documentElement.clientWidth / 2;
-
+  document.body.append(arrow);
   container.style.cursor = 'none';
   arrow.style.cursor = 'none';
   arrow.style.zIndex = 10;

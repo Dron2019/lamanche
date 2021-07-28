@@ -13,6 +13,9 @@
         overflow: visible;
         // pointer-events: none;
     }
+    .slider-numbers {
+            display: none;
+    }
     .swiper-button-prev {
         transform: rotate(180deg);
     }

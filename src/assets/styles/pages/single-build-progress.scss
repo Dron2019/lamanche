@@ -6,6 +6,7 @@
         overflow: visible;
         // pointer-events: none
     }
+
     &__side {
         @include shift(0);
         @include size(2);
@@ -28,6 +29,12 @@
     }
     .swiper-button-prev {
         transform: rotate(180deg);
+    }
+    .swiper-slide {
+        @include from(951px){
+            height: 53vh;
+            object-fit: cover;
+        }
     }
     @include from(576px){
         .slider-nav {

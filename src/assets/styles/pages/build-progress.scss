@@ -116,12 +116,12 @@
     input {
         margin-left: 15px;
     }
-    input.apple-switch[value='true'] {
+    input.apple-switch[value='false'] {
         background-color: var(--color-light-grey);
         box-shadow: none;
         border: none;
     }
-    input.apple-switch[value='true']:after {
+    input.apple-switch[value='false']:after {
         box-shadow: none;
     }
 }
