@@ -454,3 +454,41 @@ p~p {
 		display: none;	
 	}
 }
+
+.langs-header {
+	// line-height: 46px;
+	position: relative;
+	width: 20px;
+	height: 1em;
+	overflow: hidden;
+	ul {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+	}
+	li~li {
+		margin-top: 10px;
+		opacity: 0;
+		transition: opacity .3s ease-in-out;
+	}
+	a {
+		transition: color .3s ease-in-out;
+		color: var(--color-white);
+		text-decoration: none;
+	}
+	&:hover li~li {
+		opacity: 1;
+	}
+	&:hover {
+		overflow: visible;
+	}
+	@include to(575px){
+		display: none;	
+	}
+	@include from(951px){
+		a:hover {
+			color: var(--color-gold);		
+		}
+	}
+}

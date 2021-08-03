@@ -24,6 +24,10 @@
   @include to(1440px) {
     padding: 0 var(--page-side-fields);
   }
+  .langs-header {
+
+    margin-right: 50px;
+  }
   &__logo {
     width: var(--logo-w);
     height: var(--logo-h);
