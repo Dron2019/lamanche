@@ -358,7 +358,11 @@ document.querySelectorAll('.scroll-mouse').forEach((mouse) => {
 })
 
 
-/*Доскролл */
+/*Доскролл 
+data-scroll-section - для секций, которым необходим доскролл
+в разметке должно быть разделение на sections для кореектной работы
+
+*/
 
 
 function handleAccurateScroll() {
@@ -416,3 +420,94 @@ function handleAccurateScroll() {
 
 if (document.documentElement.clientWidth > 950) handleAccurateScroll();
 /*Доскролл END */
+
+
+
+/** Rotation text enter effect */
+// gsap.fromTo('.home-section-0__title',{
+//   y: 0,
+//   z: .01,
+//   rotationX: -90,
+//   rotationY: 0,
+//   rotationZ: 0
+// }, {
+//   y: 0,
+//   z: .01,
+//   rotationX: 0,
+//   rotationY: .01,
+//   rotationZ: 0,
+//   duration: .9
+// }, 330);
+// gsap.fromTo('.home-section-0__title',{
+//   y: "3em",
+//   z: .01,
+//   rotationX: "-150",
+//   rotationY: "-60",
+//   rotationZ: "60"
+// }, {
+//   y: 0,
+//   z: .01,
+//   rotationX: 0,
+//   rotationY: .01,
+//   rotationZ: 0,
+//   duration: .9
+// }, 330);
+// gsap.fromTo('.home-section-0__title').fromTo(i, {
+//   autoAlpha: 0
+// }, {
+//   autoAlpha: 1,
+//   ease: "power4.out",
+//   duration: 1
+// }, 330)
+
+// gsap.timeline({
+//   delay: .2,
+//   defaults: {
+//       duration: 1,
+//       ease: "expo.out"
+//   }
+// })
+// .fromTo('.home-section-0__title', {
+//   rotationX: -90
+// }, {
+//   rotationX: 0
+// }, .15)
+// .fromTo('.home-section-0__title', {
+//   autoAlpha: 0
+// }, {
+//   autoAlpha: 1,
+//   ease: "power4.out",
+//   duration: 1* 2.5
+// }, 0)
+
+// const yyy = document.querySelector('.home-section-0__title');
+// gsap.set(yyy, { whiteSpace: 'nowrap' })
+// gsap.fromTo(yyy, {
+//   rotationZ: -20
+// }, {
+//   rotationZ: 0,
+//   duration: 1.2* 2.5
+// }, .1),
+
+
+  // gsap.fromTo(yyy, {
+  //     y: "3em",
+  //     z: .01,
+  //     rotationX: "-150",
+  //     rotationY: "-60",
+  //     rotationZ: "60"
+  // }, {
+  //     y: 0,
+  //     z: .01,
+  //     rotationX: 0,
+  //     rotationY: .01,
+  //     rotationZ: 0,
+  //     duration: 0.55
+  // }, .1),
+  // a.fromTo(e, {
+  //     opacity: 1e-4
+  // }, {
+  //     opacity: 1,
+  //     ease: "power4.inOut",
+  //     duration: 0.55
+  // }, 1)

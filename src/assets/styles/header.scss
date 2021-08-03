@@ -153,22 +153,22 @@
       margin-left: 0;
     }
   }
-  @include to(1240px){
+  @include to(1320px){
     &__links a:last-child {
       display: none;
     }
   }
-  @include to(1120px){
+  @include to(1240px){
     &__links a:nth-last-child(2) {
       display: none;
     }
   }
-  @include to(950px){
+  @include to(1120px){
     &__links a:nth-last-child(3) {
       display: none;
     }
   }
-  @include to(768px){
+  @include to(950px){
     &__links {
       display: none;
     }
