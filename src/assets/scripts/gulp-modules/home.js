@@ -356,3 +356,63 @@ document.querySelectorAll('.scroll-mouse').forEach((mouse) => {
     locoScroll.scrollTo(mouse.closest('section').nextElementSibling);
   });
 })
+
+
+/*Доскролл */
+
+
+function handleAccurateScroll() {
+  const scrollSections = document.querySelectorAll('section, [data-scroll-correction]');
+  let currentSectionInView = null;
+  let isScrolling = false;
+  
+  scrollSections.forEach((sect) => {
+    const observer = new IntersectionObserver((entries) => {
+      /* Content excerpted, show below */
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          if (sect.dataset.scrollCorrection !== undefined) {
+            currentSectionInView = sect;
+          } else {
+            
+            currentSectionInView = null;
+          }
+          console.log(currentSectionInView);
+        }
+      });
+    }, { 
+      rootMargin: '0px',
+      threshold: 0.45,
+    });
+    observer.observe(sect);
+  })
+  
+  function debounce(f, ms) {
+    let isCooldown = false;
+    return function() {
+      if (isCooldown) return;
+      f.apply(this, arguments);
+      isCooldown = true;
+      setTimeout(() => isCooldown = false, ms);
+    };
+  }
+  function accSectScroll(el) {
+    if (isScrolling === true) return;
+    if (el) {
+      isScrolling = true;
+      locoScroll.scrollTo(el);
+      currentSectionInView = null;
+    }
+    setTimeout(() => {
+      isScrolling = false;
+      
+    }, 3000);
+  }
+  const accurateSectionScroll = debounce(accSectScroll, 1500);
+  locoScroll.on('scroll', () => {
+    accurateSectionScroll(currentSectionInView);
+  })
+}
+
+if (document.documentElement.clientWidth > 950) handleAccurateScroll();
+/*Доскролл END */

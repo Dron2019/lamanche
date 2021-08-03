@@ -92,7 +92,7 @@ block content
           .card-with-text-on-bg
             .subtitle-with-decor.white.small(data-slide-in-anim)  #{val[1]}
             p(data-slide-in-anim) #{val[2]}
-  section.home-section-4(data-background-lazy data-src="./assets/images/home/poster.jpg" style="" data-live-sections)
+  section.home-section-4(data-background-lazy data-src="./assets/images/home/poster.jpg" style="" data-live-sections data-scroll-correction)
     .video-wrapper 
       video(poster="./assets/images/home/poster.jpg" loop="true" muted)
         source(src="static/lamanche.mp4" type="video/mp4")
@@ -125,7 +125,7 @@ block content
       +svg('key-with-decor')
       p Обирай квартиру на будь-який смак у клубному будинку La Manche 
       +a('Обрати квартиру', 'gold', 'choose-appartment.html')
-  section.home-section-6
+  section.home-section-6(data-scroll-correction)
     .home-section-6__text
       .subtitle-with-decor.white Характеристики
       p.color-white Дізнайся більше про особливості та характеристики клубного будинку La Manche
@@ -141,7 +141,7 @@ block content
         <path d="M217.211 0L0.392578 581.617H84.8879C102.425 534.686 245.908 132.414 245.908 132.414L406.928 581.617H489.829L273.01 0H217.211Z" fill="#6E7A81"/>
         </svg>
       +img('home/characteristic-img.jpg')
-  section.home-section-7
+  section.home-section-7(data-scroll-correction)
     .home-slider(data-slider)
       <svg class="moving-arrow" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="50" cy="50" r="50" fill="#383E41"/>
