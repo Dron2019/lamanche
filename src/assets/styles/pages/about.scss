@@ -12,7 +12,7 @@
 }
 .about-content-wrap {
     @include shift-padding(1);
-    --offset: 93px;
+    --offset: 60px;
     display: flex;
     flex-wrap: wrap;
     margin-left: calc((var(--offset) / 2) * -1);
@@ -25,7 +25,7 @@
     }
     .wide-img {
         @include customOffsetWidth(100, var(--offset));
-        margin-top: 100px;
+        margin-top: 60px;
         margin-bottom: 50px;
         @include from(1680px){
             margin-top: 50px;
@@ -40,7 +40,7 @@
         }
     }
     .about-top-text-block-small {
-        @include customOffsetWidth(33, var(--offset));
+        @include customOffsetWidth(40, var(--offset));
         font-weight: 300;
         @include from(1680px){
             @include customOffsetWidth(40, var(--offset));
@@ -91,7 +91,7 @@
         color: #C8C8C9;
     }
     .aboute-top-block-mini-img {
-        @include customOffsetWidth(33, var(--offset));
+        @include customOffsetWidth(40, var(--offset));
         object-fit: cover;
         @include from(1680px){
             @include customOffsetWidth(40, var(--offset));
@@ -114,16 +114,20 @@
 
         display: flex;
         align-items: center;
-
+        flex-direction: column;
+        align-items: flex-start;justify-content: center;
         /* Text */
 
         color: var(--text-gray);
         text-transform: initial;
         width: 100%;
+        .button-std {
+            margin-top: 30px;
+        }
         
     }
     .about-top-block-big2 {
-        @include customOffsetWidth(66, var(--offset));
+        @include customOffsetWidth(60, var(--offset));
         display: flex;
         flex-direction: column;
         align-self: center;
@@ -157,21 +161,23 @@
         display: flex;
         flex-wrap: wrap;
         z-index: 1;
-        color: #C8C8C9;
-        margin-top: 50px;
-        padding-top: 100px;
-        padding-bottom: 100px;
+        // color: #C8C8C9;
+        margin-top: 100px;
+        // padding-top: 100px;
+        // padding-bottom: 100px;
+        margin-bottom: 100px;
         @include from(1680px){
-            padding-top: 150px;
-            padding-bottom: 150px;
-            margin-top: 70px;
+            padding-top: 0px;
+            padding-bottom: 0px;
+            margin-top: 150px;
+            margin-bottom: 150px;
         }
         @include to(575px){
             order: 5;
         }
         &:after {
             content: '';
-            background-color: var(--color-grey);
+            // background-color: var(--color-grey);
             position: absolute;
             left: 50%;
             top: 0;
@@ -185,23 +191,26 @@
         }
         @include to(575px){
             margin-top: 80px;
-            padding-top: 80px;
-            padding-bottom: 80px;
+            padding-top: 0px;
+            padding-bottom: 0px;
+            margin-bottom: 80px;
         }
 
     }
     .about-bg-block-uppercased {
-        @include customOffsetWidth(33, var(--offset));
+        @include customOffsetWidth(100, var(--offset));
         font-size: 22px;
         line-height: 160%;
         text-transform: uppercase;
-        color: #FFFFFF;
+        color: var(--color-grey);
+        margin-bottom: 30px;
+        // color: #FFFFFF;
         @include from(1680px){
             font-size: 28px;
             @include customOffsetWidth(40, var(--offset));
         }
         @include to(950px){
-            @include customOffsetWidth(50, var(--offset));
+            @include customOffsetWidth(100, var(--offset));
         }
         @include to(575px){
             @include customOffsetWidth(100, var(--offset));
@@ -221,7 +230,7 @@
         }
     }
     .about-block-map-wrap {
-        height: 40vw;
+        height: 27vw;
         @include customOffsetWidth(100, var(--offset));
         margin-top: 65px;
         position: relative;
@@ -285,9 +294,16 @@
         display: flex;
         flex-direction: column;
         margin-bottom: var(--offset);
+        img {
+            height: 350px;
+            object-fit: cover;
+            @include to(950px){
+                height: 250px;
+            }
+        }
         @include from(1680px){
             img {
-                height: 100%;
+                height: 450px;
                 object-fit: cover
             }
         }

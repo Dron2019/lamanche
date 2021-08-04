@@ -410,9 +410,17 @@ window.addEventListener('load', () => {
     // добавить плавность появление блока с маркерами
     if (legend.classList.contains('opened')) {
       gsap.fromTo('.map-wrap__legend-markers-wrap', { height: 0 },
-        { height: '35vh' });
+        {
+          height: () => (
+            document.querySelector('.map').getBoundingClientRect().height * 0.5
+          ),
+        });
     } else {
-      gsap.fromTo('.map-wrap__legend-markers-wrap', { height: '35vh' }, { height: 0 });
+      gsap.fromTo('.map-wrap__legend-markers-wrap', {
+        height: () => (
+          document.querySelector('.map').getBoundingClientRect().height * 0.5
+        ),
+      }, { height: 0 });
     }
   });
   legend.addEventListener('mouseenter', () => {

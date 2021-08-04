@@ -211,17 +211,18 @@ lazyImages.forEach((imageArgs) => {
   image.addEventListener('load', () => {
     image.style.opacity = 1;
   });
-  const callback = (entries) => {
+  const target = image;
+  const observer = new IntersectionObserver((entries) => {
     /* Content excerpted, show below */
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         const lazyImage = entry.target;
         lazyImage.src = lazyImage.dataset.src;
+        console.log(entries);
+        observer.unobserve(target);
       }
     });
-  };
-  const observer = new IntersectionObserver(callback, options);
-  const target = image;
+  }, options);
   observer.observe(target);
 });
 const lazyposter = document.querySelectorAll('[data-poster]');
