@@ -14,6 +14,18 @@ block variable
       ['build-card-04.jpg'],
       ['build-card-05.jpg'],
     ];
+    var flatBlocksData = [
+      ['build-card-01.jpg'],
+      ['build-card-02.jpg'],
+      ['build-card-03.jpg'],
+      ['build-card-04.jpg'],
+      ['build-card-05.jpg'],
+      ['build-card-01.jpg'],
+      ['build-card-02.jpg'],
+      ['build-card-03.jpg'],
+      ['build-card-04.jpg'],
+      ['build-card-05.jpg'],
+    ];
 block meta
   title= title_page
   meta(name='description', content='')
@@ -56,6 +68,42 @@ block content
                 .current 0#{index+1}
                 .all 08
               img(src="./assets/images/build-progress/"+val)
+    .subtitle-with-decor Інтер’єри будинку
+      +img('menu-img.jpg')(data-call-gallery-popup)
+      +img('menu-img.jpg')(data-call-gallery-popup)
+      +img('menu-img.jpg')(data-call-gallery-popup)
+    .subtitle-with-decor Фасади
+      +img('menu-img.jpg')(data-call-gallery-popup)
+      +img('menu-img.jpg')(data-call-gallery-popup)
+      +img('menu-img.jpg')(data-call-gallery-popup)
+      +img('menu-img.jpg')(data-call-gallery-popup)
+    .subtitle-with-decor Ландшафтний парк
+      +img('menu-img.jpg')(data-call-gallery-popup)
+      +img('menu-img.jpg')(data-call-gallery-popup)
+      +img('menu-img.jpg')(data-call-gallery-popup)
+      +img('menu-img.jpg')(data-call-gallery-popup)
+    .gallery-photos-popup
+      .detailed-photos-popup-content
+        <svg data-detailed-popup-close width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 15L15 1M15 15L1 1" stroke="white" stroke-width="2"/>
+          </svg>
+        .detailed-nav
+          <svg class="detailed-nav-prev" width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="35" cy="35" r="35" transform="rotate(-180 35 35)" fill="white"/>
+            <path d="M47.0664 34.5L22.1383 34.5M22.1383 34.5L29.6168 27M22.1383 34.5L29.6168 42" stroke="#383E41" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+            </svg>
+          <svg class="detailed-nav-next" width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="35" cy="35" r="35" fill="white"/>
+            <path d="M22.9336 35.5L47.8617 35.5M47.8617 35.5L40.3832 43M47.8617 35.5L40.3832 28" stroke="#383E41" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+            </svg>
+        .detailed-photos-image-large.swiper-container(data-build-popup-slides)
+          .swiper-wrapper 
+            each val in flatBlocksData
+              img(data-src="./assets/images/build-progress/"+val).swiper-slide
+        .detailed-photos-image-nav.swiper-container(data-build-slides-nav)
+          .swiper-wrapper 
+            each val in flatBlocksData
+              img(data-src="./assets/images/build-progress/"+val).swiper-slide
 block footer
   include ../includes/footer.pug
 

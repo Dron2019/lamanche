@@ -6,6 +6,7 @@ import axios from 'axios';
 import * as yup from 'yup';
 import FormMonster from '../../pug/components/form/form';
 import SexyInput from '../../pug/components/input/input';
+import Popup from '../../pug/components/popup/popup';
 
 /** ******************************* */
 /*
@@ -14,6 +15,7 @@ import SexyInput from '../../pug/components/input/input';
 global.gsap = gsap;
 global.ScrollTrigger = ScrollTrigger;
 global.axios = axios;
+global.Popup = Popup;
 
 /* eslint-disable-next-line */
 const locoScroll = new LocomotiveScroll({

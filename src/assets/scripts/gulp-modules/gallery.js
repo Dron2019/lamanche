@@ -186,3 +186,51 @@ function startIframeVideo(element) {
   console.log(element);
   element.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
 }
+
+const navSwiper = new Swiper('[data-build-slides-nav]', {
+  slidesPerView: 2,
+  spaceBetween: 20,
+  slideToClickedSlide: true,
+  breakpoints: {
+    // when window width is >= 320px
+    576: {
+      slidesPerView: 6,
+      spaceBetween: 30,
+    },
+  },
+});
+const popupSwiper = new Swiper('[data-build-popup-slides]', {
+  // effect: 'fade',
+  loop: true,
+  speed: 1200,
+  navigation: {
+    nextEl: '.detailed-nav-next',
+    prevEl: '.detailed-nav-prev',
+  },
+  thumbs: {
+    swiper: navSwiper,
+  },
+});
+
+popupSwiper.update();
+navSwiper.update();
+
+// eslint-disable-next-line no-new
+new Popup({
+  call: document.querySelectorAll('[data-call-gallery-popup]'),
+  close: document.querySelector('[data-detailed-popup-close]'),
+  styles: {
+    backgroundColor: 'rgba(56, 62, 65, 0.99)',
+  },
+  afterOpenCb: () => {
+    popupSwiper.update();
+    navSwiper.update();
+  },
+  content: document.querySelector('.gallery-photos-popup'),
+});
+
+document.querySelectorAll('[data-call-build-popup]').forEach((button, index) => {
+  button.addEventListener('click', () => {
+    popupSwiper.slideTo(index);
+  });
+});

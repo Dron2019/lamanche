@@ -25,6 +25,7 @@
         }
         @include to(575px){
             margin-top: 50px;
+            padding-left: 0;
         }
         
     }
@@ -183,6 +184,10 @@
     height: 100vh;
     width: 100vw;
     pointer-events: none;
+    @include to(575px){
+        
+        --padding: 20px;
+    }
     .swiper-container {
         user-select: none;
     }
@@ -207,9 +212,16 @@
         justify-content: space-between;align-items: center;
         z-index: 100;
         pointer-events: none;
-        svg {
-            cursor: pointer;
-            pointer-events: all;
+    }
+    .detailed-nav svg {
+        
+        cursor: pointer;
+        pointer-events: all;
+        width: 70px;
+        height: 70px;
+        @include to(575px){
+            width: 35px;
+            height: 35px;
         }
     }
     .detailed-photos-image-nav {
@@ -221,6 +233,9 @@
         }
         .swiper-slide {
             cursor: pointer;
+        }
+        @include to(600px){
+            width: 100%;
         }
     }
     [data-detailed-popup-close] {
