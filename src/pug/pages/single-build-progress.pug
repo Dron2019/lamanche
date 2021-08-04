@@ -17,6 +17,11 @@ block variable
       ['build-card-03.jpg'],
       ['build-card-04.jpg'],
       ['build-card-05.jpg'],
+      ['build-card-01.jpg'],
+      ['build-card-02.jpg'],
+      ['build-card-03.jpg'],
+      ['build-card-04.jpg'],
+      ['build-card-05.jpg'],
     ];
   
 block meta
@@ -47,7 +52,7 @@ block content
         +btn('Переглянути відео', 'gold')(data-build-camera-popup)
       .build-images-container
           each val in flatBlocksData
-            img(data-src="./assets/images/build-progress/"+val)
+            img(data-src="./assets/images/build-progress/"+val data-call-build-popup)
       .web-camera-popup-wrapper(data-build-cam-popup)
         .web-camera-popup
           <svg data-popup-close="" class="web-camera-popup__close" width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -55,6 +60,30 @@ block content
             <path d="M21 24L31 14M31 24L21 14" stroke="white"></path>
             </svg>
           <iframe class="iv-i" src="https://open.ivideon.com/embed/v2/?server=100-HQrunT5KaVo0qMcpKTK3h2&amp;camera=196608&amp;width=&amp;height=&amp;lang=ru" width="100" allowfullscreen="allowfullscreen"></iframe>
+    .detailed-photos-popup
+      .detailed-photos-popup-content
+        <svg data-detailed-popup-close width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 15L15 1M15 15L1 1" stroke="white" stroke-width="2"/>
+          </svg>
+        .detailed-nav
+          <svg class="detailed-nav-prev" width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="35" cy="35" r="35" transform="rotate(-180 35 35)" fill="white"/>
+            <path d="M47.0664 34.5L22.1383 34.5M22.1383 34.5L29.6168 27M22.1383 34.5L29.6168 42" stroke="#383E41" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+            </svg>
+          <svg class="detailed-nav-next" width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="35" cy="35" r="35" fill="white"/>
+            <path d="M22.9336 35.5L47.8617 35.5M47.8617 35.5L40.3832 43M47.8617 35.5L40.3832 28" stroke="#383E41" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+            </svg>
+        .detailed-photos-image-large.swiper-container(data-build-popup-slides)
+          .swiper-wrapper 
+            each val in flatBlocksData
+              img(data-src="./assets/images/build-progress/"+val).swiper-slide
+        .detailed-photos-image-nav.swiper-container(data-build-slides-nav)
+          .swiper-wrapper 
+            each val in flatBlocksData
+              img(data-src="./assets/images/build-progress/"+val).swiper-slide
+
+
 block footer
   include ../includes/footer.pug
 
