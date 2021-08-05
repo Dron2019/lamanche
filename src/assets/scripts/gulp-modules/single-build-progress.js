@@ -186,7 +186,7 @@ const navSwiper = new Swiper('[data-build-slides-nav]', {
 });
 const popupSwiper = new Swiper('[data-build-popup-slides]', {
   // effect: 'fade',
-  loop: true,
+  // loop: true,
   speed: 1200,
   navigation: {
     nextEl: '.detailed-nav-next',
