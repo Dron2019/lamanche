@@ -130,7 +130,7 @@
 // );
 /** СТрелка переключатель в зависимости от положения на єкране END */
 
-const webCameraCallPopup = document.querySelector('[data-build-camera-popup]');
+const webCameraCallPopup = document.querySelectorAll('[data-build-camera-popup]');
 const webCameraPopup = document.querySelector('[data-build-cam-popup]');
 const webCamClose = webCameraPopup.querySelector('[data-popup-close]');
 
@@ -147,16 +147,19 @@ function closePopup(evt) {
   }
 }
 webCameraPopup.addEventListener('click', closePopup);
-webCameraCallPopup.addEventListener('click', (evt) => {
-  evt.preventDefault();
-  locoScroll.stop();
-  gsap.timeline({
-    clearProps: 'all',
-  }).set(webCameraPopup, { autoAlpha: 1, pointerEvents: 'all' })
-    .to(webCameraPopup, { autoAlpha: 1 })
-    .from(webCameraPopup.querySelector('.web-camera-popup'), { autoAlpha: 0, y: -100 }, '<')
-    .set(webCameraPopup.querySelector('.web-camera-popup'), { autoAlpha: 1, y: 0, clearProps: 'all' });
+webCameraCallPopup.forEach((el) => {
+  el.addEventListener('click', (evt) => {
+    evt.preventDefault();
+    locoScroll.stop();
+    gsap.timeline({
+      clearProps: 'all',
+    }).set(webCameraPopup, { autoAlpha: 1, pointerEvents: 'all' })
+      .to(webCameraPopup, { autoAlpha: 1 })
+      .from(webCameraPopup.querySelector('.web-camera-popup'), { autoAlpha: 0, y: -100 }, '<')
+      .set(webCameraPopup.querySelector('.web-camera-popup'), { autoAlpha: 1, y: 0, clearProps: 'all' });
+  });
 });
+
 webCamClose.addEventListener('click', (evt) => {
   evt.preventDefault();
   locoScroll.start();
