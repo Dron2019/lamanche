@@ -7,78 +7,25 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-undef */
 const switchItems = document.querySelectorAll('[data-content-type]');
-// eslint-disable-next-line no-undef
-// const galSwiper = new Swiper('.mySwiper', {
-//   slidesPerView: 1.5,
-//   spaceBetween: 30,
-//   freeMode: true,
-//   centeredSlides: true,
-//   navigation: {
-//     nextEl: '.swiper-button-next',
-//     prevEl: '.swiper-button-prev',
-//   },
-//   breakpoints: {
-//     // when window width is >= 320px
-//     320: {
-//       slidesPerView: 1,
-//       spaceBetween: 20,
-//     },
-//     // when window width is >= 480px
-//     576: {
-//       slidesPerView: 1,
-//       spaceBetween: 30,
-//     },
-//     951: {
-//       slidesPerView: 1.5,
-//       spaceBetween: 30,
-//     },
-//   },
-// });
-
-// filterSlides(switchItems[0], galSwiper);
-
-// galSwiper.on('update', (swiper) => {
-//   document.querySelectorAll('iframe').forEach(stopIframeVideo);
-//   const activeFrame =
-// document.querySelectorAll('.swiper-slide:not([style*="none"]) iframe')[swiper.realIndex];
-//   const prevFrame =
-// document.querySelectorAll('.swiper-slide:not([style*="none"]) iframe')[swiper.previousIndex];
-//   console.log(activeFrame, '\n', prevFrame);
-//   if (activeFrame === undefined) return;
-//   startIframeVideo(activeFrame);
-//   if (prevFrame !== undefined) stopIframeVideo(prevFrame);
-//   // console.log(swiper);
-//   // console.log(activeFrame);
-// });
-// galSwiper.on('activeIndexChange', (swiper) => {
-//   const activeFrame =
-// document.querySelectorAll('.swiper-slide:not([style*="none"]) iframe')[swiper.realIndex];
-//   const prevFrame =
-// document.querySelectorAll('.swiper-slide:not([style*="none"]) iframe')[swiper.previousIndex];
-//   console.log(activeFrame, '\n', prevFrame);
-//   if (activeFrame === undefined) return;
-//   startIframeVideo(activeFrame);
-//   if (prevFrame !== undefined) stopIframeVideo(prevFrame);
-//   // console.log(swiper);
-//   // console.log(activeFrame);
-// });
 
 const transitionsOfGallery = {
   video: () => {
     gsap.timeline({ clearProps: 'all' })
-      .fromTo('[data-wrapper="photo"] img', { y: 0, autoAlpha: 1 }, { y: 20, autoAlpha: 0, stagger: 0.1 })
+      .fromTo('[data-wrapper="photo"] img:nth-child(-n+5)', { y: 0, autoAlpha: 1 }, { y: 20, autoAlpha: 0, stagger: 0.1 })
       .fromTo('[data-wrapper="photo"]', { y: 0, autoAlpha: 1 }, { y: 40, autoAlpha: 0 }, '<+0.5')
-      .set('[data-wrapper="photo"]', { display: 'none' }, '<')
+      .set('[data-wrapper="photo"]', { display: 'none' }, '<+0.25')
       .set('[data-wrapper="video"]', { display: 'block' }, '<')
-      .fromTo('[data-wrapper="video"]', { y: -40, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, '<');
+      .fromTo('[data-wrapper="video"]', { y: -40, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, '<')
+      .add(() => locoScroll.update());
   },
   photo: () => {
     gsap.timeline({ clearProps: 'all' })
       .fromTo('[data-wrapper="video"]', { y: 0, autoAlpha: 1 }, { y: 40, autoAlpha: 0 })
-      .set('[data-wrapper="video"]', { display: 'none' }, '<')
+      .set('[data-wrapper="video"]', { display: 'none' }, '<+0.25')
       .set('[data-wrapper="photo"]', { display: 'block' }, '<')
       .fromTo('[data-wrapper="photo"]', { y: 40, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, '<')
-      .fromTo('[data-wrapper="photo"] img', { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, stagger: 0.1 }, '<');
+      .fromTo('[data-wrapper="photo"] img:nth-child(-n+5)', { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, stagger: 0.1 }, '<')
+      .add(() => locoScroll.update());
   },
 };
 switchItems.forEach((item) => {
