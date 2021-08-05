@@ -7,56 +7,60 @@
 /* eslint-disable no-undef */
 const switchItems = document.querySelectorAll('[data-content-type]');
 // eslint-disable-next-line no-undef
-const galSwiper = new Swiper('.mySwiper', {
-  slidesPerView: 1.5,
-  spaceBetween: 30,
-  freeMode: true,
-  centeredSlides: true,
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-  breakpoints: {
-    // when window width is >= 320px
-    320: {
-      slidesPerView: 1,
-      spaceBetween: 20,
-    },
-    // when window width is >= 480px
-    576: {
-      slidesPerView: 1,
-      spaceBetween: 30,
-    },
-    951: {
-      slidesPerView: 1.5,
-      spaceBetween: 30,
-    },
-  },
-});
+// const galSwiper = new Swiper('.mySwiper', {
+//   slidesPerView: 1.5,
+//   spaceBetween: 30,
+//   freeMode: true,
+//   centeredSlides: true,
+//   navigation: {
+//     nextEl: '.swiper-button-next',
+//     prevEl: '.swiper-button-prev',
+//   },
+//   breakpoints: {
+//     // when window width is >= 320px
+//     320: {
+//       slidesPerView: 1,
+//       spaceBetween: 20,
+//     },
+//     // when window width is >= 480px
+//     576: {
+//       slidesPerView: 1,
+//       spaceBetween: 30,
+//     },
+//     951: {
+//       slidesPerView: 1.5,
+//       spaceBetween: 30,
+//     },
+//   },
+// });
 
-filterSlides(switchItems[0], galSwiper);
+// filterSlides(switchItems[0], galSwiper);
 
-galSwiper.on('update', (swiper) => {
-  document.querySelectorAll('iframe').forEach(stopIframeVideo);
-  const activeFrame = document.querySelectorAll('.swiper-slide:not([style*="none"]) iframe')[swiper.realIndex];
-  const prevFrame = document.querySelectorAll('.swiper-slide:not([style*="none"]) iframe')[swiper.previousIndex];
-  console.log(activeFrame, '\n', prevFrame);
-  if (activeFrame === undefined) return;
-  startIframeVideo(activeFrame);
-  if (prevFrame !== undefined) stopIframeVideo(prevFrame);
-  // console.log(swiper);
-  // console.log(activeFrame);
-});
-galSwiper.on('activeIndexChange', (swiper) => {
-  const activeFrame = document.querySelectorAll('.swiper-slide:not([style*="none"]) iframe')[swiper.realIndex];
-  const prevFrame = document.querySelectorAll('.swiper-slide:not([style*="none"]) iframe')[swiper.previousIndex];
-  console.log(activeFrame, '\n', prevFrame);
-  if (activeFrame === undefined) return;
-  startIframeVideo(activeFrame);
-  if (prevFrame !== undefined) stopIframeVideo(prevFrame);
-  // console.log(swiper);
-  // console.log(activeFrame);
-});
+// galSwiper.on('update', (swiper) => {
+//   document.querySelectorAll('iframe').forEach(stopIframeVideo);
+//   const activeFrame =
+// document.querySelectorAll('.swiper-slide:not([style*="none"]) iframe')[swiper.realIndex];
+//   const prevFrame =
+// document.querySelectorAll('.swiper-slide:not([style*="none"]) iframe')[swiper.previousIndex];
+//   console.log(activeFrame, '\n', prevFrame);
+//   if (activeFrame === undefined) return;
+//   startIframeVideo(activeFrame);
+//   if (prevFrame !== undefined) stopIframeVideo(prevFrame);
+//   // console.log(swiper);
+//   // console.log(activeFrame);
+// });
+// galSwiper.on('activeIndexChange', (swiper) => {
+//   const activeFrame =
+// document.querySelectorAll('.swiper-slide:not([style*="none"]) iframe')[swiper.realIndex];
+//   const prevFrame =
+// document.querySelectorAll('.swiper-slide:not([style*="none"]) iframe')[swiper.previousIndex];
+//   console.log(activeFrame, '\n', prevFrame);
+//   if (activeFrame === undefined) return;
+//   startIframeVideo(activeFrame);
+//   if (prevFrame !== undefined) stopIframeVideo(prevFrame);
+//   // console.log(swiper);
+//   // console.log(activeFrame);
+// });
 
 locoScroll.destroy();
 
@@ -186,8 +190,10 @@ function startIframeVideo(element) {
   console.log(element);
   element.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
 }
+const galleryBlur = document.querySelector('[data-gallery-blur]');
 
-const navSwiper = new Swiper('[data-build-slides-nav]', {
+
+const navSwiper = new Swiper('[data-gallery-slides-nav]', {
   slidesPerView: 2,
   spaceBetween: 20,
   slideToClickedSlide: true,
@@ -199,13 +205,20 @@ const navSwiper = new Swiper('[data-build-slides-nav]', {
     },
   },
 });
-const popupSwiper = new Swiper('[data-build-popup-slides]', {
-  // effect: 'fade',
-  loop: true,
+const popupSwiper = new Swiper('[data-gallery-popup-slides]', {
+  effect: 'fade',
+  // loop: true,
   speed: 1200,
   navigation: {
     nextEl: '.detailed-nav-next',
     prevEl: '.detailed-nav-prev',
+  },
+  on: {
+    slideChange: (e) => {
+      console.log(e.slides[e.realIndex + 1]);
+      // swiper.realIndex
+      galleryBlur.style.backgroundImage = `url(${e.slides[e.realIndex + 1].src})`;
+    },
   },
   thumbs: {
     swiper: navSwiper,
@@ -229,7 +242,7 @@ new Popup({
   content: document.querySelector('.gallery-photos-popup'),
 });
 
-document.querySelectorAll('[data-call-build-popup]').forEach((button, index) => {
+document.querySelectorAll('[data-call-gallery-popup]').forEach((button, index) => {
   button.addEventListener('click', () => {
     popupSwiper.slideTo(index);
   });
