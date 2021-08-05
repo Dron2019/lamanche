@@ -85,7 +85,9 @@ export default class Popup {
         { y: -100, autoAlpha: 0 },
         { y: 0, autoAlpha: 1 },
       )
-      .add(this.afterOpenCb);
+      .add(() => {
+        this.afterOpenCb();
+      });
   }
 
   get popupStyles() {

@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 /* eslint-disable no-unused-vars */
 /* eslint-disable prefer-arrow-callback */
 /* eslint-disable no-proto */
@@ -62,13 +63,24 @@ const switchItems = document.querySelectorAll('[data-content-type]');
 //   // console.log(activeFrame);
 // });
 
-locoScroll.destroy();
-
-setTimeout(() => {
-  document.querySelector('.page__inner').style.transform = '';
-}, 3000);
-
-
+const transitionsOfGallery = {
+  video: () => {
+    gsap.timeline({ clearProps: 'all' })
+      .fromTo('[data-wrapper="photo"] img', { y: 0, autoAlpha: 1 }, { y: 20, autoAlpha: 0, stagger: 0.1 })
+      .fromTo('[data-wrapper="photo"]', { y: 0, autoAlpha: 1 }, { y: 40, autoAlpha: 0 }, '<+0.5')
+      .set('[data-wrapper="photo"]', { display: 'none' }, '<')
+      .set('[data-wrapper="video"]', { display: 'block' }, '<')
+      .fromTo('[data-wrapper="video"]', { y: -40, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, '<');
+  },
+  photo: () => {
+    gsap.timeline({ clearProps: 'all' })
+      .fromTo('[data-wrapper="video"]', { y: 0, autoAlpha: 1 }, { y: 40, autoAlpha: 0 })
+      .set('[data-wrapper="video"]', { display: 'none' }, '<')
+      .set('[data-wrapper="photo"]', { display: 'block' }, '<')
+      .fromTo('[data-wrapper="photo"]', { y: 40, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, '<')
+      .fromTo('[data-wrapper="photo"] img', { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, stagger: 0.1 }, '<');
+  },
+};
 switchItems.forEach((item) => {
   item.addEventListener('click', () => {
     const currentActive = document.querySelector('.active[data-content-type]');
@@ -76,110 +88,10 @@ switchItems.forEach((item) => {
       currentActive.classList.remove('active');
     }
     item.classList.add('active');
-    filterSlides(item, galSwiper);
+    transitionsOfGallery[item.dataset.contentType]();
   });
 });
-
-function filterSlides(filterButton, swiper) {
-  const typeForFilter = filterButton.dataset.contentType;
-  const slides = document.querySelectorAll('.swiper-slide');
-  slides.forEach((slide) => {
-    if (slide.dataset.type === typeForFilter) {
-      slide.style.display = '';
-    } else {
-      slide.style.display = 'none';
-    }
-  });
-  swiper.update();
-}
-/** СТрелка переключатель в зависимости от положения на єкране */
-
-function sideSwitchArrow(swiper, arrow, container) {
-  const mediumCordValue = document.documentElement.clientWidth / 2;
-
-  container.style.cursor = 'none';
-  arrow.style.cursor = 'none';
-  arrow.style.zIndex = 10;
-  arrow.__proto__.hide = function () {
-    this.style.opacity = '0';
-    this.style.pointerEvents = 'none';
-  };
-  arrow.__proto__.show = function () {
-    this.style.opacity = '1';
-    // this.style.pointerEvents = 'auto';
-  };
-  arrow.dataset.side = 'leftSide';
-
-
-  container.addEventListener('mousemove', desktopNavButtonHandler);
-  container.addEventListener('mouseenter', () => {
-    arrow.show();
-  });
-  container.addEventListener('mouseleave', () => {
-    arrow.hide();
-  });
-  if (document.documentElement.clientWidth < 769) {
-    window.removeEventListener('mousemove', desktopNavButtonHandler);
-    arrow.remove();
-  }
-
-  /** Записывает координаты обьекта, на котором нужно скрыть стрелку переключения слайдера */
-  /** ms ---> main-screen */
-
-
-  function desktopNavButtonHandler(evt) {
-    // arrow.style.position = 'fixed';
-    arrow.style.left = `${evt.clientX - 18}px`;
-    arrow.style.top = `${evt.clientY - 18}px`;
-
-    getCursorSide(evt.clientX);
-    handleArrowVisibility(evt);
-  }
-
-
-  function handleArrowVisibility() {
-  }
-
-  function getCursorSide(x) {
-    if (x < (mediumCordValue)) {
-      arrow.classList.add('left-side');
-      arrow.dataset.side = 'leftSide';
-      // switchGallerySlide('leftSide');
-    } else {
-      arrow.classList.remove('left-side');
-      arrow.dataset.side = 'rightSide';
-      // switchGallerySlide('rightSide')
-    }
-  }
-  container.addEventListener('click', function clickToChange() {
-    switchGallerySlide(arrow.dataset.side);
-  });
-  if (document.documentElement.clientWidth < 576) {
-    container.removeEventListener('click', clickToChange);
-  }
-  const navigate = {
-    leftSide: () => {
-      swiper.slidePrev();
-    },
-    rightSide: () => {
-      swiper.slideNext();
-    },
-  };
-
-  function switchGallerySlide(side) {
-    navigate[side]();
-    return navigate.side;
-  }
-
-
-  // eslint-disable-next-line no-unused-vars
-}
-// sideSwitchArrow(
-//   galSwiper,
-//   document.querySelector('.moving-arrow'),
-//   document.querySelector('.gal-slider'),
-// );
-/** СТрелка переключатель в зависимости от положения на єкране END */
+switchItems[0].click();
 
 
 function stopIframeVideo(element) {
@@ -187,7 +99,6 @@ function stopIframeVideo(element) {
 }
 
 function startIframeVideo(element) {
-  console.log(element);
   element.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
 }
 const galleryBlur = document.querySelector('[data-gallery-blur]');
@@ -206,18 +117,31 @@ const navSwiper = new Swiper('[data-gallery-slides-nav]', {
   },
 });
 const popupSwiper = new Swiper('[data-gallery-popup-slides]', {
-  effect: 'fade',
+  fadeEffect: { crossFade: true },
   // loop: true,
-  speed: 1200,
+  effect: 'fade',
+  virtualTranslate: true,
+  initialSlide: 5,
+  speed: 800,
   navigation: {
     nextEl: '.detailed-nav-next',
     prevEl: '.detailed-nav-prev',
   },
   on: {
+    init: (e) => {
+      e.update();
+    },
     slideChange: (e) => {
-      console.log(e.slides[e.realIndex + 1]);
-      // swiper.realIndex
-      galleryBlur.style.backgroundImage = `url(${e.slides[e.realIndex + 1].src})`;
+      let src = '';
+      if (e.slides[e.realIndex + 1] !== null && e.slides[e.realIndex + 1] !== undefined) {
+        src = e.slides[e.realIndex + 1].src;
+      } else {
+        src = e.slides[e.realIndex].src;
+      }
+      gsap.timeline()
+        .to(galleryBlur, { autoAlpha: 0 })
+        .set(galleryBlur, { backgroundImage: `url(${src})` })
+        .to(galleryBlur, { autoAlpha: 1 });
     },
   },
   thumbs: {

@@ -204,7 +204,7 @@ const options = {
   rootMargin: '0px',
   threshold: 0.1,
 };
-const lazyImages = document.querySelectorAll('img[data-src]');
+const lazyImages = document.querySelectorAll('img[data-src]:not(.swiper-lazy)');
 
 lazyImages.forEach((imageArgs) => {
   const image = imageArgs;
@@ -220,7 +220,6 @@ lazyImages.forEach((imageArgs) => {
       if (entry.isIntersecting) {
         const lazyImage = entry.target;
         lazyImage.src = lazyImage.dataset.src;
-        console.log(entries);
         observer.unobserve(target);
       }
     });
