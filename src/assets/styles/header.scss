@@ -147,28 +147,28 @@
   }
   @include from(769px){
     &__menu-call {
-      display: none;   
+      // display: none;   
     }
     &__links {
-      margin-left: 0;
+      // margin-left: 0;
     }
   }
-  @include to(1320px){
+  @include to(1440px){
     &__links a:last-child {
       display: none;
     }
   }
-  @include to(1240px){
+  @include to(1380px){
     &__links a:nth-last-child(2) {
       display: none;
     }
   }
-  @include to(1120px){
+  @include to(1320px){
     &__links a:nth-last-child(3) {
       display: none;
     }
   }
-  @include to(950px){
+  @include to(1120px){
     &__links {
       display: none;
     }
