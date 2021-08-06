@@ -266,6 +266,10 @@
         @include customOffsetWidth(33, var(--offset));
         margin-bottom: var(--offset);
         cursor: pointer;
+        @include to(575px) {
+            @include customOffsetWidth(100, var(--offset));
+
+        }
     }
     &__fixed {
         position: relative;

@@ -139,6 +139,7 @@
     @include to(575px){
         @include shift(0);
         .slider-nav {
+            display: none;
             width: 100%;
             height: 37.5px;
         }
