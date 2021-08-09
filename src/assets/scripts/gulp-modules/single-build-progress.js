@@ -219,3 +219,57 @@ document.querySelectorAll('[data-call-build-popup]').forEach((button, index) => 
     popupSwiper.slideTo(index);
   });
 });
+
+/** Закрытие попапа по свайпу */
+class SwipeHandler {
+  constructor(props) {
+    this.x = props.x || 0;
+    this.y = props.y || 0;
+    this.startY = props.startY || 0;
+    this.swipedDistanceY = props.swipedDistanceY || 0;
+  }
+
+  get distance() {
+    return this.y - this.startY;
+  }
+}
+/**
+*
+* @param {string} selector - Селектор попапа
+*
+*/
+function closePopupOnSwipe(selector) {
+  const popup = document.querySelector(selector);
+  if (popup === null) {
+    console.warn(`
+      Cannot initialize "${selector}" of null
+    `);
+    return;
+  }
+  const distanceToClose = 200;
+
+  const cords = new SwipeHandler({});
+  popup.addEventListener('touchstart', function (evt) {
+    cords.startY = evt.targetTouches[0].screenY;
+    cords.y = evt.targetTouches[0].screenY;
+  });
+  popup.addEventListener('touchmove', function (evt) {
+    evt.preventDefault();
+    cords.y = evt.targetTouches[0].screenY;
+    if ((cords.distance) > 30) {
+      gsap.to(popup, {
+        y: cords.distance,
+        autoAlpha: 1 - ((cords.distance) / 100),
+      });
+    }
+  });
+  popup.addEventListener('touchend', function () {
+    if ((cords.distance) > distanceToClose) {
+      gsap.to(popup, { autoAlpha: 0, y: 0 });
+    } else {
+      gsap.to(popup, { y: 0, autoAlpha: 1 });
+    }
+  });
+}
+/** Закрытие попапа по свайпу END */
+closePopupOnSwipe('[data-build-cam-popup]');

@@ -1,3 +1,4 @@
+#choose-section-and-filter-page,
 #id-page-choose-section-and-filter {
     // .header {
     //     display: none;
@@ -20,6 +21,16 @@
     @include to(575px){
         .page__inner {
             overflow: initial;
+        }
+        .choose-flat-content-wrapper {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        .footer {
+            width: 100vw;
+            overflow: hidden;
+            margin-left: 0;
+            margin-right: 0;
         }
     }
 }

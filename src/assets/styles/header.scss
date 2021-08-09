@@ -153,6 +153,11 @@
       // margin-left: 0;
     }
   }
+  @include from-to(1680px, 2560px) {
+    &__links a:last-child {
+      display: none;
+    }
+  }
   @include to(1440px){
     &__links a:last-child {
       display: none;
