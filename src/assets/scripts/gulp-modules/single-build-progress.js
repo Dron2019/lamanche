@@ -201,7 +201,7 @@ popupSwiper.update();
 navSwiper.update();
 
 
-new Popup({
+const singleBuildGalleriePopup = new Popup({
   call: document.querySelectorAll('[data-call-build-popup]'),
   close: document.querySelector('[data-detailed-popup-close]'),
   styles: {
@@ -246,7 +246,7 @@ function closePopupOnSwipe(selector) {
     `);
     return;
   }
-  const distanceToClose = 200;
+  const distanceToClose = 125;
 
   const cords = new SwipeHandler({});
   popup.addEventListener('touchstart', function (evt) {
@@ -259,7 +259,7 @@ function closePopupOnSwipe(selector) {
     if ((cords.distance) > 30) {
       gsap.to(popup, {
         y: cords.distance,
-        autoAlpha: 1 - ((cords.distance) / 100),
+        autoAlpha: 1.5 - ((cords.distance) / 100),
       });
     }
   });
@@ -273,3 +273,4 @@ function closePopupOnSwipe(selector) {
 }
 /** Закрытие попапа по свайпу END */
 closePopupOnSwipe('[data-build-cam-popup]');
+closePopupOnSwipe(`.${singleBuildGalleriePopup.uniqueClass}`);

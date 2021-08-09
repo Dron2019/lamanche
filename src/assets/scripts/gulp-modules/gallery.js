@@ -82,7 +82,7 @@ const popupSwiper = new Swiper('[data-gallery-popup-slides]', {
       let src = '';
       if (e.slides[e.realIndex + 1] !== null && e.slides[e.realIndex + 1] !== undefined) {
         src = e.slides[e.realIndex + 1].src;
-      } else {
+      } else if (e.slides[e.realIndex] !== undefined) {
         src = e.slides[e.realIndex].src;
       }
       gsap.timeline()
