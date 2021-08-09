@@ -236,6 +236,7 @@ class SwipeHandler {
 /**
 *
 * @param {string} selector - Селектор попапа
+* @description Need {@link https://greensock.com/ GreenSock} for work
 *
 */
 function closePopupOnSwipe(selector) {
