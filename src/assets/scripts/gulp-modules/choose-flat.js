@@ -1,6 +1,69 @@
 /* eslint-disable camelcase */
 /* eslint-disable no-undef */
 /* eslint-disable prefer-destructuring */
+const currentLang = (() => {
+  if (window.location.href.match(/\/ru\//)) return 'ru';
+  if (window.location.href.match(/\/en\//)) return 'en';
+  return 'ua';
+})();
+const langs = {
+  floors: {
+    ua: 'Поверхів',
+    ru: 'Этажей',
+    en: 'Floors',
+  },
+  flats: {
+    ua: 'Квартир',
+    ru: 'Квартир',
+    en: 'Flats',
+  },
+  section: {
+    ua: 'Секція',
+    ru: 'Секция',
+    en: 'Section',
+  },
+  toFloor: {
+    ua: 'Перейти до поверху',
+    ru: 'Перейти к этажу',
+    en: 'Go to floor',
+  },
+  toFlat: {
+    ua: 'Перейти до квартири',
+    ru: 'Перейти к квартире',
+    en: 'Go to flat',
+  },
+  total: {
+    ua: 'Загальна площа',
+    ru: 'Общая площадь',
+    en: 'Total square',
+  },
+  living: {
+    ua: 'Житлова площа',
+    ru: 'Жилая площадь',
+    en: 'Living square',
+  },
+  rooms: {
+    ua: 'Кімнат',
+    ru: 'Комнат',
+    en: 'Rooms',
+  },
+  floor: {
+    ua: 'Поверх',
+    ru: 'Этаж',
+    en: 'Floor',
+  },
+  type: {
+    ua: 'Тип',
+    ru: 'Тип',
+    en: 'Type',
+  },
+  show: {
+    ua: 'Переглянути',
+    ru: 'Перейти',
+    en: 'show',
+  },
+};
+
 function renderPathesInfo(path) {
   path.addEventListener('mouseenter', () => {
     const dataInfo = Object.entries(path.dataset);
@@ -26,25 +89,25 @@ function createTippyContent(path) {
   some.innerHTML = `
     <table data-clone-node-for-tippy>
       <tr class="section-info-row">
-        <td class="section-info-row-subtitle">Секція:</td>
+        <td class="section-info-row-subtitle">${langs.section[currentLang]}:</td>
         <td class="section-info-row-val" data-render="section">${section}</td>
       </tr>
       <tr class="section-info-row">
-        <td class="section-info-row-subtitle">Кімнат:</td>
+        <td class="section-info-row-subtitle">${langs.rooms[currentLang]}:</td>
         <td class="section-info-row-val" data-render="rooms">${rooms}</td>
       </tr>
       <tr class="section-info-row">
-        <td class="section-info-row-subtitle">Загальна площа:</td>
+        <td class="section-info-row-subtitle">${langs.total[currentLang]}:</td>
         <td class="section-info-row-val" data-render="all_room"> ${all_room} м2</td>
       </tr>
       <tr class="section-info-row">
-        <td class="section-info-row-subtitle">Житлова площа:</td>
+        <td class="section-info-row-subtitle">${langs.living[currentLang]}:</td>
         <td class="section-info-row-val" data-render="live_room">${live_room} м2</td>
       </tr>
       <tr>
         <td>
           <a class="underlined-link-wrap" href="${path.parentElement.getAttribute('xlink:href')}">
-            <div class="underlined-link">  Перейти до квартири</div>
+            <div class="underlined-link">  ${langs.toFlat[currentLang]}</div>
             <svg class="icon--build-arrow" role="presentation">
               <use xlink:href="#icon-build-arrow"></use>
             </svg>
