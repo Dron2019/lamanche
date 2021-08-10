@@ -133,7 +133,7 @@
 const webCameraCallPopup = document.querySelectorAll('[data-build-camera-popup]');
 const webCameraPopup = document.querySelector('[data-build-cam-popup]');
 const webCamClose = webCameraPopup.querySelector('[data-popup-close]');
-
+document.body.append(webCameraPopup);
 function closePopup(evt) {
   if (evt.target.classList.contains('web-camera-popup-wrapper')) {
     evt.preventDefault();
