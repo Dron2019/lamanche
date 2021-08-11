@@ -664,6 +664,8 @@
     padding-top: 1em;
     img {
         margin-top: 15px;
+        max-height: 35vh;
+        object-fit: contain;
     }
     &[src=''] {
         opacity: 0;

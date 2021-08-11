@@ -119,6 +119,11 @@ function handleFilterBuildCards() {
       }
     }
   });
+  console.log(withVideoCheckbox.checked);
+  filterItems[withVideoCheckbox.dataset.name] = '';
+  filterBuildCards(cards, filterItems, cardsWrapper, () => {
+    locoScroll.update();
+  });
 }
 
 const webCameraCallPopup = document.querySelector('[data-web-camera-popup]');
