@@ -18,7 +18,7 @@ function changeScreenWithEffects(toOpenElement, toCloseElement, cb = () => {}, d
           {
             yPercent: 0,
             autoAlpha: 1,
-            duration: 1.75,
+            duration: 1.5,
             ease: 'power4.out',
           },
           '<',
@@ -42,7 +42,7 @@ function changeScreenWithEffects(toOpenElement, toCloseElement, cb = () => {}, d
           {
             yPercent: 0,
             autoAlpha: 1,
-            duration: 1.75,
+            duration: 1.5,
             ease: 'power4.out',
           },
           '<',

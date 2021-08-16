@@ -13,12 +13,12 @@ block variable
 			}
 		];
 		var screens = [
-			{ title: 'Концепція' },
-			{ title: 'Характеристики' },
-			{ title: 'Локація' },
-			{ title: 'Архітектура' },
-			{ title: 'Філософія' },
-			{ title: 'Філософія1' },
+			{ title: 'Концепція', img: './assets/images/gallery/gallery-interior01.jpg' },
+			{ title: 'Характеристики', img: './assets/images/gallery/gallery-interior02.jpg' },
+			{ title: 'Локація', img: './assets/images/gallery/gallery-interior03.jpg' },
+			{ title: 'Архітектура', img: './assets/images/gallery/gallery-interior04.jpg' },
+			{ title: 'Філософія', img: './assets/images/gallery/gallery-interior05.jpg' },
+			{ title: 'Філософія1', img: './assets/images/gallery/gallery-interior06.jpg' },
 		]
 	
 block meta
@@ -44,7 +44,8 @@ block content
 					</svg>
 		.ms-slider-overlay 
 			each val, i in screens
-				.ms-slide 
+				.ms-slide
+					img(src=val.img)
 					.page-title #{val.title} #{i}
 		a(href="#")
 			<svg data-motion-svg width="603" height="429" viewBox="0 0 603 429" fill="none" xmlns="http://www.w3.org/2000/svg">

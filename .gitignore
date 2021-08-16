@@ -2,6 +2,7 @@
 /**/_backstage
 /**/Thumbs.db
 /.git/
+/out/
 /node_modules/
 /help-scripts/
 /.idea/

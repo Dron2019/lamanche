@@ -68,6 +68,7 @@
     "husky": "^1.1.2",
     "imagemin-jpeg-recompress": "^6.0.0",
     "imagemin-pngquant": "^8.0.0",
+    "jsdoc": "^3.6.7",
     "lint-staged": "^7.3.0",
     "merge-stream": "^2.0.0",
     "path": "^0.12.7",
