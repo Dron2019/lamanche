@@ -3,18 +3,59 @@
 /* eslint-disable func-names */
 /* eslint-disable no-undef */
 gsap.registerPlugin(MotionPathPlugin);
-function changeScreenWithEffects(toOpenElement, toCloseElement, cb = () => {}) {
-  gsap.timeline()
-    .set(toOpenElement, { display: '', zIndex: 1 }, '<')
-    .to(toCloseElement, {
-      scale: 1.05, autoAlpha: 0.5, clearProps: 'all', zIndex: 0,
-    }, '<')
-    .set(toCloseElement, { display: 'none' })
-    .fromTo(toOpenElement, { scale: 1.05, autoAlpha: 0.5 }, { scale: 1, autoAlpha: 1 }, '<-0.5')
-    .add(() => {
-      locoScroll.update();
-      cb();
-    });
+function changeScreenWithEffects(toOpenElement, toCloseElement, cb = () => {}, direction = 1) {
+  switch (direction) {
+    case 1:
+      gsap.timeline()
+        .timeScale(1)
+        .set(toOpenElement, { display: '', yPercent: -100 }, '<')
+        .to(toCloseElement, {
+          yPercent: 100, autoAlpha: 1, clearProps: 'all', duration: 2, ease: 'power4.out',
+        }, '<')
+        .fromTo(
+          toOpenElement,
+          { yPercent: -100, autoAlpha: 1 },
+          {
+            yPercent: 0,
+            autoAlpha: 1,
+            duration: 1.75,
+            ease: 'power4.out',
+          },
+          '<',
+        )
+        .set(toCloseElement, { display: 'none' })
+        .add(() => {
+          locoScroll.update();
+          cb();
+        });
+      break;
+    case -1:
+      gsap.timeline()
+        .timeScale(1)
+        .set(toOpenElement, { display: '', yPercent: 100 }, '<')
+        .to(toCloseElement, {
+          yPercent: -100, autoAlpha: 1, clearProps: 'all', duration: 2, ease: 'power4.out',
+        }, '<')
+        .fromTo(
+          toOpenElement,
+          { yPercent: 100, autoAlpha: 1 },
+          {
+            yPercent: 0,
+            autoAlpha: 1,
+            duration: 1.75,
+            ease: 'power4.out',
+          },
+          '<',
+        )
+        .set(toCloseElement, { display: 'none' })
+        .add(() => {
+          locoScroll.update();
+          cb();
+        });
+      break;
+    default:
+      break;
+  }
 }
 
 function insertUrlParam(key, value) {
@@ -89,7 +130,7 @@ window.addEventListener('load', function () {
   const urlString = window.location.href;
   const url = new URL(urlString);
   const c = +url.searchParams.get(params.url);
-  if (typeof c === 'number' && slides[c] !== undefined) {
+  if (typeof c === 'number' && slides[c] !== undefined && +c !== 0) {
     changeScreenWithEffects(
       slides[c],
       slides[0],
@@ -114,12 +155,7 @@ window.addEventListener('wheel', function (evt) {
     evt.preventDefault();
     params.isAnimating = true;
     const direction = evt.deltaY > 0 ? 1 : -1;
-    let nextIndex = params.curentIndex + direction;
-    if (params.curentIndex === slides.length - 1 && direction > 0) {
-      nextIndex = 0;
-    } else if (params.curentIndex === 0 && direction < 0) {
-      nextIndex = slides.length - 1;
-    }
+    const nextIndex = getNextIndex(params.curentIndex, slides, direction);
     simulatePathDrawing(navs[nextIndex], 1.5, '5');
     resetStrokeValue(navs[params.curentIndex]);
     changeScreenWithEffects(
@@ -130,6 +166,7 @@ window.addEventListener('wheel', function (evt) {
         params.isAnimating = false;
         insertUrlParam(params.url, nextIndex);
       },
+      direction,
     );
   }
 }, true);
@@ -170,4 +207,22 @@ function resetStrokeValue(pathArgs) {
   // Set up the starting positions
   path.style.strokeDasharray = `${length} ${length}`;
   path.style.strokeDashoffset = length;
+}
+
+
+/**
+ * @param {number} current текущий слайд
+ * @param {NodeList} $nodeList коллекция слайдов
+ * @param {number} direction направление (-1 или 1)
+ * @returns {number} nextIndex
+ * @description Получение следующего индекса
+ */
+function getNextIndex(current, $nodeList, direction) {
+  let nextIndex = current + direction;
+  if (params.curentIndex === $nodeList.length - 1 && direction > 0) {
+    nextIndex = 0;
+  } else if (params.curentIndex === 0 && direction < 0) {
+    nextIndex = slides.length - 1;
+  }
+  return nextIndex;
 }
